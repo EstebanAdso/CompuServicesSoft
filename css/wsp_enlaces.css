@@ -1,0 +1,30 @@
+.contacto_wsp{
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    z-index: 2;
+}
+.contacto_wsp form button{
+    background-color: transparent;
+    border: none; /* Elimina el borde del botón */
+    padding: 0; /* Elimina el espacio interno del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    outline: none; /* Elimina el contorno al hacer clic en el botón */
+    width: 60px;
+    height: 60px;
+    transition: transform 0.2s ease; /* Agregamos una transición para que el cambio de tamaño sea suave */
+    opacity: 0.8;
+}
+
+.contacto_wsp form button img{
+    width: 65px;
+    height: 65px;
+   
+}
+
+.contacto_wsp form button:hover {
+    transform: scale(1.2); /* Hace que el botón se agrande un poco al pasar el cursor sobre él */
+    opacity: 1;
+}
+
+

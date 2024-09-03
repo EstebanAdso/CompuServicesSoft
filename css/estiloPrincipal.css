@@ -1,0 +1,204 @@
+body{
+    background-color: white;
+}
+.modal__title{
+    color: #bb1717;
+    text-align: center;
+    margin: 0;
+    font-size: 2em;
+}
+
+.modal__text{
+    color: #444;
+    font-size: 16px;
+    margin: 10px 0 0 0;
+    padding: 0;
+    text-align: justify;
+}
+
+.modal__content{
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 10px 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    position: relative;
+}
+.modal__content img{
+
+   position: relative;
+   width: 60%;
+   height: 60%;
+   top: 0;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   margin: auto;
+   display: flex;
+}
+
+.modal__button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgb(156, 7, 51);
+    padding: 5px 15px;
+    color: white;
+    font-size: 1em;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+
+}
+.modal__precio{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 1.1em;
+}
+.modal__content span{
+    color: green;
+    font-size: 1.2em;
+}
+
+dialog{
+    position: absolute;
+    height: 60vh;
+    width: 40%;
+    box-sizing: border-box;
+    z-index: 2;
+    top: 150px;
+    border-radius: 20px;
+    position: fixed;
+    padding: 0;
+    background-color: #fff;
+    
+}
+@keyframes modalOpen {
+    0% {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  
+  dialog {
+    /* Estilos anteriores */
+    animation: modalOpen 0.7s ease-out;
+  }
+  
+.containerPrincipal{
+    background-color: black;
+}
+
+#containerPrincipal_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: calc(100dvh - 60px);
+    width: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    animation: bg-fade 10s infinite ease-in-out;
+    transition: background-image 0.9s ease-in-out; /* Agregar transición */
+    mask-image: linear-gradient(
+        black 50%,
+        transparent
+    );
+}
+
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
+    pointer-events: none; /* Permitir que los eventos pasen a través del div */
+    transition: opacity 0.5s ease-in-out; /* Agregar transición de opacidad */
+}
+
+
+
+#containerPrincipal_img h1 {
+    position: absolute;
+    color: #fff;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    text-shadow: 0 0 20px black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+/*prodcuts*/
+
+h2{
+    margin: 20px 0 20px 70px;
+    text-align: center;
+}
+
+
+
+/* Estilos para el contenedor central */
+.contenedor_central {
+    width: 100%;
+    max-width: 1900px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    overflow: auto; /* Limpiar los flotantes */
+    display: flex;
+    flex-wrap: wrap; /* Permitir que las cartas se envuelvan en múltiples líneas */
+    justify-content: center; /* Centrar verticalmente los elementos */
+    
+}
+/* Estilos para el botón de la carta del catálogo */
+.carta_catalogo {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 350px; /* Máximo ancho de la carta */
+    float: left; /* Desplazamiento hacia la izquierda */
+    margin-right: 20px; /* Espacio entre las cartas */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    margin-bottom: 20px;
+}
+
+.carta_catalogo:hover{
+    outline: 1px solid #777;
+}
+
+/* Estilos para la imagen del catálogo dentro del botón */
+.carta_catalogo .catalogo__imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el título del catálogo dentro del botón */
+.carta_catalogo h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el texto del catálogo dentro del botón */
+.carta_catalogo p {
+    font-size: 1em;
+    line-height: 1.5;
+}
