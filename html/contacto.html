@@ -6,23 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/contacto.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
 </head>
 
 <body>
-    <main>
+    <header class="header">
+        <nav class="header-nav">
+            <p class="header-logo">CompuServicesSoft</p>
+            <ul>
+                <li class="header-li"><a href="../index.html">Home</a></li>
+                <li class="header-li"><a href="html/catalogo.html">Catalogo de Productos</a></li>
+                <li class="header-li"><a href="html/contacto.html">Contactanos</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+    <section class="dark"></section>
+    <main> 
         <div>
             <form action="">
-                <h2>Formulario de Contacto!</h2>
-                <label for="">Nombre</label>
-                <input type="text" placeholder="Ingresa tu Nombre..." required>
-                <label for="">telefono</label>
-                <input type="tel" placeholder="Ingrese su telefono"required>
-                <label for="">correo</label>
-                <input type="email" placeholder="Ingresa tu Correo electronico"required>
-                <label for="">Deja tu mensaje!</label>
-                <textarea name="" id="" cols="30" rows="10" placeholder="Tu asunto..."required></textarea>
-                <input type="submit">
+                <fieldset>
+                    <legend><h2>Formulario de Contacto</h2></legend>
+                    <label for="">Nombre</label>
+                    <input type="text" minlength="3" placeholder="Ingresa tu Nombre..." required>
+                    <label for="">telefono</label>
+                    <input type="tel" minlength="7" placeholder="Ingrese su telefono"required>
+                    <label for="">correo</label>
+                    <input type="email" minlength="5" placeholder="Ingresa tu Correo electronico"required>
+                    <label for="">Deja tu mensaje!</label>
+                    <textarea name="" id="" maxlength="445"  cols="30" rows="10" placeholder="Tu asunto..."required></textarea>
+                    <input type="submit">
+                </fieldset>
             </form>
         </div>
     </main>

@@ -7,23 +7,23 @@
     <title>CompuServicesSoft</title>
     <script src="js/imagenes.js"></script>
     <link rel="stylesheet" href="css/estiloPrincipal.css">
-    <link rel="stylesheet" href="css/contacto.css">
     <link rel="stylesheet" href="css/wsp_enlaces.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="shortcut icon" href="imagenes/procesadorC.avif
     " type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
 </head>
 
 <body>
     <header class="header">
-        <nav>
+        <nav class="header-nav">
             <p class="header-logo">CompuServicesSoft</p>
             <ul>
                 <li class="header-li"><a href="">Home</a></li>
                 <li class="header-li"><a href="html/catalogo.html">Catalogo de Productos</a></li>
-                <li class="header-li"><a href="html/contacto.html" target="_blank">Contactanos</a></li>
+                <li class="header-li"><a href="html/contacto.html">Contactanos</a></li>
             </ul>
         </nav>
     </header>
@@ -52,14 +52,27 @@
     <section class="containerPrincipal">
         <div id="containerPrincipal_img" style="background-image: url(imagenes/setup.webp);">
             <div class="dark-overlay"></div> <!-- Div oscuro -->
-            <h1>Ven y cumple el sueño de todo Gamer!</h1>
+            <div class="containerPrincipal_content">
+                <h1>Ven y cumple el sueño de <br>todo Gamer!</h1>
+                <div class="containerPrincipal_down">
+                    <a href=""><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+                <div class="contactos">
+                    <ul>
+                        <li><a href=""><i class='bx bxl-whatsapp'></i></a></li>
+                        <li><a href=""><i class='bx bxl-gmail' ></i></a></li>
+                        <li><a href=""><i class='bx bxs-phone-call'></i></a></li>
+                    </ul>
+                </div>
+            </div>
+           
         </div>
-        
+       
     </section>
    
    
      <!--Catalogo-->
-     <h2>Categoria de Productos.</h2>
+     <h2 class="title_categoria">Categoria de Productos.</h2>
     
      <section class="contenedor_central">
          <button class="carta_catalogo">
