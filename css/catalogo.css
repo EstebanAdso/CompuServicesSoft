@@ -1,10 +1,10 @@
 /* Estilos para el contenido principal */
-.content_products{
+.content{
     width: 90%;
     margin: auto;
 }
 
-.content {
+.content__products {
     display: flex;
     margin: 20px;
     width: 15%;
@@ -17,14 +17,14 @@
     height: 90dvh;
 }
 
-.sidebar_title{
+.content__products__sidebarTitle{
     color: #48e;
     font-size: 1.4em;
     margin-top: 0;
     text-align: center;
 }
 /* Estilos para la barra lateral (categorías) */
-.sidebar {
+.content__products__sidebar {
     color: #000000;
     padding: 20px;
     width: 100%;
@@ -33,30 +33,30 @@
 }
 
 /* Estilos para la barra de desplazamiento */
-.sidebar::-webkit-scrollbar {
+.content__products__sidebar::-webkit-scrollbar {
     width: 8px;
 }
 
-.sidebar::-webkit-scrollbar-track {
+.content__products__sidebar::-webkit-scrollbar-track {
     background: #5c0bb9;
 }
 
-.sidebar::-webkit-scrollbar-thumb {
+.content__products__sidebar::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 4px;
 }
 
-.sidebar::-webkit-scrollbar-thumb:hover {
+.content__products__sidebar::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
 
-.sidebar ul {
+.content__products__sidebar ul {
     list-style-type: none;
     padding: 0;
 }
 
-.sidebar ul li a {
+.content__products__sidebar ul li a {
     color: #000000;
     text-decoration: none;
     padding: 10px;
@@ -66,7 +66,7 @@
     font-weight: 600;
 }
 
-.sidebar ul li a:hover {
+.content__products__sidebar ul li a:hover {
     background-color: #444;
     color: white;
 }
@@ -74,7 +74,7 @@
 
 
 /* Estilos para el contenedor central */
-.contenedor_central {
+.contenedorCentral {
     max-width: 75%;
     margin: auto;
     margin-bottom: 20px;
@@ -87,7 +87,7 @@
     
 }
 /* Estilos para el botón de la carta del catálogo */
-.carta_catalogo {
+.contenedorCentral_carta {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
@@ -100,13 +100,13 @@
     margin-bottom: 20px;
 }
 
-.carta_catalogo:hover{
+.contenedorCentral_carta:hover{
     outline: 1px solid #777;
     box-shadow: 0 0 20px #0004;
 }
 
 /* Estilos para la imagen del catálogo dentro del botón */
-.carta_catalogo .catalogo__imagen img {
+.contenedorCentral__catalogoImagen img {
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -114,13 +114,13 @@
 }
 
 /* Estilos para el título del catálogo dentro del botón */
-.carta_catalogo h3 {
+.contenedorCentral_carta h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
 /* Estilos para el texto del catálogo dentro del botón */
-.carta_catalogo p {
+.contenedorCentral_carta p {
     font-size: 1em;
     line-height: 1.5;
 }

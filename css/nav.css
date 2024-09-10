@@ -5,7 +5,7 @@ body {
 
 }
 
-header {
+.header {
     background-color: rgb(98, 34, 158);
     background: linear-gradient(to right, rgb(82, 16, 143), #23197e);
     width: 100%;
@@ -13,14 +13,14 @@ header {
 }
 
 
-header nav {
+.header__nav{
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100%;
 }
 
-nav p {
+.header__logo {
     margin-left: 70px;
     font-size: 1.1em;
     color: #ffffff;
@@ -28,7 +28,7 @@ nav p {
   
 }
 
-nav ul {
+.header__lista {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -37,7 +37,7 @@ nav ul {
     font-size: 0.9em;
 }
 
-nav ul li a {
+.header__li a {
     color: #fff;
     text-decoration: none;
     padding: 22px;
@@ -45,7 +45,7 @@ nav ul li a {
     
 }
 
-nav ul li a:hover {
+.header__li a:hover {
     color: #48e;
 }
 
