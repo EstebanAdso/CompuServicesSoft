@@ -15,7 +15,7 @@ var indice = 1;
 // Función para cambiar la imagen cada 10 segundos
 function cambiarImagen() {
     // Actualiza la URL de la imagen de fondo del div
-    document.getElementById('containerPrincipal_img').style.backgroundImage = 'url(' + imagenes[indice] + ')';
+    document.getElementById('containerPrincipal__img').style.backgroundImage = 'url(' + imagenes[indice] + ')';
     
     // Incrementa el índice para mostrar la próxima imagen
     indice = (indice + 1) % imagenes.length;
@@ -23,7 +23,7 @@ function cambiarImagen() {
 }
 
 // Llama a la función cambiarImagen cada 10 segundos
-setInterval(cambiarImagen, 15000); // 10000 milisegundos = 10 segundos
+setInterval(cambiarImagen, 10000); // 10000 milisegundos = 10 segundos
 
 document.addEventListener('DOMContentLoaded', function() {
     var miModal = document.getElementById('miModal');

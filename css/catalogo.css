@@ -1,35 +1,50 @@
 /* Estilos para el contenido principal */
-.content{
-    width: 90%;
+body{
+    font-family: sans-serif;
+}
+header{
+    position: fixed;
+    z-index: 100;
+}
+
+.container_productos{
+    width: 80%;
+    padding: 0;
     margin: auto;
+    display: flex;
+    margin: auto;
+    position: relative;
+    top: 60px;
+
 }
 
 .content__products {
-    display: flex;
-    margin: 20px;
-    width: 15%;
-    min-width: 200px;
-    max-width: 400px;
+    max-width: 100%;
+    min-width: 230px;
     float: left;
-    margin-left: 50px;
     background-color: #ffffff;
-    border-radius: 20px;
     height: 90dvh;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .content__products__sidebarTitle{
-    color: #48e;
+    color: blueviolet;
+    text-shadow: 0 0 1px black;
+    font-weight: bold;
     font-size: 1.4em;
-    margin-top: 0;
-    text-align: center;
 }
 /* Estilos para la barra lateral (categorías) */
 .content__products__sidebar {
     color: #000000;
     padding: 20px;
-    width: 100%;
     overflow-y: auto; /* Añade scroll vertical */
-    max-height: calc(100vh - 40px); /* Altura máxima, restando el padding */
+    position: fixed;
+    top: 120px;
+    border-left: 1px solid #888;
+    padding: 0 10px;
+    max-height: 80%;
+    
 }
 
 /* Estilos para la barra de desplazamiento */
@@ -54,6 +69,16 @@
 .content__products__sidebar ul {
     list-style-type: none;
     padding: 0;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+.content__products__sidebar ul li{
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .content__products__sidebar ul li a {
@@ -62,8 +87,11 @@
     padding: 10px;
     display: block;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.6s;
     font-weight: 600;
+    margin: 0;
+    box-sizing: border-box;
+    
 }
 
 .content__products__sidebar ul li a:hover {
@@ -74,9 +102,19 @@
 
 
 /* Estilos para el contenedor central */
+.container__products{
+    max-width:  100%;
+    min-width: 100px;
+    float: right;
+    margin: 20px;
+    padding: 0;
+    
+}
+
+
 .contenedorCentral {
-    max-width: 75%;
     margin: auto;
+    position: relative;
     margin-bottom: 20px;
     padding: 10px;
     overflow: auto; /* Limpiar los flotantes */
@@ -93,11 +131,13 @@
     padding: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 350px; /* Máximo ancho de la carta */
+    max-width: 300px; /* Máximo ancho de la carta */
+    min-width: 280px;
     float: left; /* Desplazamiento hacia la izquierda */
     margin-right: 20px; /* Espacio entre las cartas */
     cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
     margin-bottom: 20px;
+    position: relative;
 }
 
 .contenedorCentral_carta:hover{
@@ -124,3 +164,5 @@
     font-size: 1em;
     line-height: 1.5;
 }
+
+

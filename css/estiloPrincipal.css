@@ -190,10 +190,12 @@ dialog{
     bottom: 120px;
     user-select: none;
     text-shadow: 0 0 20px black;
+    transition-property: color;
+    transition-duration: 0.4s;
 }
 
 .containerPrincipal__down a:hover{
-    color: rgb(150, 92, 204);
+    color: rgb(26, 128, 111);
 }
 
 .containerPrincipal__contactos{
@@ -218,10 +220,12 @@ dialog{
 }
 .containerPrincipal__contactos ul li a{
     color: white;
+    transition-property: color;
+    transition-duration: 0.4s;
     
 }
 .containerPrincipal__contactos ul li a:hover{
-    color: rgb(150, 92, 204);
+    color: rgb(26, 128, 111);
 }
 
 
