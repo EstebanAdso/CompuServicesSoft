@@ -74,16 +74,7 @@ dialog{
     background-color: #fff;
     
 }
-@keyframes modalOpen {
-    0% {
-      opacity: 0;
-      transform: scale(0.4);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
+
   
   
   dialog {
@@ -126,6 +117,7 @@ dialog{
 /*PAGINA PRINCIPAL*/
 .containerPrincipal{
     background-color: black;
+    animation: aparecer 1s 0.2s both;
 }
 
 .containerPrincipal__content{
@@ -237,57 +229,89 @@ dialog{
     margin: 40px 0 20px 70px;
     text-align: center;
     font-size: 2em;
+      animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 40%;
 }
 
 
-
-/* Estilos para el contenedor central */
 .contenedorCentral {
     width: 100%;
     max-width: 1900px;
     margin: auto;
     margin-bottom: 20px;
     padding: 20px;
-    overflow: auto; /* Limpiar los flotantes */
     display: flex;
     flex-wrap: wrap; /* Permitir que las cartas se envuelvan en múltiples líneas */
-    justify-content: center; /* Centrar verticalmente los elementos */
+    justify-content: center; 
+    box-sizing: border-box;
     
 }
-/* Estilos para el botón de la carta del catálogo */
+
 .contenedorCentral_carta {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 350px; /* Máximo ancho de la carta */
-    float: left; /* Desplazamiento hacia la izquierda */
-    margin-right: 20px; /* Espacio entre las cartas */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    max-width: 350px; 
+    float: left; 
+    margin-right: 20px; 
+    cursor: pointer; 
     margin-bottom: 20px;
+}
+
+.contenedorCentralButton{
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 40%;
 }
 
 .contenedorCentral_carta:hover{
     outline: 1px solid #777;
 }
 
-/* Estilos para la imagen del catálogo dentro del botón */
 .contenedorCentral_carta .contenedorCentral__catalogoImagen img {
     width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
+
 }
 
-/* Estilos para el título del catálogo dentro del botón */
 .contenedorCentral_carta h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
+    
 }
 
-/* Estilos para el texto del catálogo dentro del botón */
 .contenedorCentral_carta p {
     font-size: 1em;
     line-height: 1.5;
+}
+
+
+
+
+
+/*ANIMACIONES*/
+@keyframes modalOpen {
+    0% {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+      
+    }
 }

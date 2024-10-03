@@ -58,9 +58,11 @@ footer{
     width: 100%;
     background-color: #444;
     color: #eee;
-    padding: 10px;
+    padding: 100px 0;
     text-align: center;
     font-size: 18px;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 footer p{
@@ -75,8 +77,11 @@ footer li a{
     color: #eee;
     text-decoration: none;
     transition: color 0.2s;
+    
 }
 
 footer li a:hover{
     color: #48e;
 }
+
+

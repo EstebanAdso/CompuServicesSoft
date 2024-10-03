@@ -22,7 +22,6 @@ header{
     max-width: 100%;
     min-width: 230px;
     float: left;
-    background-color: #ffffff;
     height: 90dvh;
     position: relative;
     box-sizing: border-box;
@@ -117,7 +116,6 @@ header{
     position: relative;
     margin-bottom: 20px;
     padding: 10px;
-    overflow: auto; /* Limpiar los flotantes */
     display: flex;
     flex-wrap: wrap; /* Permitir que las cartas se envuelvan en múltiples líneas */
     justify-content: center; /* Centrar verticalmente los elementos */
@@ -138,6 +136,9 @@ header{
     cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
     margin-bottom: 20px;
     position: relative;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 15% cover 50%;
 }
 
 .contenedorCentral_carta:hover{
@@ -166,3 +167,13 @@ header{
 }
 
 
+/*ANIMACIONES*/
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+      
+    }
+}
