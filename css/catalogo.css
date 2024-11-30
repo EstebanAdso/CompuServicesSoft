@@ -1,4 +1,7 @@
 /* Estilos para el contenido principal */
+*{
+    box-sizing: border-box;
+}
 body{
     font-family: sans-serif;
 }
@@ -8,10 +11,12 @@ header{
 }
 
 .container_productos{
-    width: 80%;
+    width: 100%;
+    max-width: 1700px;
     padding: 0;
     margin: auto;
     display: flex;
+    flex-direction: row;
     margin: auto;
     position: relative;
     top: 60px;
@@ -20,11 +25,13 @@ header{
 
 .content__products {
     max-width: 100%;
-    min-width: 230px;
+    min-width: 300px;
     float: left;
     height: 90dvh;
     position: relative;
     box-sizing: border-box;
+    overflow: hidden;
+    margin-left: 30px;
 }
 
 .content__products__sidebarTitle{
@@ -39,11 +46,10 @@ header{
     padding: 20px;
     overflow-y: auto; /* Añade scroll vertical */
     position: fixed;
-    top: 120px;
+    top: 100px;
     border-left: 1px solid #888;
     padding: 0 10px;
     max-height: 80%;
-    
 }
 
 /* Estilos para la barra de desplazamiento */
@@ -102,12 +108,10 @@ header{
 
 /* Estilos para el contenedor central */
 .container__products{
-    max-width:  100%;
+    width: 100%;
     min-width: 100px;
-    float: right;
     margin: 20px;
-    padding: 0;
-    
+    padding: 0; 
 }
 
 
@@ -117,11 +121,15 @@ header{
     margin-bottom: 20px;
     padding: 10px;
     display: flex;
-    flex-wrap: wrap; /* Permitir que las cartas se envuelvan en múltiples líneas */
-    justify-content: center; /* Centrar verticalmente los elementos */
-    float: right;
-    
+    flex-wrap: wrap; 
+    justify-content: left; 
+    align-items: flex-start; 
+    width: 100%;
+    box-sizing: border-box; 
 }
+
+
+
 /* Estilos para el botón de la carta del catálogo */
 .contenedorCentral_carta {
     border: 1px solid #ccc;
@@ -166,6 +174,17 @@ header{
     line-height: 1.5;
 }
 
+.spanPrecio {
+    font-size: 1.3em; 
+    font-weight: bold;  
+    color: #28a745;  
+    padding: 5px 10px;  
+    border-radius: 5px; 
+    display: inline-block;  
+    text-align: center;  
+}
+
+
 
 /*ANIMACIONES*/
 @keyframes aparecer {
@@ -177,3 +196,5 @@ header{
       
     }
 }
+
+

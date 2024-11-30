@@ -75,12 +75,10 @@ dialog{
     
 }
 
-  
-  
-  dialog {
+dialog {
     /* Estilos anteriores */
     animation: modalOpen 0.7s ease-out;
-  }
+}
 
 /*CONTACTO WSP*/
 .contacto_wsp{
@@ -91,13 +89,13 @@ dialog{
 }
 .contacto_wsp form button{
     background-color: transparent;
-    border: none; /* Elimina el borde del botón */
-    padding: 0; /* Elimina el espacio interno del botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    outline: none; /* Elimina el contorno al hacer clic en el botón */
+    border: none;
+    padding: 0; 
+    cursor: pointer; 
+    outline: none; 
     width: 60px;
     height: 60px;
-    transition: transform 0.2s ease; /* Agregamos una transición para que el cambio de tamaño sea suave */
+    transition: transform 0.2s ease; 
     opacity: 0.8;
 }
 
@@ -108,7 +106,7 @@ dialog{
 }
 
 .contacto_wsp form button:hover {
-    transform: scale(1.2); /* Hace que el botón se agrande un poco al pasar el cursor sobre él */
+    transform: scale(1.2); 
     opacity: 1;
 }
 
@@ -135,7 +133,7 @@ dialog{
     background-size: cover;
     background-position: center;
     animation: bg-fade 10s infinite ease-in-out;
-    transition: background-image 0.9s ease-in-out; /* Agregar transición */
+    transition: background-image 0.9s ease-in-out; 
     mask-image: linear-gradient(
         black 80%,
         transparent
@@ -149,9 +147,9 @@ dialog{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
-    pointer-events: none; /* Permitir que los eventos pasen a través del div */
-    transition: opacity 0.5s ease-in-out; /* Agregar transición de opacidad */
+    background-color: rgba(0, 0, 0, 0.5); 
+    pointer-events: none; 
+    transition: opacity 0.5s ease-in-out;
 }
 
 
@@ -169,21 +167,17 @@ dialog{
 }
 
 .containerPrincipal__down{
-    width: 100;
-    height: 200px;
+    width: 100px;
+    height: auto;
     margin: auto;
-    text-align: center;
-    align-items: end;
+    margin-bottom: 0;
 }
 .containerPrincipal__down a{
-    position: absolute;
     font-size: 8em;
-    color: white;
-    bottom: 120px;
     user-select: none;
-    text-shadow: 0 0 20px black;
-    transition-property: color;
-    transition-duration: 0.4s;
+    text-shadow: 0 0 20px rgb(47, 47, 47);
+    color: white;
+    transition: color 0.5s;
 }
 
 .containerPrincipal__down a:hover{
@@ -225,15 +219,21 @@ dialog{
 
 /*CATEGORIA DE PRODUCTOS*/
 
-.title_categoria{
-    margin: 40px 0 20px 70px;
+h2{
+    margin: 60px 0 20px 70px;
     text-align: center;
-    font-size: 2em;
-      animation: aparecer both;
+    font-size: 2.3em;
+    animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
 }
 
+h3{
+    font-size: 1.6em;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 40%;
+}
 
 .contenedorCentral {
     width: 100%;
@@ -242,7 +242,7 @@ dialog{
     margin-bottom: 20px;
     padding: 20px;
     display: flex;
-    flex-wrap: wrap; /* Permitir que las cartas se envuelvan en múltiples líneas */
+    flex-wrap: wrap; 
     justify-content: center; 
     box-sizing: border-box;
     
@@ -259,6 +259,7 @@ dialog{
     margin-right: 20px; 
     cursor: pointer; 
     margin-bottom: 20px;
+    min-height: 400px;
 }
 
 .contenedorCentralButton{
@@ -291,10 +292,6 @@ dialog{
 }
 
 
-
-
-
-/*ANIMACIONES*/
 @keyframes modalOpen {
     0% {
       opacity: 0;
@@ -314,4 +311,127 @@ dialog{
         opacity: 1;
       
     }
+}
+
+  @keyframes grow-twice {
+    0%, 100% {
+        transform: scale(1);
+        color: #f04800;
+    }
+    20%, 60% {
+        transform: scale(1.2);
+        color: #c0e8f5;
+    }
+    40%, 80% {
+        transform: scale(1);
+        color: #f65605;
+    }
+}
+
+.link-grow-twice {
+    animation: grow-twice  0.8s ease-in-out;
+    color: #bb1717;
+}
+
+/* CARRUSEL */
+
+
+/*ABOUT*/
+.about{
+    width: 100%;
+    max-width: 1900px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    height: 70dvh;
+}
+
+.about-seccion{
+    font-size: 1.2em;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-seccion-content{
+   max-width: 80%;
+   background-color: #fff;
+}
+
+
+.about-seccion a{
+    text-decoration: none;
+    letter-spacing: 1px;
+    background-color: #4285F4;
+    padding: 10px 40px;
+    border-radius: 10px;
+    color: #fff;
+    width: fit-content;
+    margin: auto;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+.about-seccion a:hover{
+    background-color: #5485F4;
+    transform: scale(1.02);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.about-seccion p{
+    text-align: left;
+}
+
+
+.about-imagen{
+    width: 40%;
+}
+
+.about-imagen img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/*SERVICIOS*/
+.servicios{
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+}
+
+.servicios-card{
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card-img{
+    height: 60%
+}
+
+.card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-contenido{
+    height: 40%;
+    text-align: center;
 }

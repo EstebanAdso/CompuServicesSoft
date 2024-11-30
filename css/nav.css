@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
 }
 
 html {
@@ -28,8 +28,7 @@ html {
     margin-left: 70px;
     font-size: 1.1em;
     color: #ffffff;
-    font-weight: 900;
-  
+    font-weight: 900; 
 }
 
 .header__lista {
@@ -38,7 +37,8 @@ html {
     margin: 0;
     display: flex;
     margin-right: 100px;
-    font-size: 0.9em;
+    font-size: 1em;
+    font-weight: 600;
 }
 
 .header__li a {
@@ -51,6 +51,7 @@ html {
 
 .header__li a:hover {
     color: #48e;
+    background-color: #fff;
 }
 
     
