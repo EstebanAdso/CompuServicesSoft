@@ -50,3 +50,18 @@ prev.addEventListener('click',function(){
     document.querySelector('.slide').prepend(items[items.length - 1])
     
 })
+
+
+const modalContacto = document.querySelector('.modalContacto')
+const btnContacto = document.querySelector('#contactanos')
+const btnCerrar = document.querySelector('#btnCerrar')
+
+btnContacto.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalContacto.style.display = 'flex';
+});
+
+btnCerrar.addEventListener('click', (e) =>{
+    e.preventDefault()
+    modalContacto.style.display = 'none'
+})

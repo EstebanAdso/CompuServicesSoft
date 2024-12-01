@@ -130,3 +130,18 @@ function listarProductosPorCategoria(categoriaId) {
 function formatNumber(number) {
     return number.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
+
+/*Modal*/ 
+const modalContacto = document.querySelector('.modalContacto')
+const btnContacto = document.querySelector('#contactanos')
+const btnCerrar = document.querySelector('#btnCerrar')
+
+btnContacto.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalContacto.style.display = 'flex';
+});
+
+btnCerrar.addEventListener('click', (e) =>{
+    e.preventDefault()
+    modalContacto.style.display = 'none'
+})

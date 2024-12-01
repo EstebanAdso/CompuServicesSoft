@@ -19,15 +19,32 @@
             <ul class="header__lista">
                 <li class="header__li"><a href="#">Home</a></li>
                 <li class="header__li"><a href="html/catalogo.html">Catalogo de Productos</a></li>
-                <li class="header__li"><a href="html/contacto.html">Contactanos</a></li>
+                <li class="header__li"><a href="html/contacto.html" id="contactanos">Contactanos</a></li>
             </ul>
         </nav>
     </header>
    
     <div class="contacto_wsp">
         <form action="https://wa.me/+573242264795" target="_blank">
-            <button><img src="imagenes/wsp.png"   alt=""></button>
+            <button><img src="imagenes/wsp.png"   alt="icono de whatsapp"></button>
         </form>
+    </div>
+
+    <div class="modalContacto">
+        <div class="contactos">
+            <h4>Nuestros Contactos</h4>
+            <hr>
+            <ul>
+                <li><a href=""><i class='bx bxs-map'></i></a></li>
+                <p><a href="">Ubicación: CC la 16 local 138</a></p>
+            </ul>
+            <hr>
+            <ul>
+                <li><a href=""><i class='bx bxl-whatsapp' ></i></a></li>
+                <p><a href="">whatsapp: +(57) 3242264795</a></p>
+            </ul>
+            <button id="btnCerrar">Cerrar</button>
+        </div>
     </div>
 
     <section class="containerPrincipal">
@@ -339,6 +356,19 @@
             <li><a href="">Politicas de devolucion</a></li>
         </ul>
      </footer>
+
+    <!-- <dialog open class="modal">
+        <div class="modal__content">
+            <h2 class="modal__title">Oferta de la semana!</h2>
+            <p class="modal__text">Promocion Habilitada hasta el 25 de Mayo. Puedes adquirirlo en el centro comercial la 16 local 138
+            Ryzen 7 5700g, board b450m, 16 Gigas de ram ddr4 3200, fuente de poder 700w, nvme de 512 gigas, gabinete con 4 ventiladores rgb, monitor de 24 pulgadas FHD 100hz Hdmi, con Teclado y Raton</p>
+                <img src="imagenes/semanaPromo.jpg" alt="">
+            <p class="modal__precio">Antes <del>$3.680.000</del><br>Ahora <span>$2.670.000</span></p>
+        </div>
+        <form method="dialog">
+            <button class="modal__button">X</button>
+        </form>
+    </dialog> -->
 
 <script src="js/app.js"></script>
 </body>
