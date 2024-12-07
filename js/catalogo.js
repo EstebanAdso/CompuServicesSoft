@@ -6,8 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     listarCategorias();
 });
 
-// Función para listar todos los productos
+function excluirCategorias() {
+    return [7 , 9, 13, 24, 25, 26, 29, 30, 32, 33 ];
+}
+
+// Función para listar todos los productos excluyendo ciertas categorías
 function listarProductos() {
+    const categoriasExcluidas = excluirCategorias(); // Obtener las categorías a excluir
+
     fetch(ApiProducto)
         .then(response => response.json())
         .then(data => {
@@ -16,18 +22,27 @@ function listarProductos() {
             // Limpiar el contenedor antes de añadir los productos
             contenedor.innerHTML = '';
 
-            // Iterar sobre los productos y crear los elementos HTML
-            data.forEach(producto => {
+            // Filtrar productos excluyendo las categorías no deseadas
+            const productosFiltrados = data.filter(producto =>
+                producto.categoria && !categoriasExcluidas.includes(producto.categoria.id)
+            );
+
+            // Iterar sobre los productos filtrados y crear los elementos HTML
+            productosFiltrados.forEach(producto => {
                 const button = document.createElement('button');
                 button.classList.add('contenedorCentral_carta');
 
                 // Estructura del contenido del producto
                 button.innerHTML = `
                     <div class="contenedorCentral__catalogoImagen">
-                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                        <div class="contenedorCentral_img">
+                            <img src="${producto.imagen}" alt="${producto.nombre}">
+                        </div>
+                        <div class="contenedorCentral_content">
+                            <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
+                            <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
+                        </div>
                     </div>
-                    <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
-                    <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
                 `;
 
                 // Añadir el producto al contenedor
@@ -39,7 +54,8 @@ function listarProductos() {
         });
 }
 
-// Función para listar categorías
+
+// Función para listar categorías excluyendo ciertas categorías
 function listarCategorias() {
     const ulElement = document.querySelector(".content__products__sidebar ul");
 
@@ -52,9 +68,15 @@ function listarCategorias() {
             }
 
             const categorias = await response.json();
+            const categoriasExcluidas = excluirCategorias(); // Obtener categorías a excluir
 
-            // Iterar sobre las categorías y crear los elementos <li> con enlaces
-            categorias.forEach(categoria => {
+            // Filtrar las categorías excluyendo las especificadas
+            const categoriasFiltradas = categorias.filter(categoria =>
+                !categoriasExcluidas.includes(categoria.id)
+            );
+
+            // Iterar sobre las categorías filtradas y crear los elementos <li> con enlaces
+            categoriasFiltradas.forEach(categoria => {
                 const li = document.createElement('li');
                 const link = document.createElement('a');
 
@@ -80,10 +102,14 @@ function listarCategorias() {
     loadCategorias();
 }
 
+
+
+// Función para listar productos por categoría excluyendo ciertas categorías
 function listarProductosPorCategoria(categoriaId) {
     // Cambiar el endpoint al correcto
     const endpoint = `${ApiProducto}/categoria/${categoriaId}`;
-    
+    const categoriasExcluidas = excluirCategorias(); // Obtener categorías a excluir
+
     fetch(endpoint)
         .then(response => {
             if (!response.ok) {
@@ -104,18 +130,27 @@ function listarProductosPorCategoria(categoriaId) {
             // Limpiar el contenedor antes de añadir los productos
             contenedor.innerHTML = '';
 
-            // Iterar sobre los productos y crear los elementos HTML
-            data.forEach(producto => {
+            // Filtrar productos excluyendo las categorías no deseadas
+            const productosFiltrados = data.filter(producto =>
+                producto.categoria && !categoriasExcluidas.includes(producto.categoria.id)
+            );
+
+            // Iterar sobre los productos filtrados y crear los elementos HTML
+            productosFiltrados.forEach(producto => {
                 const button = document.createElement('button');
                 button.classList.add('contenedorCentral_carta');
 
                 // Estructura del contenido del producto
                 button.innerHTML = `
-                    <div class="contenedorCentral__catalogoImagen">
+                <div class="contenedorCentral__catalogoImagen">
+                    <div class="contenedorCentral_img">
                         <img src="${producto.imagen}" alt="${producto.nombre}">
                     </div>
-                    <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
-                    <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
+                    <div class="contenedorCentral_content">
+                        <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
+                        <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
+                    </div>
+                </div>
                 `;
 
                 // Añadir el producto al contenedor
@@ -126,6 +161,7 @@ function listarProductosPorCategoria(categoriaId) {
             console.error(`Error al listar productos de la categoría ${categoriaId}:`, error);
         });
 }
+
 
 function formatNumber(number) {
     return number.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
@@ -145,3 +181,4 @@ btnCerrar.addEventListener('click', (e) =>{
     e.preventDefault()
     modalContacto.style.display = 'none'
 })
+

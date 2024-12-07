@@ -146,7 +146,7 @@ header{
     position: relative;
     animation: aparecer both;
     animation-timeline: view();
-    animation-range: cover 15% cover 50%;
+    animation-range: cover 5% cover 40%;
 }
 
 .contenedorCentral_carta:hover{
@@ -154,13 +154,30 @@ header{
     box-shadow: 0 0 20px #0004;
 }
 
-/* Estilos para la imagen del catálogo dentro del botón */
-.contenedorCentral__catalogoImagen img {
+.contenedorCentral__catalogoImagen {
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    width: 280px;
+}
+
+.contenedorCentral_img{
+    height: 75%;
+}
+
+.contenedorCentral_img img{
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
     margin-bottom: 10px;
+    padding: 4px;
 }
+
+.contenedorCentral_content{
+    height: 25%;
+}
+
 
 /* Estilos para el título del catálogo dentro del botón */
 .contenedorCentral_carta h3 {

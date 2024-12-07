@@ -32,7 +32,6 @@ function triggerAnimation() {
     }, 800); 
 }
 setInterval(triggerAnimation, 5000);
-triggerAnimation()
 
 
 //CARRUSEL
@@ -51,7 +50,7 @@ prev.addEventListener('click',function(){
     
 })
 
-
+//Contacto Modal
 const modalContacto = document.querySelector('.modalContacto')
 const btnContacto = document.querySelector('#contactanos')
 const btnCerrar = document.querySelector('#btnCerrar')
