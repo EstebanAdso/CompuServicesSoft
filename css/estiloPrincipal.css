@@ -318,10 +318,10 @@ h3{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1600px;
-    height: 800px;
+    height: 100%;
     background-color: #f5f5f5;
     box-shadow: 0 30px 50px #dbdbdb;
+    width: 100%;
 }
 
 .container .slide .item{
@@ -569,22 +569,6 @@ h3{
 
 
 
-@media (max-width: 1920px) {
-    .contenedorCentral {
-        max-width: 1550px;
-    } 
-
-    .about{
-       max-width: 1600px;
-    }
-
-    .servicios-card{
-        width: 350px;
-        height: 500px;
-    }
-}
-
-
 /*Animaciones*/
 @keyframes modalOpen {
     0% {
@@ -620,4 +604,31 @@ h3{
         transform: scale(1);
         color: #f65605;
     }
+}
+
+
+@media (max-width: 1920px) {
+    .contenedorCentral {
+        max-width: 1520px;
+    } 
+
+    .about{
+       max-width: 1500px;
+    }
+
+    .productosPopulares {
+        max-width: 1500px;
+        margin-bottom: 40px;
+    }
+
+    .servicios{
+        max-width: 1500px;
+    }
+
+    
+    .servicios-card{
+        width: 400px;
+        height: 500px;
+    }
+    
 }
