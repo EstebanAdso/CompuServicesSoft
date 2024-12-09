@@ -1,11 +1,11 @@
 var imagenes = [
-    'imagenes/pc-gaming-setup-rgb-4k-ft1ym37yjyb7lp19.jpg',
-    'imagenes/set2.jpg',
-    'imagenes/set3.jpg',
-    'imagenes/set4.jpg',
-    'imagenes/set5.jpg',
-    'imagenes/set6.jpg',
-    'imagenes/setup.webp',
+    'imagenes/fondos/pc-gaming-setup-rgb-4k-ft1ym37yjyb7lp19.jpg',
+    'imagenes/fondos/set2.jpg',
+    'imagenes/fondos/set3.jpg',
+    'imagenes/fondos/set4.jpg',
+    'imagenes/fondos/set5.jpg',
+    'imagenes/fondos/set6.jpg',
+    'imagenes/fondos/setup.webp',
 ];
 
 var indice = 1;
@@ -64,3 +64,8 @@ btnCerrar.addEventListener('click', (e) =>{
     e.preventDefault()
     modalContacto.style.display = 'none'
 })
+
+document.querySelector('.header__menu').addEventListener('click', () => {
+    const menu = document.querySelector('.header__lista');
+    menu.classList.toggle('active'); // Alternar la clase "active"
+});

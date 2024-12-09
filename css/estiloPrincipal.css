@@ -123,10 +123,12 @@ dialog {
 .containerPrincipal{
     background-color: black;
     animation: aparecer 1s 0.2s both;
+    height: 100dvh;
 }
 
 .containerPrincipal__content{
     z-index: 100;
+    margin-top: 100px;
 }
 
 #containerPrincipal__img {
@@ -142,9 +144,10 @@ dialog {
     animation: bg-fade 10s infinite ease-in-out;
     transition: background-image 0.9s ease-in-out; 
     mask-image: linear-gradient(
-        black 80%,
+        black 90%,
         transparent
     );
+    
 }
 
 
@@ -170,7 +173,7 @@ dialog {
     font-size: 5em;
     text-shadow: 0 0 20px black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-top: -10px;
+    
 }
 
 .containerPrincipal__down{
@@ -178,6 +181,9 @@ dialog {
     height: auto;
     margin: auto;
     margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .containerPrincipal__down a{
     font-size: 8em;
@@ -185,6 +191,7 @@ dialog {
     text-shadow: 0 0 20px rgb(47, 47, 47);
     color: white;
     transition: color 0.5s;
+    
 }
 
 .containerPrincipal__down a:hover{
@@ -193,7 +200,7 @@ dialog {
 
 .containerPrincipal__contactos{
     position: absolute;
-    bottom: 80px;
+    bottom: 60px;
     left: 30px;
     width: auto;
     align-items: center;
@@ -227,12 +234,12 @@ dialog {
 /*CATEGORIA DE PRODUCTOS*/
 
 h2{
-    margin: 60px 0 20px 70px;
     text-align: center;
     font-size: 2.3em;
     animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
+    padding: 5px;
 }
 
 h3{
@@ -253,6 +260,13 @@ h3{
     box-sizing: border-box;
 }
 
+.contenedorCentralButton{
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 40%;
+    
+}
+
 .contenedorCentral_carta {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -264,26 +278,32 @@ h3{
     margin-right: 20px; 
     cursor: pointer; 
     margin-bottom: 20px;
-    min-height: 400px;
+    height: 400px;
 }
 
-.contenedorCentralButton{
-    animation: aparecer both;
-    animation-timeline: view();
-    animation-range: cover 10% cover 40%;
+.contenedorCentral__catalogoImagen{
+    height: 60%;
+    width: 100%;
+}
+
+.contenedorCentral_carta .contenedorCentral__catalogoImagen img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+
+.contenedorCentral__content{
+    height: 40%;
 }
 
 .contenedorCentral_carta:hover{
     outline: 1px solid #777;
 }
 
-.contenedorCentral_carta .contenedorCentral__catalogoImagen img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
 
-}
 
 .contenedorCentral_carta h3 {
     font-size: 1.2em;
@@ -308,7 +328,6 @@ h3{
     width: 100%;
     min-height: 70dvh;
     max-width: 1600px;
-    min-width: 20%;
     margin: auto;
 }
 
@@ -331,7 +350,7 @@ h3{
     top: 50%;
     transform: translate(0, -50%);
     border-radius: 20px;
-    box-shadow: 0 30px 50px #505050;
+    /* box-shadow: 0 30px 50px #505050; */
     background-position: 50% 50%;
     background-size: cover;
     display: inline-block;
@@ -441,10 +460,74 @@ h3{
     color: #fff;
 }
 
+@media (max-width: 1440px) {
+    .slide .item:nth-child(5){
+        display: none;
+    }
+}
 
+@media (max-width: 950px) {
+    .slide .item:nth-child(4){
+        display: none;
+    }
+    .slide .item:nth-child(5){
+        display: none;
+    }
+    .slide .item:nth-child(3){
+        left: calc(50% + 150px);
+    }
+}
+
+@media (max-width: 770px) {
+    .slide .item:nth-child(3){
+        display: none;
+    }
+
+    .item .content {
+        position: absolute;
+        top: 50%; /* Centrando verticalmente */
+        left: 50%; /* Centrando horizontalmente */
+        width: 90%;
+        transform: translate(-50%, -50%); /* Ajusta el origen al centro */
+        text-align: center;
+        color: #eee;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        display: none;
+    }
+    
+    
+    .slide .item:nth-child(2) .content{
+        display: block;
+    }
+    
+    .content .name{
+        font-size: 40px;
+        text-transform: uppercase;
+        font-weight: bold;
+        opacity: 0;
+        animation: animate 1s ease-in-out 1 forwards;
+    }
+    
+    .content .des{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: animate 1s ease-in-out 0.3s 1 forwards;
+    }
+    
+    .content button{
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0;
+        animation: animate 1s ease-in-out 0.6s 1 forwards;
+    }
+    
+}
 /*ABOUT*/
 .about{
-    width: 1600px;
+    max-width: 1600px;
+    width: 100%;
     display: flex;
     margin: auto;
     justify-content: center;
@@ -464,8 +547,7 @@ h3{
 
 .about-seccion-content{
    max-width: 100%;
-   background-color: #fff;
-   padding: 20px 50px 20px 0;
+   padding: 0 20px;
 }
 
 
@@ -496,13 +578,43 @@ h3{
 
 .about-imagen{
     width: 50%;
+    height: 70%;
 }
+
 
 .about-imagen img{
     width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
+
+@media (max-width: 1030px) {
+    .about {
+        width: 100%;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../imagenes/local/local1.jpeg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: white;
+        height: auto;
+    }
+
+    .about-imagen {
+        display: none;
+    }
+
+    .about-seccion {
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 30px;
+    }
+
+    .about-seccion p{
+        text-align: center;
+    }
+}
+
 
 
 /*SERVICIOS*/
@@ -510,13 +622,16 @@ h3{
     width: 100%;
     max-width: 1600px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     margin: auto;
     justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 50px;
 }
 
 .servicios-card{
-    width: 400px;
+    width: 480px;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -524,7 +639,7 @@ h3{
     border: 1px solid black;
     padding: 10px;
     border-radius: 10px;
-    overflow: hidden; /* Evitar que las imágenes se desborden */
+    overflow: hidden; 
 }
 
 .card-img{
@@ -559,14 +674,17 @@ h3{
     opacity: 1; 
 }
 
-
-
 .card-contenido{
     height: 40%;
     text-align: center;
 
 }
 
+@media (max-width: 1400px) {
+    .servicios {
+        justify-content: center; /* Centra los elementos cuando están en columnas */
+    }
+}
 
 
 /*Animaciones*/
@@ -627,8 +745,9 @@ h3{
 
     
     .servicios-card{
-        width: 400px;
-        height: 500px;
+        max-width: 450px;
+        width: 80%;
+        height: 530px;
     }
     
 }

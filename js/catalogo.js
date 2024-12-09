@@ -2,8 +2,16 @@ const ApiProducto = 'http://localhost:8084/producto';
 const ApiCategoria = 'http://localhost:8084/categoria';
 
 document.addEventListener('DOMContentLoaded', () => {
-    listarProductos();
-    listarCategorias();
+    const params = new URLSearchParams(window.location.search);
+    const categoriaId = params.get('categoria'); // Obtener el ID de la categoría de la URL
+
+    listarCategorias()
+
+    if (categoriaId) {
+        listarProductosPorCategoria(categoriaId); // Mostrar productos de la categoría seleccionada
+    } else {
+        listarProductos(); // Mostrar todos los productos si no hay categoría seleccionada
+    }
 });
 
 function excluirCategorias() {
@@ -106,9 +114,8 @@ function listarCategorias() {
 
 // Función para listar productos por categoría excluyendo ciertas categorías
 function listarProductosPorCategoria(categoriaId) {
-    // Cambiar el endpoint al correcto
+    const ApiProducto = 'http://localhost:8084/producto';
     const endpoint = `${ApiProducto}/categoria/${categoriaId}`;
-    const categoriasExcluidas = excluirCategorias(); // Obtener categorías a excluir
 
     fetch(endpoint)
         .then(response => {
@@ -118,42 +125,25 @@ function listarProductosPorCategoria(categoriaId) {
             return response.json();
         })
         .then(data => {
-            console.log("Datos recibidos para la categoría:", categoriaId, data); // Debugging
-
-            // Verifica si la respuesta es un array
-            if (!Array.isArray(data)) {
-                throw new Error("La respuesta no es un array de productos.");
-            }
-
             const contenedor = document.getElementById('contenedorCentral');
+            contenedor.innerHTML = ''; // Limpiar el contenedor
 
-            // Limpiar el contenedor antes de añadir los productos
-            contenedor.innerHTML = '';
-
-            // Filtrar productos excluyendo las categorías no deseadas
-            const productosFiltrados = data.filter(producto =>
-                producto.categoria && !categoriasExcluidas.includes(producto.categoria.id)
-            );
-
-            // Iterar sobre los productos filtrados y crear los elementos HTML
-            productosFiltrados.forEach(producto => {
+            data.forEach(producto => {
                 const button = document.createElement('button');
                 button.classList.add('contenedorCentral_carta');
 
-                // Estructura del contenido del producto
                 button.innerHTML = `
-                <div class="contenedorCentral__catalogoImagen">
-                    <div class="contenedorCentral_img">
-                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <div class="contenedorCentral_img">
+                            <img src="${producto.imagen}" alt="${producto.nombre}">
+                        </div>
+                        <div class="contenedorCentral_content">
+                            <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
+                            <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
+                        </div>
                     </div>
-                    <div class="contenedorCentral_content">
-                        <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
-                        <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
-                    </div>
-                </div>
                 `;
 
-                // Añadir el producto al contenedor
                 contenedor.appendChild(button);
             });
         })

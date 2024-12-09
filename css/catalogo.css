@@ -20,7 +20,6 @@ header{
     margin: auto;
     position: relative;
     top: 60px;
-
 }
 
 .content__products {
@@ -44,7 +43,7 @@ header{
 .content__products__sidebar {
     color: #000000;
     padding: 20px;
-    overflow-y: auto; /* Añade scroll vertical */
+    overflow-y: auto; 
     position: fixed;
     top: 100px;
     border-left: 1px solid #888;
@@ -52,7 +51,6 @@ header{
     max-height: 80%;
 }
 
-/* Estilos para la barra de desplazamiento */
 .content__products__sidebar::-webkit-scrollbar {
     width: 8px;
 }
@@ -106,7 +104,6 @@ header{
 
 
 
-/* Estilos para el contenedor central */
 .container__products{
     width: 100%;
     min-width: 100px;
@@ -130,23 +127,26 @@ header{
 
 
 
-/* Estilos para el botón de la carta del catálogo */
 .contenedorCentral_carta {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 300px; /* Máximo ancho de la carta */
+    max-width: 300px; 
     min-width: 280px;
-    float: left; /* Desplazamiento hacia la izquierda */
-    margin-right: 20px; /* Espacio entre las cartas */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    float: left; 
+    margin-right: 20px; 
+    cursor: pointer; 
     margin-bottom: 20px;
     position: relative;
     animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 5% cover 40%;
+}
+
+.contenedorCentral_carta a{
+    text-decoration: none;
 }
 
 .contenedorCentral_carta:hover{
@@ -179,13 +179,11 @@ header{
 }
 
 
-/* Estilos para el título del catálogo dentro del botón */
 .contenedorCentral_carta h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
-/* Estilos para el texto del catálogo dentro del botón */
 .contenedorCentral_carta p {
     font-size: 1em;
     line-height: 1.5;

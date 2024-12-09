@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
     <header class="header">
         <nav class="header__nav">
             <p class="header__logo">CompuServicesSoft</p>
+            <button class="header__menu" aria-label="Toggle Menu">&#9776;</button>
             <ul class="header__lista">
                 <li class="header__li"><a href="#">Home</a></li>
                 <li class="header__li"><a href="html/catalogo.html">Catalogo de Productos</a></li>
@@ -22,10 +24,11 @@
             </ul>
         </nav>
     </header>
-   
+    
+
     <div class="contacto_wsp">
         <form action="https://wa.me/+573242264795" target="_blank">
-            <button><img src="imagenes/wsp.png"   alt="icono de whatsapp"></button>
+            <button><img src="imagenes/logos/wsp.png" alt="icono de whatsapp"></button>
         </form>
     </div>
 
@@ -39,7 +42,7 @@
             </ul>
             <hr>
             <ul>
-                <li><a href=""><i class='bx bxl-whatsapp' ></i></a></li>
+                <li><a href=""><i class='bx bxl-whatsapp'></i></a></li>
                 <p><a href="">whatsapp: +(57) 3242264795</a></p>
             </ul>
             <button id="btnCerrar">Cerrar</button>
@@ -47,275 +50,391 @@
     </div>
 
     <section class="containerPrincipal">
-        <div id="containerPrincipal__img" style="background-image: url(imagenes/setup.webp);">
+        <div id="containerPrincipal__img" style="background-image: url(imagenes/fondos/setup.webp);">
             <div class="dark-overlay"></div> <!-- Div oscuro -->
             <div class="containerPrincipal__content">
                 <h1>Ven y cumple el sueño de <br>todo Gamer!</h1>
                 <div class="containerPrincipal__down">
-                    <a href="#title_categoria"><i class='bx bx-chevrons-down' id="btn-down" ></i></i></a>
+                    <a href="#title_categoria"><i class='bx bx-chevrons-down' id="btn-down"></i></i></a>
                 </div>
                 <div class="containerPrincipal__contactos">
                     <ul>
                         <li><a href=""><i class='bx bxl-whatsapp'></i></a></li>
-                        <li><a href=""><i class='bx bxl-gmail' ></i></a></li>
+                        <li><a href=""><i class='bx bxl-gmail'></i></a></li>
                         <li><a href=""><i class='bx bxs-phone-call'></i></a></li>
                     </ul>
                 </div>
             </div>
-           
-        </div>
-       
-    </section>
-   
-    <!--Informacion importante-->
 
-    <div class="info">
-        <div class="info__carta">
-            <div class="info__carta--left">
-            </div>
-            <div class="info__carta--right">
-            </div>
-            </div>
-        </div>
-    </div>
-   
-     <!--CATEGORIA DE PRODUCTOS-->
-     <h2 class="title_categoria" id="title_categoria">Categorias destacadas</h2>
-    
-     <section class="contenedorCentral" id="contenedorCentral">
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/ssd.jpg" alt="SSD Disco Solido">
-                </div>
-                <h3>SSD Disco Solido</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/nvmeC.jfif" alt="M2 Nvme">
-                </div>
-                <h3>M2 Nvme</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/ramPcC.jpg" alt="Ram de Escritorio">
-                </div>
-                <h3>Ram de Escritorio</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/ramLapC.jpg" alt="Ram de Portátil">
-                </div>
-                <h3>Ram de Portátil</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/monitorC.jpeg" alt="Monitor">
-                </div>
-                <h3>Monitor</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/fuente de poder 2.png" alt="Fuente de Poder">
-                </div>
-                <h3>Fuente de Poder</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/boardC.jpg" alt="Main Board">
-                </div>
-                <h3>Main Board</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/procesadorC.avif" alt="Procesador">
-                </div>
-                <h3>Procesador</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/gabineteC.jpg" alt="Gabinete">
-                </div>
-                <h3>Gabinete</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/VIDEOV.jpg" alt="Tarjeta Gráfica">
-                </div>
-                <h3>Tarjeta Gráfica</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/tecladoC.jpg" alt="Teclado">
-                </div>
-                <h3>Teclado</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
-        </div>
-        
-        <div class="contenedorCentralButton">
-            <button class="contenedorCentral_carta">
-                <div class="contenedorCentral__catalogoImagen">
-                    <img src="../imagenes/mouseC.jfif" alt="Mouse">
-                </div>
-                <h3>Mouse</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto sit tempora qui labore?</p>
-            </button>
         </div>
     </section>
-    
 
-     <h2>Productos Populares</h2>
-     <div class="productosPopulares" style="position: relative;">
+    <!--CATEGORIA DE PRODUCTOS-->
+    <h2 class="title_categoria" id="title_categoria">Categorias destacadas</h2>
+
+    <section class="contenedorCentral" id="contenedorCentral">
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=1">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/ssd.jpg" alt="SSD Disco Solido">
+                    </div>
+                    <div class="contenedorCentral__content">
+                        <h3>SSD Disco Solido</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed
+                            laborum
+                            similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum
+                            architecto
+                            sit tempora qui labore?</p>
+                    </div>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=2">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/nvme.jpg" alt="M2 Nvme">
+                    </div>
+                    <h3>M2 Nvme</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=3">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/monitorC.jpeg" alt="Monitor">
+                    </div>
+                    <h3>Monitor</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=4">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/ramPcC.jpg" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Ram de Escritorio</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=4">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/ramLapC.jpg" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Ram de Portatil</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=5">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/fuente de poder 2.png" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Fuente de Poder</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=6">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/computador.jpg" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Computadores</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=8">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/videoC.jpg" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Tarjeta Grafica</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=14">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/mouseC.jfif" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Mouse</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=15">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/tecladoC.jpg" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Teclado</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=17">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/control.jfif" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Controles y Juegos </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=18">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/baserefrigerante.jfif" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Bases refrigerantes</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=19">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/boardC.jpg" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Motherboard</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=20">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/procesadorC.avif" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Procesador</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=21">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/categorias/disipador.jpeg" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Disipador</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="contenedorCentralButton">
+            <a href="html/catalogo.html?categoria=22">
+                <button class="contenedorCentral_carta">
+                    <div class="contenedorCentral__catalogoImagen">
+                        <img src="imagenes/products/REGULADOR/UNITEC1200.png" alt="Ram de Escritorio">
+                    </div>
+                    <h3>Reguladores y Ups</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti suscipit omnis vel sed laborum
+                        similique totam aperiam quisquam quod, nesciunt voluptatum ducimus natus est rerum architecto
+                        sit tempora qui labore?</p>
+                </button>
+            </a>
+        </div>
+    </section>
+
+
+
+    <h2>Productos Populares</h2>
+    <div class="productosPopulares" style="position: relative;">
         <div class="container">
 
             <div class="slide">
+                <div class="item" style="background-image: url(imagenes/fondos/set3.jpg);">
+                    <div class="content">
+                        <div class="name">Switzerland</div>
+                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+                            excepturi deserunt ipsa dolorib</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url(imagenes/fondos/fondo2.jpg);">
+                    <div class="content">
+                        <div class="name">Switzerland</div>
+                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+                            excepturi deserunt ipsa dolorib</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url(imagenes/fondos/fondo1.jpg);">
+                    <div class="content">
+                        <div class="name">Switzerland</div>
+                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+                            excepturi deserunt ipsa dolorib</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url(imagenes/fondos/fondo3.jpg);">
+                    <div class="content">
+                        <div class="name">Switzerland</div>
+                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+                            excepturi deserunt ipsa dolorib</div>
+                        <button>See More</button>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url(imagenes/fondos/set7.jpg);">
+                    <div class="content">
+                        <div class="name">Switzerland</div>
+                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
+                            excepturi deserunt ipsa dolorib</div>
+                        <button>See More</button>
+                    </div>
+                </div>
 
-                <div class="item" style="background-image: url(imagenes/set3.jpg);">
-                    <div class="content">
-                        <div class="name">Switzerland</div>
-                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt excepturi deserunt ipsa dolorib</div>
-                        <button>See More</button>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(imagenes/fondo2.jpg);">
-                    <div class="content">
-                        <div class="name">Switzerland</div>
-                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt excepturi deserunt ipsa dolorib</div>
-                        <button>See More</button>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(imagenes/fondo1.jpg);">
-                    <div class="content">
-                        <div class="name">Switzerland</div>
-                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt excepturi deserunt ipsa dolorib</div>
-                        <button>See More</button>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(imagenes/fondo3.jpg);">
-                    <div class="content">
-                        <div class="name">Switzerland</div>
-                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt excepturi deserunt ipsa dolorib</div>
-                        <button>See More</button>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(imagenes/set7.jpg);">
-                    <div class="content">
-                        <div class="name">Switzerland</div>
-                        <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt excepturi deserunt ipsa dolorib</div>
-                        <button>See More</button>
-                    </div>
-                </div>
-            
             </div>
 
             <div class="button">
                 <button class="prev"><i class='bx bxs-chevron-left'></i></button>
-                <button class="next"><i class='bx bxs-chevron-right' ></i></button>
+                <button class="next"><i class='bx bxs-chevron-right'></i></button>
             </div>
         </div>
     </div>
-    
-    
-    
 
-     <div class="about">
-         <div class="about-seccion">
+
+
+
+    <div class="about">
+        <div class="about-seccion">
             <div class="about-seccion-content">
                 <h3>¿Quienes Somos?</h3>
-                <p>En CompuServicesSoft, somos tu socio de confianza en tecnología. <b>Ubicados en el Centro Comercial La 16, local 138 (primer piso)</b>, en Pasto, Nariño, ofrecemos una amplia gama de productos de cómputo, como tarjetas gráficas, discos sólidos, memorias RAM, computadoras, unidades NVMe, monitores y mucho más. <br> <br>
+                <p>En CompuServicesSoft, somos tu socio de confianza en tecnología. <b>Ubicados en el Centro
+                        Comercial La 16, local 138 (primer piso)</b>, en Pasto, Nariño, ofrecemos una amplia gama de
+                    productos de cómputo, como tarjetas gráficas, discos sólidos, memorias RAM, computadoras,
+                    unidades NVMe, monitores y mucho más. <br> <br>
 
-                Además de nuestra oferta de productos, brindamos servicio técnico especializado y consultoría personalizada para ayudarte a armar la máquina ideal para tus necesidades. También somos expertos en la instalación de sistemas operativos y optimización de dispositivos. <br><br>
-                    
-                Estamos orgullosamente registrados en la Cámara de Comercio, lo que garantiza que somos una empresa seria y confiable. <b>Nuestro horario de atención es de 11:00 a.m. a 7:00 p.m.</b>, siempre listos para ofrecerte atención personalizada y soluciones tecnológicas de calidad.
-                    
-                CompuServicesSoft: Potenciando tus ideas, haciendo realidad tu próxima máquina.</p>
+                    Además de nuestra oferta de productos, brindamos servicio técnico especializado y consultoría
+                    personalizada para ayudarte a armar la máquina ideal para tus necesidades. También somos
+                    expertos en la instalación de sistemas operativos y optimización de dispositivos. <br><br>
+
+                    Estamos orgullosamente registrados en la Cámara de Comercio, lo que garantiza que somos una
+                    empresa seria y confiable. <b>Nuestro horario de atención es de 11:00 a.m. a 7:00 p.m.</b>,
+                    siempre listos para ofrecerte atención personalizada y soluciones tecnológicas de calidad.
+
+                    CompuServicesSoft: Potenciando tus ideas, haciendo realidad tu próxima máquina.</p>
                 <a href="https://maps.app.goo.gl/NpB3STsdUhF58hrw9" target="_blank">Mirar Ubicación</a>
             </div>
         </div>
         <div class="about-imagen">
-            <img src="imagenes/boardC.jpg" alt="Imagen del local">
+            <img src="imagenes/local/local2.jpeg" width="200px" alt="Imagen del local">
         </div>
-     </div>
+    </div>
 
-     <h2>Nuestros Servicios</h2>
-     <div class="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="servicios">
 
         <div class="servicios-card">
             <div class="card-img">
-                <img src="imagenes/tecladoC.jpg" alt="">
-                <img src="imagenes/fondo1.jpg" alt="">
+                <img src="imagenes/fondos/fondo1.jpg" alt="">
+                <img src="imagenes/fondos/fondo2.jpg" alt="">
             </div>
             <div class="card-contenido">
                 <h3>Servicio Tecnico</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quasi excepturi nesciunt inventore esse. Laborum suscipit ipsum, nam velit perferendis mollitia, beatae nisi nobis deserunt illum culpa quis, ratione doloribus! </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quasi excepturi nesciunt inventore
+                    esse. Laborum suscipit ipsum, nam velit perferendis mollitia, beatae nisi nobis deserunt illum
+                    culpa quis, ratione doloribus! </p>
             </div>
         </div>
 
         <div class="servicios-card">
             <div class="card-img">
-                <img src="imagenes/fondo3.jpg" alt="">
-                <img src="imagenes/fondo2.jpg" alt="">
+                <img src="imagenes/fondos/fondo3.jpg" alt="">
+                <img src="imagenes/fondos/fondo1.jpg" alt="">
             </div>
             <div class="card-contenido">
                 <h3>Asesorias</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quasi excepturi nesciunt inventore esse. Laborum suscipit ipsum, nam velit perferendis mollitia, beatae nisi nobis deserunt illum culpa quis, ratione doloribus! </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quasi excepturi nesciunt inventore
+                    esse. Laborum suscipit ipsum, nam velit perferendis mollitia, beatae nisi nobis deserunt illum
+                    culpa quis, ratione doloribus! </p>
             </div>
         </div>
 
         <div class="servicios-card">
             <div class="card-img">
-                <img src="imagenes/setup.webp" alt="">
-                <img src="imagenes/fondo3.jpg" alt="">
+                <img src="imagenes/fondos/pc-gaming-setup-rgb-4k-ft1ym37yjyb7lp19.jpg" alt="">
+                <img src="imagenes/fondos/setup.webp" alt="">
             </div>
             <div class="card-contenido">
                 <h3>Venta de Accesorios de Computo</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quasi excepturi nesciunt inventore esse. Laborum suscipit ipsum, nam velit perferendis mollitia, beatae nisi nobis deserunt illum culpa quis, ratione doloribus! </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quasi excepturi nesciunt inventore
+                    esse. Laborum suscipit ipsum, nam velit perferendis mollitia, beatae nisi nobis deserunt illum
+                    culpa quis, ratione doloribus! </p>
             </div>
         </div>
-     </div>
-     
-     <footer>
+    </div>
+
+    <footer>
         <ul>
             <li><a href="">Garantia</a></li>
             <li><a href="">Contactanos</a></li>
@@ -323,7 +442,7 @@
             <li><a href="">CompuServicesSoft</a></li>
             <li><a href="">Politicas de devolucion</a></li>
         </ul>
-     </footer>
+    </footer>
 
     <!-- <dialog open class="modal">
         <div class="modal__content">
@@ -338,8 +457,8 @@
         </form>
     </dialog> -->
 
-<script src="js/app.js"></script>
-<script src="js/catalogo.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/catalogo.js"></script>
 </body>
 
 </html>

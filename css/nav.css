@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 html {
@@ -15,21 +16,31 @@ html {
     width: 100%;
     height: 60px;
     z-index: 100;
+    position: fixed;
 }
 
-
-.header__nav{
+.header__nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100%;
+    padding: 0 20px;
 }
 
 .header__logo {
-    margin-left: 70px;
     font-size: 1.1em;
     color: #ffffff;
     font-weight: 900; 
+    text-align: center;
+}
+
+.header__menu {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
 .header__lista {
@@ -37,9 +48,9 @@ html {
     padding: 0;
     margin: 0;
     display: flex;
-    margin-right: 100px;
     font-size: 1em;
     font-weight: 600;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .header__li a {
@@ -47,12 +58,59 @@ html {
     text-decoration: none;
     padding: 22px;
     transition: color 0.5s, background-color 0.3s;
-    
 }
 
 .header__li a:hover {
     color: #48e;
     background-color: #fff;
+}
+
+/* Media query para pantallas menores a 900px */
+@media (max-width: 1100px) {
+    .header__menu {
+        display: block; 
+    }
+
+    .header__lista {
+        display: none; 
+        flex-direction: column; 
+        position: absolute;
+        top: 60px; 
+        left: 0;
+        width: 100%; 
+        background: linear-gradient(to right, rgb(82, 16, 143), #23197e);
+        padding: 0;
+        margin: 0;
+        z-index: 999; 
+        
+    }
+
+    .header__lista.active {
+        display: flex; 
+    }
+
+    .header__li {
+        width: 100%; 
+
+    }
+
+    .header__li a {
+        text-align: center; 
+        display: block; 
+        padding: 14px; /* Espaciado interno uniforme */
+        width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+        box-sizing: border-box; /* Incluye el padding dentro del ancho */
+        transition: color 0.5s, background-color 0.3s; /* Efecto de hover */
+    }
+
+    .header__li a:hover {
+        color: #48e;
+        background-color: #fff; /* Color de fondo al hacer hover */
+    }
+
+    .contacto_wsp{
+        display: none;
+    }
 }
 
     
@@ -174,3 +232,5 @@ footer li a:hover{
 .contactos button:hover {
     background-color: #e63939;
 }
+
+
