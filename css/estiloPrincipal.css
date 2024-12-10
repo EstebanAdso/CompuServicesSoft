@@ -170,10 +170,9 @@ dialog {
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 5em;
+    font-size: clamp(3em, 5vw, 5em);
     text-shadow: 0 0 20px black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
 }
 
 .containerPrincipal__down{
@@ -186,12 +185,11 @@ dialog {
     align-items: center;
 }
 .containerPrincipal__down a{
-    font-size: 8em;
+    font-size: clamp(5em, 8vw, 8em);
     user-select: none;
     text-shadow: 0 0 20px rgb(47, 47, 47);
     color: white;
     transition: color 0.5s;
-    
 }
 
 .containerPrincipal__down a:hover{
@@ -212,7 +210,7 @@ dialog {
 }
 
 .containerPrincipal__contactos ul li{
-    font-size: 3em;
+    font-size: clamp(2.4em, 5vw, 3em);
     display: inline-block;
     color: white;
     margin-left: 20px;
@@ -228,14 +226,48 @@ dialog {
     color: rgb(26, 128, 111);
 }
 
+@media (max-width: 1100px) {
+    .containerPrincipal__contactos{
+        position: absolute;
+        bottom: 60px;
+        left: 0px;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .containerPrincipal__contactos ul {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0;
+        width: 80%;
+        margin: auto;
+    }
 
+    .containerPrincipal__contactos ul li{
+        margin-left: 0px; 
+    }
+
+}
+
+@media(max-width: 400px){
+
+    #containerPrincipal__img h1 {
+        font-size: clamp(2em, 5vw, 5em);
+    }
+    .containerPrincipal__down a{
+        font-size: clamp(4em, 8vw, 8em);
+    }
+}
 
 
 /*CATEGORIA DE PRODUCTOS*/
 
 h2{
     text-align: center;
-    font-size: 2.3em;
+    font-size: clamp(1.7em, 4vw, 2.3em);
     animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
@@ -255,6 +287,7 @@ h3{
     margin: auto;
     margin-bottom: 20px;
     display: flex;
+    gap: 10px;
     flex-wrap: wrap; 
     justify-content: center; 
     box-sizing: border-box;
@@ -274,8 +307,7 @@ h3{
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 360px; 
-    float: left; 
-    margin-right: 20px; 
+    float: left;  
     cursor: pointer; 
     margin-bottom: 20px;
     height: 400px;
@@ -538,7 +570,7 @@ h3{
 }
 
 .about-seccion{
-    font-size: 1.2em;
+    font-size: clamp(0.8em, 4vw, 1.2em);
     width: 50%;
     display: flex;
     justify-content: center;
@@ -610,9 +642,6 @@ h3{
         margin-bottom: 30px;
     }
 
-    .about-seccion p{
-        text-align: center;
-    }
 }
 
 

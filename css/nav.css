@@ -126,11 +126,17 @@ footer{
 }
 
 footer p{
-    margin: 0.3px;
+    padding: 0;
+    margin: 0;
 }
 
 footer li{
     list-style: none;
+}
+
+footer ul{
+    padding: 0;
+    margin: 0;
 }
 
 footer li a{

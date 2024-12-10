@@ -172,3 +172,8 @@ btnCerrar.addEventListener('click', (e) =>{
     modalContacto.style.display = 'none'
 })
 
+
+document.querySelector('.header__menu').addEventListener('click', () => {
+    const menu = document.querySelector('.header__lista');
+    menu.classList.toggle('active'); // Alternar la clase "active"
+});
