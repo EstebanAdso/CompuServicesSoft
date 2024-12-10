@@ -3,14 +3,14 @@ const ApiCategoria = 'http://localhost:8084/categoria';
 
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
-    const categoriaId = params.get('categoria'); // Obtener el ID de la categoría de la URL
+    const categoriaId = params.get('categoria'); 
 
     listarCategorias()
 
     if (categoriaId) {
-        listarProductosPorCategoria(categoriaId); // Mostrar productos de la categoría seleccionada
+        listarProductosPorCategoria(categoriaId); 
     } else {
-        listarProductos(); // Mostrar todos los productos si no hay categoría seleccionada
+        listarProductos(); 
     }
 });
 
@@ -93,9 +93,18 @@ function listarCategorias() {
                 link.href = "#"; // Prevenir redirección
                 link.setAttribute('data-id', categoria.id);
 
-                // Evento click para listar productos de la categoría
+                // Evento click para listar productos de la categoría y manejar la clase 'selected'
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
+
+                    // Remueve la clase 'selected' de todos los enlaces
+                    const allLinks = ulElement.querySelectorAll("a");
+                    allLinks.forEach(link => link.classList.remove("selected"));
+
+                    // Agrega la clase 'selected' al enlace clicado
+                    link.classList.add("selected");
+
+                    // Llama a la función para listar productos de la categoría seleccionada
                     listarProductosPorCategoria(categoria.id);
                 });
 
@@ -109,7 +118,6 @@ function listarCategorias() {
 
     loadCategorias();
 }
-
 
 
 // Función para listar productos por categoría excluyendo ciertas categorías
@@ -177,3 +185,4 @@ document.querySelector('.header__menu').addEventListener('click', () => {
     const menu = document.querySelector('.header__lista');
     menu.classList.toggle('active'); // Alternar la clase "active"
 });
+
