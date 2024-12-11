@@ -129,8 +129,7 @@ header{
     border-radius: 5px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 300px; 
-    min-width: 200px;
+    width: clamp(300px, 5vw, 320px);
     float: left; 
     cursor: pointer; 
     position: relative;

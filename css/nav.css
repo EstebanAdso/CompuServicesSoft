@@ -65,8 +65,13 @@ html {
     background-color: #fff;
 }
 
+
 /* Media query para pantallas menores a 900px */
 @media (max-width: 1100px) {
+    .header__logo{
+        cursor: pointer;
+    }
+    
     .header__menu {
         display: block; 
     }
