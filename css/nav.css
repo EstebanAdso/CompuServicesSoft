@@ -114,7 +114,7 @@ html {
         display: none;
     }
 
-    .header__menu:hover, .header__logo{
+    .header__menu:hover, .header__logo:hover{
         color: #ccc;
     }
 }

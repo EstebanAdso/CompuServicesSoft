@@ -169,6 +169,19 @@ dialog {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
 }
 
+#parrafoPrincipal{
+    color: rgb(162, 145, 164);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+    font-size: clamp(1em, 5vw, 2em);
+    position:absolute;
+    bottom: 120px;
+}
+
 .containerPrincipal__down{
     width: 100px;
     height: auto;
@@ -362,6 +375,7 @@ p, a{
     animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
+    overflow: hidden;
 }
 
 .productosPopulares .container{
@@ -452,7 +466,9 @@ p, a{
 .slide .item:nth-child(n + 6){
     left: calc(50% + 660px);
     opacity: 0;
+    display: none;
 }
+
 
 .item .content{
     position: absolute;
@@ -495,6 +511,8 @@ p, a{
     opacity: 0;
     animation: animate 1s ease-in-out 0.6s 1 forwards;
     text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 @keyframes animate{
@@ -624,7 +642,7 @@ p, a{
 /*-----------------------------------------------ABOUT*/
 .about{
     max-width: 1600px;
-    width: 100%;
+    width: 85%;
     display: flex;
     margin: auto;
     justify-content: center;
@@ -700,17 +718,51 @@ p, a{
 }
 
 @media (max-width: 1030px) {
+
+    .slide .item:nth-child(1)::before,
+    .slide .item:nth-child(2)::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+        z-index: 1;
+        pointer-events: none;
+        border-radius: inherit;
+    }
+
+    .slide .item {
+        position: relative;
+        z-index: 0;
+    }
+
+    .slide .item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+        z-index: 1;
+        pointer-events: none;
+        border-radius: inherit;
+    }
+
     .about {
         width: 100%;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(../imagenes/local/local1.jpeg);
+        background-image: linear-gradient(rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0.4) 100%), url(../imagenes/local/local1.jpeg);
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         color: white;
         height: 100dvh;
         margin-top: 0px;
+        animation: none;
     }
-
+    
     .about-imagen {
         display: none;
     }
@@ -887,5 +939,6 @@ p, a{
     #titleServicios{
         margin-top: 40px;
     }
-  
+
+
 }
