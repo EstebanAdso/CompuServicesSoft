@@ -33,20 +33,29 @@ setInterval(triggerAnimation, 5000);
 
 
 //CARRUSEL
-let next = document.querySelector('.button .next')
-let prev = document.querySelector('.button .prev')
+let next = document.querySelector('.button .next');
+let prev = document.querySelector('.button .prev');
 
-next.addEventListener('click',function(){
-    let items = document.querySelectorAll('.slide .item')
-    document.querySelector('.slide').appendChild(items[0])
-    
-})
+function updateActiveItem() {
+    let items = document.querySelectorAll('.slide .item');
+    items.forEach(item => item.classList.remove('active')); // Quita la clase de todos los elementos
+    items[1].classList.add('active'); // Asigna la clase al segundo elemento (imagen principal)
+}
 
-prev.addEventListener('click',function(){
-    let items = document.querySelectorAll('.slide .item')
-    document.querySelector('.slide').prepend(items[items.length - 1])
-    
-})
+// Inicializa la clase activa en la carga de la página
+updateActiveItem();
+
+next.addEventListener('click', function() {
+    let items = document.querySelectorAll('.slide .item');
+    document.querySelector('.slide').appendChild(items[0]);
+    updateActiveItem(); // Actualiza la clase activa después de cambiar
+});
+
+prev.addEventListener('click', function() {
+    let items = document.querySelectorAll('.slide .item');
+    document.querySelector('.slide').prepend(items[items.length - 1]);
+    updateActiveItem(); // Actualiza la clase activa después de cambiar
+});
 
 //Contacto Modal
 const modalContacto = document.querySelector('.modalContacto')
