@@ -567,6 +567,7 @@ p, a{
     }
     .productosPopulares {
        height: 100dvh;
+       margin-bottom: 0;
     }
 
     #tituloCarrusel{
@@ -596,6 +597,7 @@ p, a{
     animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
+    margin: 0;
 }
 
 .about-seccion{
@@ -661,7 +663,8 @@ p, a{
         background-size: cover;
         background-repeat: no-repeat;
         color: white;
-        height: auto;
+        height: 100dvh;
+        margin-top: 0;
     }
 
     .about-imagen {
