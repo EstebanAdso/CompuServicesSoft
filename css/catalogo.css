@@ -1,9 +1,11 @@
 *{
     box-sizing: border-box;
 }
+
 body{
     font-family: sans-serif;
 }
+
 header{
     position: fixed;
     z-index: 100;
@@ -100,14 +102,11 @@ header{
     color: white;
 }
 
-
-
 .container__products{
     width: 100%;
     min-width: 100px;
     padding: 0; 
 }
-
 
 .contenedorCentral {
     margin: auto;
@@ -121,8 +120,6 @@ header{
     box-sizing: border-box; 
     gap: 20px;
 }
-
-
 
 .contenedorCentral_carta {
     border: 1px solid #ccc;
@@ -217,7 +214,6 @@ header{
         font-size: clamp(0.8em, 1vw, 0.9em)
     }
 
-    
     .contenedorCentral_carta {
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -265,9 +261,6 @@ header{
         overflow: hidden;
         padding-bottom: 5px;
     }
-
-            
-
 }
 
 

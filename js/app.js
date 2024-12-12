@@ -8,18 +8,16 @@ var imagenes = [
     'imagenes/fondos/setup.webp',
 ];
 
-var indice = 1;
-
+var indice = 0; // Comenzamos desde el primer índice
 
 function cambiarImagen() {
     document.getElementById('containerPrincipal__img').style.backgroundImage = 'url(' + imagenes[indice] + ')';
-    indice = (indice + 1) % imagenes.length;
+    indice = (indice + 1) % imagenes.length; 
 }
 
-setTimeout(() => {
-    cambiarImagen()
-}, 5000);
 
+setInterval(cambiarImagen, 10000);
+cambiarImagen();
 
 //Parpadear Boton De bajar
 link = document.querySelector('.containerPrincipal__down'); 

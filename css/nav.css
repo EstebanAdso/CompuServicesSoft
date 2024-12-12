@@ -9,9 +9,7 @@ html {
     scroll-behavior: smooth;
 }
 
-
 .header {
-    background-color: rgb(98, 34, 158);
     background: linear-gradient(to right, rgb(82, 16, 143), #23197e);
     width: 100%;
     height: 60px;
@@ -48,7 +46,7 @@ html {
     padding: 0;
     margin: 0;
     display: flex;
-    font-size: clamp(0.7em, 2.6vw, 0.9em);
+    font-size: clamp(0.8em, 2.6vw, 0.9em);
     font-weight: 600;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
@@ -57,12 +55,11 @@ html {
     color: #fff;
     text-decoration: none;
     padding: 22px;
-    transition: color 0.5s, background-color 0.3s;
+    transition: color 0.3s, background-color 0.3s;
 }
 
 .header__li a:hover {
-    color: #48e;
-    background-color: #fff;
+    color: #aaa;
 }
 
 
@@ -102,23 +99,26 @@ html {
     .header__li a {
         text-align: center; 
         display: block; 
-        padding: 14px; /* Espaciado interno uniforme */
-        width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
-        box-sizing: border-box; /* Incluye el padding dentro del ancho */
-        transition: color 0.5s, background-color 0.3s; /* Efecto de hover */
+        padding: 14px; 
+        width: 100%; 
+        box-sizing: border-box; 
+        transition: color 0.5s, background-color 0.3s; 
     }
 
     .header__li a:hover {
-        color: #48e;
-        background-color: #fff; /* Color de fondo al hacer hover */
+        color: blueviolet;
+        background-color: #ccc;
     }
 
     .contacto_wsp{
         display: none;
     }
+
+    .header__menu:hover, .header__logo{
+        color: #ccc;
+    }
 }
 
-    
 footer{
     width: 100%;
     background-color: #444;
@@ -162,7 +162,7 @@ footer li a:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el overlay */
+    background-color: rgba(0, 0, 0, 0.5); 
     width: 100%;
     height: 100%;
     display: none;
@@ -175,9 +175,9 @@ footer li a:hover{
     background-color: #fbfbfb;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     max-width: 400px;
-    width: 80%; /* Adaptable a pantallas pequeñas */
+    width: 80%; 
     text-align: center;
 }
 
@@ -243,5 +243,4 @@ footer li a:hover{
 .contactos button:hover {
     background-color: #e63939;
 }
-
 
