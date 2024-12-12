@@ -597,7 +597,6 @@ p, a{
     animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
-    margin: 0;
 }
 
 .about-seccion{
@@ -658,7 +657,7 @@ p, a{
 @media (max-width: 1030px) {
     .about {
         width: 100%;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../imagenes/local/local1.jpeg);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(../imagenes/local/local1.jpeg);
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -816,7 +815,6 @@ p, a{
 
     .productosPopulares {
         max-width: 1500px;
-        margin-bottom: 40px;
     }
 
     .servicios{
