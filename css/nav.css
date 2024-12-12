@@ -152,7 +152,7 @@ footer li a{
 }
 
 footer li a:hover{
-    color: #48e;
+    color: #aaa;
 }
 
 
@@ -227,6 +227,7 @@ footer li a:hover{
 
 .contactos ul p a:hover{ 
     color: #037b25;
+    transform: scale(1.5);
 }
 
 .contactos button {
