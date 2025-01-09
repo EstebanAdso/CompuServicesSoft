@@ -1,8 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     box-sizing: border-box;
+    user-select: none;
 }
 
 html {
@@ -15,7 +21,11 @@ html {
     height: 60px;
     z-index: 100;
     position: fixed;
+    top: 0;
+    left: 0;
 }
+
+
 
 .header__nav {
     display: flex;
@@ -46,7 +56,7 @@ html {
     padding: 0;
     margin: 0;
     display: flex;
-    font-size: clamp(0.8em, 2.6vw, 0.9em);
+    font-size: clamp(0.6em, 2.6vw, 0.8em);
     font-weight: 600;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
@@ -245,3 +255,22 @@ footer li a:hover{
     background-color: #e63939;
 }
 
+h2{
+    text-align: center;
+    font-size: clamp(1.5em, 4vw, 2.3em);
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 40%;
+    padding: 5px;
+}
+
+h3{
+    font-size: clamp(1.3em, 4vw, 1.6em);
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 40%;
+}
+
+p, a{
+    font-size: clamp(0.8em, 4vw, 1em);
+}
