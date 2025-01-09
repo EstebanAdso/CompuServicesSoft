@@ -2,6 +2,14 @@ body {
     padding-top: 60px; /* Add padding to the top of the body to prevent content from being hidden behind the fixed header */
 }
 
+h2{
+  padding: 0px;
+  margin-bottom: 8px;
+}
+h3{
+  margin-left: 15px;
+}
+
 .contenido{
   display: flex;
   width: 90%;
@@ -34,10 +42,17 @@ form {
   }
   .form-group select, .form-group input {
     width: 90%;
-    padding: 8px;
+    padding: 6px;
     margin-left: 10px;
     font-size: clamp(0.5em, 3.5vw, 1em);
+    border-radius: 7px;
   }
+
+  .form-group select:hover, .form-group input:hover {
+    cursor: pointer;
+  }
+
+
   .optional {
     font-size: clamp(0.4em, 3.5vw, 0.8em);
     color: gray;
@@ -56,24 +71,36 @@ form {
 
   /* resultado */
 #resultado {
-    justify-content: center;
-    width: 45%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-top: 160px;
-    position: relative;;
-    height: fit-content;
+  width: 45%;
 }
 
-#resultado h2 {
-    margin-top: 0;
-    color: #34495e;
+.carritoP{
+  width: 100%;
+  z-index: 10;
+  height: 100%;
+  border: 1px solid #ccc;
+  position: relative;
+  border-radius: 8px;
+  justify-content: center;
+  height: fit-content;
+
+}
+
+#resultado ol{
+  padding: 0;
+}
+
+#resultado ol .liPromocion{
+  color: green;
+  font-size: clamp(0.8em, 4vw, 1em);
+  width: 100%;
+  margin: 4px;
 }
 
 #carrito {
     list-style: none;
     padding: 0;
-    margin-bottom: 50px;
+    margin-bottom: 120px;
 }
 
 #carrito li {
@@ -88,10 +115,28 @@ form {
 
 #total {
   position: absolute;
-  bottom: 0;
+  bottom: 80px;
   right: 30px;
   font-weight: bold;
+  font-size: clamp(0.7em, 3.6vw, 1.2em);
+}
+
+#descuento{
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
   color: #27ae60;
+  font-weight: bold;
+  font-size: clamp(0.7em, 3.6vw, 1.2em);
+
+}
+
+#tecladoMouse{
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
+  font-weight: bold;
+  color: rgb(211, 146, 25);
   font-size: clamp(0.7em, 3.6vw, 1.2em);
 }
 
@@ -111,4 +156,13 @@ form {
     margin-top: 50px;
   }
   
+}
+
+.tachado {
+    text-decoration: line-through;
+    color: red;
+}
+
+.green{
+  color: #27ae60;
 }

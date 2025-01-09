@@ -5,7 +5,8 @@ const selectElements = {
     board: document.querySelector('#board'),
     fuentePoder: document.querySelector('#fuentePoder'),
     grafica: document.querySelector('#grafica'),
-    disco: document.querySelector('#disco')
+    disco: document.querySelector('#disco'),
+    monitor: document.querySelector('#monitor')
 };
 const cantidadRam = document.querySelector('#cantidadRam');
 const carrito = [];
@@ -21,7 +22,10 @@ function fetchProductosPorCategoria(id) {
 function llenarSelect(selectElement, categoriaId) {
     fetchProductosPorCategoria(categoriaId)
         .then(data => {
-            data.forEach(producto => {
+            // Filtrar productos que no contengan "laptop" en el nombre
+            const productosFiltrados = data.filter(producto => !producto.nombre.toLowerCase().includes('laptop'));
+
+            productosFiltrados.forEach(producto => {
                 const option = document.createElement('option');
                 option.value = producto.id;
                 option.dataset.precio = producto.precioVendido;
@@ -30,7 +34,6 @@ function llenarSelect(selectElement, categoriaId) {
             });
         });
 }
-
 function mostrarOpcionesDisco() {
     const tipoDisco = document.getElementById('tipoDisco').value;
     const discoSeleccionado = document.getElementById('discoSeleccionado');
@@ -100,8 +103,46 @@ function actualizarCarrito(selectId, selectedOption) {
         carritoList.appendChild(li);
         total += item.precio;
     });
-
     totalElement.textContent = `Total: $${formatNumber(total)}`;
+    
+    validar()
+}
+
+function validar(){
+    const totalElement = document.querySelector('#total');
+    const descuentoElement = document.querySelector('#descuento');
+    const tecladoMouseElement = document.querySelector('#tecladoMouse');
+    
+    const tieneProcesador = carrito.some(item => item.id === 'procesador');
+    const tieneRam = carrito.some(item => item.id === 'ram');
+    const tieneBoard = carrito.some(item => item.id === 'board');
+    const tieneFuentePoder = carrito.some(item => item.id === 'fuentePoder');
+    const tieneDisco = carrito.some(item => item.id === 'disco');
+    const tieneGabinete = carrito.some(item => item.id === 'gabinete');
+    const tieneMonitor = carrito.some(item => item.id === 'monitor');
+    const carritoProducto = document.querySelector('#carrito')
+
+    if (tieneProcesador && tieneRam && tieneBoard && tieneFuentePoder && tieneDisco && tieneGabinete) {
+        let total = carrito.reduce((sum, item) => sum + item.precio, 0);
+        const descuento = total * 0.05;
+        const totalConDescuento = total - descuento;
+
+        totalElement.innerHTML = `Total: <s>$${formatNumber(total)}</s>`;
+        totalElement.classList.remove('green');
+        totalElement.classList.add('tachado')
+        descuentoElement.textContent = `Total con descuento: $${formatNumber(totalConDescuento)}`;
+        
+        if (tieneMonitor) {
+            tecladoMouseElement.textContent = 'Obsequio: Teclado y Mouse: Gratis 🎁';
+        } else {
+            tecladoMouseElement.textContent = '';
+        }
+    } else {
+        descuentoElement.textContent = '';
+        tecladoMouseElement.textContent = '';
+        totalElement.classList.add('green');
+        totalElement.classList.remove('tachado')
+    }
 }
 
 Object.keys(selectElements).forEach(selectId => {
@@ -119,8 +160,19 @@ cantidadRam.addEventListener('change', () => {
     }
 });
 
+const gabineteOption = document.createElement('option');
+gabineteOption.value = 'gabinete-basico-rgb';
+gabineteOption.dataset.precio = 300000;
+gabineteOption.textContent = 'Gabinete 4 fans RGB - $300,000';
+document.querySelector('#gabinete').appendChild(gabineteOption);
+
+document.querySelector('#gabinete').addEventListener('change', (event) => {
+    actualizarCarrito('gabinete', event.target.selectedOptions[0]);
+});
+
 llenarSelect(selectElements.procesador, 20);
 llenarSelect(selectElements.ram, 4);
 llenarSelect(selectElements.board, 19);
 llenarSelect(selectElements.fuentePoder, 5);
 llenarSelect(selectElements.grafica, 8);
+llenarSelect(selectElements.monitor, 3);

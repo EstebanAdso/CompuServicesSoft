@@ -35,7 +35,7 @@
             <p class="header__logo">CompuServicesSoft</p>
             <button class="header__menu" aria-label="Toggle Menu">&#9776;</button>
             <ul class="header__lista">
-                <li class="header__li"><a href="../index.html">Home</a></li>
+                <li class="header__li"><a href="../index.html">Inicio</a></li>
                 <li class="header__li"><a href="../html/catalogo.html">Catalogo de Productos</a></li>
                 <li class="header__li"><a href="#" id="armar">Arma tu Equipo!</a></li>
                 <li class="header__li"><a href="#" id="contactanos">Contactanos</a></li>
@@ -48,35 +48,36 @@
       
       <form id="configForm">
         <h2>Arma tu computadora!</h2>
-        <p id="nota">Asegurate que las piezas a considerar sean compatibles con tu Equipo! 😉</p>
-        <!-- Procesador -->
-        <div class="form-group">
-          <label for="procesador">Procesador</label>
-          <select id="procesador" name="procesador">
-            <option value="">Seleccione un procesador</option>
-          </select>
-        </div>
-        
-        <!-- RAM -->
-        <div class="form-group">
-          <label for="ram">RAM</label>
-          <select id="ram" name="ram">
-            <option value="">Seleccione una RAM</option>
-          </select>
-        </div>
-        <!-- Cantidad de RAM -->
-        <div class="form-group">
-          <label for="cantidadRam">Cantidad de RAM</label>
-          <input type="number" id="cantidadRam" name="cantidadRam" min="1" max="128" value="1">
-        </div>
-        
-        <!-- Board -->
-        <div class="form-group">
-          <label for="board">Board</label>
-          <select id="board" name="board">
-            <option value="">Seleccione una Board</option>
-          </select>
-        </div>
+          
+          <p id="nota">Asegurate que las piezas a considerar sean compatibles con tu Equipo! 😉</p>
+          <!-- Procesador -->
+          <div class="form-group">
+            <label for="procesador">Procesador</label>
+            <select id="procesador" name="procesador">
+              <option value="">Seleccione un procesador</option>
+            </select>
+          </div>
+          
+          <!-- RAM -->
+            <div class="form-group inline-group">
+            <label for="ram">RAM</label>
+            <select id="ram" name="ram">
+              <option value="">Seleccione una RAM</option>
+            </select>
+          </div>
+          <!-- Cantidad de RAM -->
+          <div class="form-group">
+            <label for="cantidadRam">Cantidad de RAM</label>
+            <input type="number" id="cantidadRam" name="cantidadRam" min="1" max="128" value="1">
+          </div>
+          
+          <!-- Board -->
+          <div class="form-group">
+            <label for="board">Board</label>
+            <select id="board" name="board">
+              <option value="">Seleccione una Board</option>
+            </select>
+          </div>
         
         <!-- Fuente de Poder -->
         <div class="form-group">
@@ -102,11 +103,25 @@
           </select>
         </div>
         
+        <div class="form-group" id="gabineteSeleccionado">
+          <label for="gabinete">Seleccione un gabinete</label>
+          <select id="gabinete" name="gabinete">
+            <option value="">Seleccione un gabinete</option>
+          </select>
+        </div>
+        
         <!-- Gráfica (opcional) -->
         <div class="form-group">
           <label for="grafica">Gráfica <span class="optional">(Opcional en procesadores con grafica Integrada)</span></label>
           <select id="grafica" name="grafica">
             <option value="">Seleccione una Gráfica</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="monitor">Monitor <span class="optional">(Si compras la torre junto con el monitor se te obsequia el mouse y el teclado!)</span></label>
+          <select id="monitor" name="monitor">
+            <option value="">Seleccione un Monitor</option>
           </select>
         </div>
         
@@ -115,11 +130,18 @@
       </form>
       
       <div id="resultado">
-        <h2>Resultado</h2>
-        <ul id="carrito">
-        </ul>
-        <p id="total">Total: $0</p>
-      </div>
+        <h2>Promociones.</h2>
+        <ol>
+          <li class="liPromocion">Si llevas todas las piezas para armar un computador sin contar la grafica se te hara un 5% de descuento</li>
+          <li class="liPromocion">Si llevas todas las piezas para armar un computador sin contar la Gráfica y el monitor se te obsequiara Mouse y Teclado</li>
+        </ol>
+        <div class="carritoP">
+          <h3>Carrito</h3>
+          <ul id="carrito"></ul>
+          <p id="total">Total: $0</p>
+          <p id="descuento"></p>
+          <p id="tecladoMouse"></p>
+        </div>
     </div>
      
     <script src="../js/funciones.js"></script>
