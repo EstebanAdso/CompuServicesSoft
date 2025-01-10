@@ -1,9 +1,3 @@
-
-header{
-    position: fixed;
-    z-index: 100;
-}
-
 .container_productos{
     width: 100%;
     max-width: 1700px;
@@ -13,14 +7,14 @@ header{
     flex-direction: row;
     margin: auto;
     position: relative;
-    top: 60px;
+    top: 90px;
 }
 
 .content__products {
     max-width: 100%;
     min-width: 300px;
     float: left;
-    height: 100dvh;
+    height: 20dvh;
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
@@ -41,7 +35,7 @@ header{
     top: 100px;
     border-left: 1px solid #888;
     padding: 0 10px;
-    max-height: 85%;
+    max-height: 83%;
     padding-bottom: 10px;
 }
 
@@ -99,6 +93,7 @@ header{
     width: 100%;
     min-width: 100px;
     padding: 0; 
+    height: fit-content;
 }
 
 .contenedorCentral {
