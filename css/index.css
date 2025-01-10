@@ -602,7 +602,7 @@ dialog {
         animation: animate 1s ease-in-out 0.6s 1 forwards;
     }
     .productosPopulares {
-       height: 100vh;
+       height: calc(100vh - 60px);
        margin-bottom: 0;
     }
 
@@ -646,14 +646,15 @@ dialog {
     background-size: cover;
     background-repeat: no-repeat;
 }
+@media (max-width: 1510px) {
+    .armar-contenido{
+        border-radius: 0px;
+    }
+}
 
 @media (max-width: 920px) {
     .armar{
         margin-top: 0px;
-    }
-
-    .armar-contenido{
-        border-radius: 0px;
     }
 }
 .armar-contenido h2{
@@ -788,6 +789,7 @@ dialog {
 
     .about {
         width: 100%;
+        background-color: #000;
         background-image: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.6) 100%), url(../imagenes/local/local1.jpeg);
         background-position: center;
         background-size: cover;
