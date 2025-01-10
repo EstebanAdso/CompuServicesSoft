@@ -12,7 +12,7 @@ let indice = 0; // Comenzamos desde el primer índice
 
 function cambiarImagen() {
     document.getElementById('containerPrincipal__img').style.backgroundImage = 'url(' + imagenes[indice] + ')';
-    indice = (indice + 1) % imagenes.length; 
+    indice = (indice + 1) % imagenes.length;
 }
 
 setInterval(cambiarImagen, 10000);
@@ -46,14 +46,14 @@ cambiarImagen();
 
 
 //Parpadear Boton De bajar
-link = document.querySelector('.containerPrincipal__down'); 
+link = document.querySelector('.containerPrincipal__down');
 
 function triggerAnimation() {
     link.classList.add('link-grow-twice');
-    
+
     setTimeout(() => {
         link.classList.remove('link-grow-twice');
-    }, 800); 
+    }, 800);
 }
 setInterval(triggerAnimation, 5000);
 
@@ -71,13 +71,13 @@ function updateActiveItem() {
 // Inicializa la clase activa en la carga de la página
 updateActiveItem();
 
-next.addEventListener('click', function() {
+next.addEventListener('click', function () {
     let items = document.querySelectorAll('.slide .item');
     document.querySelector('.slide').appendChild(items[0]);
     updateActiveItem(); // Actualiza la clase activa después de cambiar
 });
 
-prev.addEventListener('click', function() {
+prev.addEventListener('click', function () {
     let items = document.querySelectorAll('.slide .item');
     document.querySelector('.slide').prepend(items[items.length - 1]);
     updateActiveItem(); // Actualiza la clase activa después de cambiar

@@ -21,7 +21,7 @@ btnContacto.addEventListener('click', (e) => {
     modalContacto.style.display = 'flex';
 });
 
-btnCerrar.addEventListener('click', (e) =>{
+btnCerrar.addEventListener('click', (e) => {
     e.preventDefault()
     modalContacto.style.display = 'none'
 })

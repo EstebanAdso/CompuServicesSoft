@@ -68,12 +68,12 @@ function limpiarOpcionesDisco() {
 function actualizarCarrito(selectId, selectedOption) {
     const carritoList = document.querySelector('#carrito');
     const totalElement = document.querySelector('#total');
-
+    let precio = parseFloat(selectedOption.dataset.precio);
+    let nombre = selectedOption.textContent.split(' - ')[0];
     const index = carrito.findIndex(item => item.id === selectId);
 
     if (selectedOption.value) {
-        let precio = parseFloat(selectedOption.dataset.precio);
-        let nombre = selectedOption.textContent.split(' - ')[0];
+        
         if (selectId === 'ram') {
             const cantidad = parseInt(cantidadRam.value, 10) || 1;
             precio *= cantidad;
@@ -102,17 +102,18 @@ function actualizarCarrito(selectId, selectedOption) {
         li.textContent = item.nombre;
         carritoList.appendChild(li);
         total += item.precio;
+
     });
     totalElement.textContent = `Total: $${formatNumber(total)}`;
-    
+
     validar()
 }
 
-function validar(){
+function validar() {
     const totalElement = document.querySelector('#total');
     const descuentoElement = document.querySelector('#descuento');
     const tecladoMouseElement = document.querySelector('#tecladoMouse');
-    
+
     const tieneProcesador = carrito.some(item => item.id === 'procesador');
     const tieneRam = carrito.some(item => item.id === 'ram');
     const tieneBoard = carrito.some(item => item.id === 'board');
@@ -131,7 +132,7 @@ function validar(){
         totalElement.classList.remove('green');
         totalElement.classList.add('tachado')
         descuentoElement.textContent = `Total con descuento: $${formatNumber(totalConDescuento)}`;
-        
+
         if (tieneMonitor) {
             tecladoMouseElement.textContent = 'Obsequio: Teclado y Mouse: Gratis 🎁';
         } else {

@@ -3,19 +3,19 @@ const ApiCategoria = 'http://localhost:8084/categoria';
 
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
-    const categoriaId = params.get('categoria'); 
+    const categoriaId = params.get('categoria');
 
     listarCategorias()
 
     if (categoriaId) {
-        listarProductosPorCategoria(categoriaId); 
+        listarProductosPorCategoria(categoriaId);
     } else {
-        listarProductos(); 
+        listarProductos();
     }
 });
 
 function excluirCategorias() {
-    return [7 , 9, 13, 24, 25, 26, 29, 30, 32, 33 ];
+    return [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
 }
 
 // Función para listar todos los productos excluyendo ciertas categorías

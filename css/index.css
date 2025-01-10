@@ -1,13 +1,12 @@
-
 /*---------------------------------------------Modal promociones*/
-.modal__title{
+.modal__title {
     color: #bb1717;
     text-align: center;
     margin: 0;
     font-size: 2em;
 }
 
-.modal__text{
+.modal__text {
     color: #444;
     font-size: 16px;
     margin: 10px 0 0 0;
@@ -15,7 +14,7 @@
     text-align: justify;
 }
 
-.modal__content{
+.modal__content {
     border-radius: 20px;
     background-color: #fff;
     padding: 10px 20px;
@@ -25,19 +24,19 @@
     position: relative;
 }
 
-.modal__content img{
-   position: relative;
-   width: 60%;
-   height: 60%;
-   top: 0;
-   right: 0;
-   left: 0;
-   bottom: 0;
-   margin: auto;
-   display: flex;
+.modal__content img {
+    position: relative;
+    width: 60%;
+    height: 60%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
 }
 
-.modal__button{
+.modal__button {
     position: absolute;
     right: 0;
     top: 0;
@@ -49,19 +48,19 @@
     cursor: pointer;
 }
 
-.modal__precio{
+.modal__precio {
     padding: 0;
     margin: 0;
     text-align: center;
     font-size: 1.1em;
 }
 
-.modal__content span{
+.modal__content span {
     color: green;
     font-size: 1.2em;
 }
 
-dialog{
+dialog {
     position: absolute;
     height: 60vh;
     width: 40%;
@@ -71,7 +70,7 @@ dialog{
     border-radius: 20px;
     position: fixed;
     padding: 0;
-    background-color: #fff; 
+    background-color: #fff;
 }
 
 dialog {
@@ -79,45 +78,45 @@ dialog {
 }
 
 /*---------------------------------------------CONTACTO WSP*/
-.contacto_wsp{
+.contacto_wsp {
     position: fixed;
     right: 20px;
     bottom: 30px;
     z-index: 2;
 }
 
-.contacto_wsp form button{
+.contacto_wsp form button {
     background-color: transparent;
     border: none;
-    padding: 0; 
-    cursor: pointer; 
-    outline: none; 
+    padding: 0;
+    cursor: pointer;
+    outline: none;
     width: 60px;
     height: 60px;
-    transition: transform 0.2s ease; 
+    transition: transform 0.2s ease;
     opacity: 0.8;
 }
 
-.contacto_wsp form button img{
+.contacto_wsp form button img {
     width: 65px;
     height: 65px;
 }
 
 .contacto_wsp form button:hover {
-    transform: scale(1.2); 
+    transform: scale(1.2);
     opacity: 1;
 }
 
 
 
 /*--------------------------------------------PAGINA PRINCIPAL*/
-.containerPrincipal{
+.containerPrincipal {
     background-color: black;
     animation: aparecer 1s 0.2s both;
     height: 100dvh;
 }
 
-.containerPrincipal__content{
+.containerPrincipal__content {
     z-index: 100;
     margin-top: 100px;
 }
@@ -133,11 +132,9 @@ dialog {
     background-size: cover;
     background-position: center;
     animation: bg-fade 10s infinite ease-in-out;
-    transition: background-image 0.9s ease-in-out; 
-    mask-image: linear-gradient(
-        black 90%,
-        transparent
-    );  
+    transition: background-image 0.9s ease-in-out;
+    mask-image: linear-gradient(black 90%,
+            transparent);
 }
 
 .dark-overlay {
@@ -146,8 +143,8 @@ dialog {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    pointer-events: none; 
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
     transition: opacity 0.5s ease-in-out;
 }
 
@@ -159,10 +156,10 @@ dialog {
     align-items: center;
     font-size: clamp(2em, 5vw, 5em);
     text-shadow: 0 0 20px black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#parrafoPrincipal{
+#parrafoPrincipal {
     color: rgb(162, 145, 164);
     display: flex;
     justify-content: center;
@@ -171,11 +168,11 @@ dialog {
     font-weight: bold;
     text-align: center;
     font-size: clamp(1em, 5vw, 2em);
-    position:absolute;
+    position: absolute;
     bottom: 120px;
 }
 
-.containerPrincipal__down{
+.containerPrincipal__down {
     width: 100px;
     height: auto;
     margin: auto;
@@ -185,7 +182,7 @@ dialog {
     align-items: center;
 }
 
-.containerPrincipal__down a{
+.containerPrincipal__down a {
     font-size: clamp(3em, 8vw, 8em);
     user-select: none;
     text-shadow: 0 0 20px rgb(47, 47, 47);
@@ -193,40 +190,43 @@ dialog {
     transition: color 0.5s;
 }
 
-.containerPrincipal__down a:hover{
+.containerPrincipal__down a:hover {
     color: rgb(26, 128, 111);
 }
 
-.containerPrincipal__contactos{
+.containerPrincipal__contactos {
     position: absolute;
     bottom: 60px;
     left: 30px;
     width: auto;
     align-items: center;
 }
+
 .containerPrincipal__contactos ul {
     align-items: center;
     justify-content: center;
     user-select: none;
 }
 
-.containerPrincipal__contactos ul li{
+.containerPrincipal__contactos ul li {
     font-size: clamp(2em, 5vw, 3em);
     display: inline-block;
     color: white;
     margin-left: 20px;
 }
-.containerPrincipal__contactos ul li a{
+
+.containerPrincipal__contactos ul li a {
     color: white;
     transition-property: color;
-    transition-duration: 0.4s;  
+    transition-duration: 0.4s;
 }
-.containerPrincipal__contactos ul li a:hover{
+
+.containerPrincipal__contactos ul li a:hover {
     color: rgb(26, 128, 111);
 }
 
 @media (max-width: 1100px) {
-    .containerPrincipal__contactos{
+    .containerPrincipal__contactos {
         position: absolute;
         bottom: 60px;
         left: 0px;
@@ -245,17 +245,18 @@ dialog {
         margin: auto;
     }
 
-    .containerPrincipal__contactos ul li{
-        margin-left: 0px; 
+    .containerPrincipal__contactos ul li {
+        margin-left: 0px;
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 400px) {
 
     #containerPrincipal__img h1 {
         font-size: clamp(2em, 5vw, 5em);
     }
-    .containerPrincipal__down a{
+
+    .containerPrincipal__down a {
         font-size: clamp(4em, 8vw, 8em);
     }
 }
@@ -268,12 +269,12 @@ dialog {
     margin-bottom: 20px;
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; 
-    justify-content: center; 
+    flex-wrap: wrap;
+    justify-content: center;
     box-sizing: border-box;
 }
 
-.contenedorCentralButton{
+.contenedorCentralButton {
     animation: aparecer, slideIn both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
@@ -285,19 +286,19 @@ dialog {
     padding: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 360px; 
-    float: left;  
-    cursor: pointer; 
+    max-width: 360px;
+    float: left;
+    cursor: pointer;
     margin-bottom: 20px;
     height: 400px;
     transition: transform 0.4s ease;
 }
 
-.contenedorCentral_carta:hover{
+.contenedorCentral_carta:hover {
     transform: scale(1.05);
 }
 
-.contenedorCentral__catalogoImagen{
+.contenedorCentral__catalogoImagen {
     height: 60%;
     width: 100%;
     overflow: hidden;
@@ -316,17 +317,17 @@ dialog {
     transform: scale(1.2) rotate(3deg);
 }
 
-.contenedorCentral__content{
+.contenedorCentral__content {
     height: 40%;
 }
 
-.contenedorCentral_carta:hover{
+.contenedorCentral_carta:hover {
     outline: 1px solid #777;
 }
 
 .contenedorCentral_carta h3 {
     font-size: 1.2em;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 .contenedorCentral_carta p {
@@ -335,7 +336,7 @@ dialog {
 }
 
 .link-grow-twice {
-    animation: grow-twice  0.8s ease-in-out;
+    animation: grow-twice 0.8s ease-in-out;
     color: #bb1717;
 }
 
@@ -351,7 +352,7 @@ dialog {
     overflow: hidden;
 }
 
-.productosPopulares .container{
+.productosPopulares .container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -359,10 +360,10 @@ dialog {
     height: 100%;
     background-color: #f5f5f5;
     box-shadow: 0 30px 50px #dbdbdb;
-    width: 100%;  
+    width: 100%;
 }
 
-.container .slide .item{
+.container .slide .item {
     width: 200px;
     height: 300px;
     position: absolute;
@@ -378,14 +379,15 @@ dialog {
 
 
 .slide .item:nth-child(1),
-.slide .item:nth-child(2){
+.slide .item:nth-child(2) {
     top: 0;
     left: 0;
-    transform: translate(0,0);
+    transform: translate(0, 0);
     border-radius: 0;
     width: 100%;
     height: 100%;
 }
+
 .slide .item:nth-child(1)::before,
 .slide .item:nth-child(2)::before {
     content: "";
@@ -419,31 +421,31 @@ dialog {
 }
 
 .item .content {
-    position: relative; 
+    position: relative;
     z-index: 2;
     color: #eee;
 }
 
-.slide .item:nth-child(3){
+.slide .item:nth-child(3) {
     left: 50%;
 }
 
-.slide .item:nth-child(4){
+.slide .item:nth-child(4) {
     left: calc(50% + 220px);
 }
 
-.slide .item:nth-child(5){
+.slide .item:nth-child(5) {
     left: calc(50% + 440px);
 }
 
-.slide .item:nth-child(n + 6){
+.slide .item:nth-child(n + 6) {
     left: calc(50% + 660px);
     opacity: 0;
     display: none;
 }
 
 
-.item .content{
+.item .content {
     position: absolute;
     top: 50%;
     left: 100px;
@@ -455,11 +457,11 @@ dialog {
     display: none;
 }
 
-.slide .item:nth-child(2) .content{
+.slide .item:nth-child(2) .content {
     display: block;
 }
 
-.content .name{
+.content .name {
     font-size: clamp(1em, 4vw, 1.3em);
     text-transform: uppercase;
     font-weight: bold;
@@ -467,14 +469,14 @@ dialog {
     animation: animate 1s ease-in-out 1 forwards;
 }
 
-.content .des{
+.content .des {
     margin-top: 10px;
     margin-bottom: 20px;
     opacity: 0;
     animation: animate 1s ease-in-out 0.3s 1 forwards;
 }
 
-.content a{
+.content a {
     font-size: clamp(0.8em, 4vw, 1em);
     padding: 8px 20px;
     background-color: #eee;
@@ -489,34 +491,34 @@ dialog {
     transition: 0.3s ease-in-out;
 }
 
-.content a:hover{
+.content a:hover {
     color: #eee;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     background-color: blueviolet;
 }
 
-@keyframes animate{
-    from{
+@keyframes animate {
+    from {
         opacity: 0;
         transform: translate(0, 100px);
         filter: blur(33px);
     }
 
-    to{
+    to {
         opacity: 1;
         transform: translate(0);
         filter: blur(0);
     }
 }
 
-.container .button{
+.container .button {
     width: 100%;
     text-align: center;
     position: absolute;
     bottom: 20px;
 }
 
-.container .button button{
+.container .button button {
     width: 40px;
     height: 35px;
     border-radius: 8px;
@@ -527,57 +529,57 @@ dialog {
     transition: 0.3s;
 }
 
-.container .button button:hover{
+.container .button button:hover {
     background-color: #ababab;
     color: #fff;
 }
 
 @media (max-width: 1440px) {
-    .slide .item:nth-child(5){
+    .slide .item:nth-child(5) {
         display: none;
     }
 
-    .slide .item:nth-child(6){
+    .slide .item:nth-child(6) {
         display: none;
     }
 
-    .slide .item:nth-child(7){
+    .slide .item:nth-child(7) {
         display: none;
     }
 }
 
 @media (max-width: 950px) {
-    .slide .item:nth-child(4){
+    .slide .item:nth-child(4) {
         display: none;
     }
-  
-    .slide .item:nth-child(3){
+
+    .slide .item:nth-child(3) {
         left: calc(50% + 150px);
     }
 }
 
 @media (max-width: 770px) {
-    .slide .item:nth-child(3){
+    .slide .item:nth-child(3) {
         display: none;
     }
 
     .item .content {
         position: absolute;
-        top: 50%; 
-        left: 50%; 
+        top: 50%;
+        left: 50%;
         width: 90%;
-        transform: translate(-50%, -50%); 
+        transform: translate(-50%, -50%);
         text-align: center;
         color: #eee;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         display: none;
     }
-     
-    .slide .item:nth-child(2) .content{
+
+    .slide .item:nth-child(2) .content {
         display: block;
     }
-    
-    .content .name{
+
+    .content .name {
         font-size: clamp(1.4em, 4vw, 1.3em);
         margin: 10px;
         text-transform: uppercase;
@@ -585,15 +587,15 @@ dialog {
         opacity: 0;
         animation: animate 1s ease-in-out 1 forwards;
     }
-    
-    .content .des{
+
+    .content .des {
         font-size: clamp(1em, 4vw, 1.3em);
         margin-bottom: 20px;
         opacity: 0;
         animation: animate 1s ease-in-out 0.3s 1 forwards;
     }
-    
-    .content a{
+
+    .content a {
         font-size: clamp(1em, 4vw, 1.3em);
         padding: 5px 20px;
         border: none;
@@ -601,18 +603,19 @@ dialog {
         opacity: 0;
         animation: animate 1s ease-in-out 0.6s 1 forwards;
     }
+
     .productosPopulares {
-       height: calc(100vh - 60px);
-       margin-bottom: 0;
+        height: calc(100vh - 60px);
+        margin-bottom: 0;
     }
 
-    #tituloCarrusel{
+    #tituloCarrusel {
         margin-top: 50px;
         margin-bottom: 0;
         padding: 10px;
     }
 
-    .container .button{
+    .container .button {
         width: 100%;
         text-align: center;
         position: absolute;
@@ -621,7 +624,7 @@ dialog {
 }
 
 /*-----------------------------------------------ARMAR*/
-.armar{
+.armar {
     color: rgb(255, 255, 255);
     height: 50dvh;
     width: 100%;
@@ -631,7 +634,7 @@ dialog {
     margin-top: 30px;
 }
 
-.armar-contenido{
+.armar-contenido {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../imagenes/fondos/armar.webp);
     height: 100%;
     max-width: 1500px;
@@ -646,22 +649,24 @@ dialog {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 @media (max-width: 1510px) {
-    .armar-contenido{
+    .armar-contenido {
         border-radius: 0px;
     }
 }
 
 @media (max-width: 920px) {
-    .armar{
+    .armar {
         margin-top: 0px;
     }
 }
-.armar-contenido h2{
+
+.armar-contenido h2 {
     max-width: 900px;
 }
 
-.armar-contenido a{
+.armar-contenido a {
     text-decoration: none;
     padding: 15px 40px;
     background-color: blueviolet;
@@ -671,12 +676,13 @@ dialog {
     transition: transform 0.3s ease-in-out;
 }
 
-.armar-contenido a:hover{
+.armar-contenido a:hover {
     background-color: rgb(126, 43, 204);
     transform: scale(1.1);
 }
+
 /*-----------------------------------------------ABOUT*/
-.about{
+.about {
     max-width: 1600px;
     width: 85%;
     display: flex;
@@ -691,7 +697,7 @@ dialog {
     animation-range: cover 10% cover 40%;
 }
 
-.about-seccion{
+.about-seccion {
     font-size: clamp(0.8em, 4vw, 1.2em);
     width: 50%;
     display: flex;
@@ -699,15 +705,15 @@ dialog {
     align-items: center;
 }
 
-.about-seccion-content{
-   max-width: 100%;
-   padding: 0 20px;
-   animation: aparecer, slideIn both;
-   animation-timeline: view();
-   animation-range: cover 10% cover 40%;
+.about-seccion-content {
+    max-width: 100%;
+    padding: 0 20px;
+    animation: aparecer, slideIn both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 40%;
 }
 
-.about-seccion a{
+.about-seccion a {
     text-decoration: none;
     letter-spacing: 1px;
     background-color: #000;
@@ -721,17 +727,17 @@ dialog {
     transform: scale(1);
 }
 
-.about-seccion a:hover{
+.about-seccion a:hover {
     background-color: rgb(77, 9, 140);
     transform: scale(1.02);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.about-seccion p{
+.about-seccion p {
     text-align: left;
 }
 
-.about-imagen{
+.about-imagen {
     width: 50%;
     height: 70%;
     animation: aparecer, slideOut both;
@@ -739,7 +745,7 @@ dialog {
     animation-range: cover 10% cover 40%;
 }
 
-.about-imagen img{
+.about-imagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -747,9 +753,9 @@ dialog {
 }
 
 @media (max-width: 1920px) {
-    .about{
-       max-width: 1500px;
-       margin-top: 80px;
+    .about {
+        max-width: 1500px;
+        margin-top: 80px;
     }
 }
 
@@ -798,7 +804,7 @@ dialog {
         height: 100dvh;
         margin-top: 0px;
     }
-    
+
     .about-imagen {
         display: none;
     }
@@ -811,7 +817,7 @@ dialog {
 }
 
 /*------------------------------------------------SERVICIOS*/
-.servicios{
+.servicios {
     width: 100%;
     max-width: 1600px;
     display: flex;
@@ -827,7 +833,7 @@ dialog {
     animation-range: cover 10% cover 40%;
 }
 
-.servicios-card{
+.servicios-card {
     width: 480px;
     height: 500px;
     display: flex;
@@ -836,16 +842,16 @@ dialog {
     border: 1px solid black;
     padding: 10px;
     border-radius: 10px;
-    overflow: hidden; 
+    overflow: hidden;
     transition: transform 0.6s ease-in-out;
 }
 
-.card-img{
+.card-img {
     height: 60%;
     position: relative;
 }
 
-.card-img img{
+.card-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -857,22 +863,22 @@ dialog {
 }
 
 .card-img img:nth-child(1) {
-    opacity: 1; 
+    opacity: 1;
 }
 
 .card-img img:nth-child(2) {
-    opacity: 0; 
+    opacity: 0;
 }
 
 .servicios-card:hover img:nth-child(1) {
-    opacity: 0; 
+    opacity: 0;
 }
 
 .servicios-card:hover img:nth-child(2) {
-    opacity: 1; 
+    opacity: 1;
 }
 
-.card-contenido{
+.card-contenido {
     height: 40%;
     text-align: center;
 
@@ -881,35 +887,43 @@ dialog {
 /*------------------------------------------------Animaciones*/
 @keyframes modalOpen {
     0% {
-      opacity: 0;
-      transform: scale(0.4);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes aparecer {
-    from {
         opacity: 0;
+        transform: scale(0.4);
     }
-    to {
+
+    100% {
         opacity: 1;
-      
+        transform: scale(1);
     }
 }
 
-  @keyframes grow-twice {
-    0%, 100% {
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+
+    }
+}
+
+@keyframes grow-twice {
+
+    0%,
+    100% {
         transform: scale(1);
         color: #f04800;
     }
-    20%, 60% {
+
+    20%,
+    60% {
         transform: scale(1.2);
         color: #c0e8f5;
     }
-    40%, 80% {
+
+    40%,
+    80% {
         transform: scale(1);
         color: #f65605;
     }
@@ -917,33 +931,35 @@ dialog {
 
 @keyframes slideIn {
     0% {
-      transform: translateX(-15%);
-      opacity: 0;
+        transform: translateX(-15%);
+        opacity: 0;
     }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
 
-  @keyframes slideOut {
-    0% {
-      transform: translateX(15%);
-      opacity: 0;
-    }
     100% {
-      transform: translateX(0);
-      opacity: 1;
+        transform: translateX(0);
+        opacity: 1;
     }
-  }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateX(15%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
 @media (max-width: 1920px) {
     .contenedorCentral {
         max-width: 1520px;
-    } 
+    }
 
 
-    #titleServicios{
+    #titleServicios {
         margin-top: 80px;
     }
 
@@ -951,11 +967,11 @@ dialog {
         max-width: 1500px;
     }
 
-    .servicios{
+    .servicios {
         max-width: 1500px;
     }
 
-    .servicios-card{
+    .servicios-card {
         max-width: 450px;
         width: 80%;
         height: 580px;
@@ -964,15 +980,16 @@ dialog {
 
 
 @media (max-width: 430px) {
-    .about{
+    .about {
         max-width: 1500px;
-     }
-    .card-contenido{
+    }
+
+    .card-contenido {
         height: auto;
         margin-top: 0px;
     }
 
-    #titleServicios{
+    #titleServicios {
         margin-top: 40px;
     }
 

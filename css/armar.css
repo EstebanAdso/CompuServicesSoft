@@ -1,80 +1,89 @@
 body {
-    padding-top: 60px; /* Add padding to the top of the body to prevent content from being hidden behind the fixed header */
+  padding-top: 60px;
+  /* Add padding to the top of the body to prevent content from being hidden behind the fixed header */
 }
 
-h2{
+h2 {
   padding: 0px;
   margin-bottom: 8px;
 }
-h3{
+
+h3 {
   margin-left: 15px;
 }
 
-.contenido{
+.contenido {
   display: flex;
   width: 90%;
   max-width: 1700px;
   margin: auto;
 }
 
-#nota{
-    margin: 0;
-    padding: 0;
-    padding-bottom: 20px;
-    text-align: center;
-    color: green;
-    font-weight: bold;
-    width: 100%;
-    margin: auto;
+#nota {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 20px;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  width: 100%;
+  margin: auto;
 }
 
 form {
-    margin: auto;
-    width: 55%;
-  }
-  .form-group {
-    margin-bottom: 15px;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    margin-left: 10px;
-  }
-  .form-group select, .form-group input {
-    width: 90%;
-    padding: 6px;
-    margin-left: 10px;
-    font-size: clamp(0.5em, 3.5vw, 1em);
-    border-radius: 7px;
-  }
+  margin: auto;
+  width: 55%;
+}
 
-  .form-group select:hover, .form-group input:hover {
-    cursor: pointer;
-  }
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+.form-group select,
+.form-group input {
+  width: 90%;
+  padding: 6px;
+  margin-left: 10px;
+  font-size: clamp(0.5em, 3.5vw, 1em);
+  border-radius: 7px;
+}
+
+.form-group select:hover,
+.form-group input:hover {
+  cursor: pointer;
+}
 
 
-  .optional {
-    font-size: clamp(0.4em, 3.5vw, 0.8em);
-    color: gray;
-  }
-  #agregarConfiguracion {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  #agregarConfiguracion:hover {
-    background-color: #0056b3;
-  }
+.optional {
+  font-size: clamp(0.4em, 3.5vw, 0.8em);
+  color: gray;
+}
 
-  /* resultado */
+#agregarConfiguracion {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#agregarConfiguracion:hover {
+  background-color: #0056b3;
+}
+
+/* resultado */
 #resultado {
   width: 45%;
 }
 
-.carritoP{
+.carritoP {
   width: 100%;
   z-index: 10;
   height: 100%;
@@ -86,11 +95,11 @@ form {
 
 }
 
-#resultado ol{
+#resultado ol {
   padding: 0;
 }
 
-#resultado ol .liPromocion{
+#resultado ol .liPromocion {
   color: green;
   font-size: clamp(0.8em, 4vw, 1em);
   width: 100%;
@@ -98,19 +107,19 @@ form {
 }
 
 #carrito {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 120px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 120px;
 }
 
 #carrito li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: clamp(0.5em, 3.5vw, 1em);
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: clamp(0.5em, 3.5vw, 1em);
 }
 
 #carrito li:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 #total {
@@ -121,7 +130,7 @@ form {
   font-size: clamp(0.7em, 3.6vw, 1.2em);
 }
 
-#descuento{
+#descuento {
   position: absolute;
   bottom: 40px;
   right: 30px;
@@ -131,7 +140,7 @@ form {
 
 }
 
-#tecladoMouse{
+#tecladoMouse {
   position: absolute;
   bottom: 0px;
   right: 30px;
@@ -141,28 +150,28 @@ form {
 }
 
 @media (max-width: 800px) {
-  .contenido{
+  .contenido {
     flex-direction: column;
     margin: auto;
   }
 
-  form{
+  form {
     width: 95%;
   }
 
-  #resultado{
+  #resultado {
     width: 90%;
     margin: auto;
     margin-top: 50px;
   }
-  
+
 }
 
 .tachado {
-    text-decoration: line-through;
-    color: red;
+  text-decoration: line-through;
+  color: red;
 }
 
-.green{
+.green {
   color: #27ae60;
 }
