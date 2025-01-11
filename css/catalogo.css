@@ -10,6 +10,46 @@
     top: 90px;
 }
 
+.notificacion {
+    background-color: #fff3cd; 
+    border: 1px solid #ffeeba; 
+    color: #856404; 
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; 
+    position: relative;
+    width: 87%;
+}
+
+.notificacion i {
+    font-size: 20px;
+    color: #856404; 
+}
+
+.btn-cerrar {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #856404;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cerrar:hover {
+    background-color: rgba(133, 100, 4, 0.1);
+}
+
+
 .content__products {
     max-width: 100%;
     min-width: 300px;
@@ -256,6 +296,9 @@
 
 
 @media screen and (max-width: 1100px) {
+    .container_productos {
+        top: 60px;
+    }
     .content__products__sidebar {
         position: fixed;
         top: auto;
@@ -264,9 +307,9 @@
         overflow-x: auto;
         white-space: nowrap;
         width: 100%;
-        padding: 10px 0;
         z-index: 10;
         background-color: #fff;
+        padding: 10px;
     }
 
     .content__products__sidebarTitle {
@@ -322,5 +365,44 @@
     .contenedorCentral {
         justify-content: center;
     }
+
+    
+    .notificacion { 
+        padding: 10px;
+        margin-bottom: 0px;
+        margin-top: 90px;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px; 
+        position: relative;
+        width: 100%;
+    }
+
+    .notificacion i {
+        font-size: 20px;
+        color: #856404; 
+    }
+
+    .btn-cerrar {
+        background: none;
+        border: none;
+        font-size: 16px;
+        color: #856404;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 5px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-cerrar:hover {
+        background-color: rgba(133, 100, 4, 0.1);
+    }
+
 
 }

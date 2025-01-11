@@ -166,3 +166,11 @@ function formatNumber(number) {
 
 
 
+function cerrarNotificacion() {
+    const notificacion = document.getElementById("notificacion");
+    if (notificacion) {
+        notificacion.style.transition = "opacity 0.5s ease";
+        notificacion.style.opacity = "0"; // Animación de desvanecimiento
+        setTimeout(() => notificacion.remove(), 500); // Eliminar del DOM después de la animación
+    }
+}

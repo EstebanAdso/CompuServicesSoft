@@ -1,11 +1,13 @@
 let imagenes = [
-    'imagenes/fondos/pc-gaming-setup-rgb-4k-ft1ym37yjyb7lp19.jpg',
-    'imagenes/fondos/set2.jpg',
-    'imagenes/fondos/set3.jpg',
-    'imagenes/fondos/set4.jpg',
-    'imagenes/fondos/set5.jpg',
-    'imagenes/fondos/set6.jpg',
-    'imagenes/fondos/setup.webp',
+    'imagenes/fondos/IASETUP1.webp',
+    'imagenes/fondos/IASETUP2.webp',
+    'imagenes/fondos/IASETUP3.webp',
+    'imagenes/fondos/IASETUP4.webp',
+    'imagenes/fondos/IASETUP5.webp',
+    'imagenes/fondos/IASETUP6.webp',
+    'imagenes/fondos/IASETUP7.webp',
+    'imagenes/fondos/IASETUP8.webp',
+    'imagenes/fondos/IASETUP9.webp',
 ];
 
 let indice = 0; // Comenzamos desde el primer índice

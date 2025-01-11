@@ -174,7 +174,7 @@ cantidadRam.addEventListener('change', () => {
 const gabineteOption = document.createElement('option');
 gabineteOption.value = 'gabinete-basico-rgb';
 gabineteOption.dataset.precio = 300000;
-gabineteOption.textContent = 'Gabinete 4 fans RGB - $300,000';
+gabineteOption.textContent = 'GABINETE 4 FANS RGB - $300,000';
 document.querySelector('#gabinete').appendChild(gabineteOption);
 
 document.querySelector('#gabinete').addEventListener('change', (event) => {
