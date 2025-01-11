@@ -66,7 +66,7 @@ function limpiarOpcionesDisco() {
 }
 
 function actualizarCarrito(selectId, selectedOption) {
-    const carritoList = document.querySelector('#carrito');
+    const carritoTabla = document.querySelector('#carritoTabla');
     const totalElement = document.querySelector('#total');
     let precio = parseFloat(selectedOption.dataset.precio);
     let nombre = selectedOption.textContent.split(' - ')[0];
@@ -94,14 +94,24 @@ function actualizarCarrito(selectId, selectedOption) {
         carrito.splice(index, 1);
     }
 
-    carritoList.innerHTML = '';
+    carritoTabla.innerHTML = '';
     let total = 0;
 
     carrito.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item.nombre;
-        carritoList.appendChild(li);
-        total += item.precio;
+        const tr = document.createElement('tr');
+
+        const nombreProducto = document.createElement('td');
+        nombreProducto.textContent = item.nombre.split(' - ')[0];
+        console.log(item)
+        tr.appendChild(nombreProducto)
+
+        const precioProducto = document.createElement('td');
+        precioProducto.textContent ='$' + formatNumber(item.precio);
+        tr.appendChild(precioProducto)
+
+        carritoTabla.appendChild(tr)
+
+        total += item.precio
 
     });
     totalElement.textContent = `Total: $${formatNumber(total)}`;

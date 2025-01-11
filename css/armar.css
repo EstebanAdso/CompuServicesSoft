@@ -92,11 +92,10 @@ form {
   border-radius: 8px;
   justify-content: center;
   height: fit-content;
-
 }
 
 #resultado ol {
-  padding: 0;
+  padding: 0 20px;
 }
 
 #resultado ol .liPromocion {
@@ -106,47 +105,78 @@ form {
   margin: 4px;
 }
 
-#carrito {
-  list-style: none;
-  padding: 0;
+#carritoTabla {
   margin-bottom: 120px;
 }
 
-#carrito li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  font-size: clamp(0.5em, 3.5vw, 1em);
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: clamp(0.6em, 5vw, 1em);
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#carrito li:last-child {
-  border-bottom: none;
+/* Estilos para el encabezado de la tabla */
+table thead th {
+  background-color: #000000;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  border: 2px solid black;
+}
+
+thead tr th{
+  border: 2px solid #fff;
+}
+
+thead tr th:last-child{
+  border: 2px solid #fff;
+  width: 30%;
+}
+
+/* Estilos para las filas de la tabla */
+table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Estilos para las celdas */
+table td, table th {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+table td {
+  color: #333;
+  font-weight: 500;
 }
 
 #total {
-  position: absolute;
-  bottom: 80px;
-  right: 30px;
   font-weight: bold;
   font-size: clamp(0.7em, 3.6vw, 1.2em);
+  text-align: right;
+  margin: 10px;
 }
 
 #descuento {
-  position: absolute;
-  bottom: 40px;
-  right: 30px;
   color: #27ae60;
   font-weight: bold;
   font-size: clamp(0.7em, 3.6vw, 1.2em);
-
+  text-align: right;
+  margin: 10px;
 }
 
 #tecladoMouse {
-  position: absolute;
-  bottom: 0px;
-  right: 30px;
   font-weight: bold;
   color: rgb(211, 146, 25);
   font-size: clamp(0.7em, 3.6vw, 1.2em);
+  text-align: right;
+  margin: 10px;
 }
 
 @media (max-width: 800px) {
@@ -163,6 +193,7 @@ form {
     width: 90%;
     margin: auto;
     margin-top: 50px;
+    padding-bottom: 50px;
   }
 
 }

@@ -46,6 +46,7 @@
 
   <div class="contenido">
 
+
     <form id="configForm">
       <h2>Arma tu computadora!</h2>
 
@@ -141,15 +142,27 @@
       </ol>
       <div class="carritoP">
         <h3>Carrito</h3>
-        <ul id="carrito"></ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="carritoTabla">
+            <!-- Contenido Dinamico -->
+          </tbody>
+        </table>
+
         <p id="total">Total: $0</p>
         <p id="descuento"></p>
         <p id="tecladoMouse"></p>
       </div>
     </div>
+  </div>
 
-    <script src="../js/funciones.js"></script>
-    <script src="../js/armar.js"></script>
+  <script src="../js/funciones.js"></script>
+  <script src="../js/armar.js"></script>
 </body>
 
 </html>
