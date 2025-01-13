@@ -1,5 +1,11 @@
-const ApiProducto = 'http://localhost:8084/producto';
-const ApiCategoria = 'http://localhost:8084/categoria';
+// Configuración de la URL base para manejar entornos local y producción
+const baseURL = window.location.hostname.includes('localhost')
+  ? 'http://localhost:8084'
+  : 'https://imaginative-charisma-production.up.railway.app';
+
+// Endpoints dinámicos
+const ApiProducto = `${baseURL}/producto`;
+const ApiCategoria = `${baseURL}/categoria`;
 
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);

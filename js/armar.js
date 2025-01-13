@@ -1,4 +1,8 @@
-const ApiProductosPorCategoria = 'http://localhost:8084/producto/categoria/';
+const baseURL = window.location.hostname.includes('localhost')
+  ? 'http://localhost:8084'
+  : 'https://imaginative-charisma-production.up.railway.app';
+
+const ApiProductosPorCategoria = `${baseURL}/producto/categoria/`;
 const selectElements = {
     procesador: document.querySelector('#procesador'),
     ram: document.querySelector('#ram'),

@@ -1,10 +1,10 @@
 let imagenes = [
-    'imagenes/fondos/IASETUP1.webp',
     'imagenes/fondos/IASETUP2.webp',
     'imagenes/fondos/IASETUP3.webp',
     'imagenes/fondos/IASETUP4.webp',
-    'imagenes/fondos/IASETUP5.webp',
     'imagenes/fondos/IASETUP6.webp',
+    'imagenes/fondos/IASETUP5.webp',
+    'imagenes/fondos/IASETUP1.webp',
     'imagenes/fondos/IASETUP7.webp',
     'imagenes/fondos/IASETUP8.webp',
     'imagenes/fondos/IASETUP9.webp',
