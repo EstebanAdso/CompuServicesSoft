@@ -26,8 +26,15 @@ function fetchProductosPorCategoria(id) {
 function llenarSelect(selectElement, categoriaId) {
     fetchProductosPorCategoria(categoriaId)
         .then(data => {
-            // Filtrar productos que no contengan "laptop" en el nombre
-            const productosFiltrados = data.filter(producto => !producto.nombre.toLowerCase().includes('laptop'));
+            let productosFiltrados = data;
+
+            if (selectElement === selectElements.ram) {
+                // Filtrar productos que contengan "ddr4" o "ddr5" en el nombre y no contengan "laptop"
+                productosFiltrados = data.filter(producto => 
+                    (producto.nombre.toLowerCase().includes('ddr4') || producto.nombre.toLowerCase().includes('ddr5')) && 
+                    !producto.nombre.toLowerCase().includes('laptop')
+                );
+            }
 
             productosFiltrados.forEach(producto => {
                 const option = document.createElement('option');
