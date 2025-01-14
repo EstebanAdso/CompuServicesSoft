@@ -161,7 +161,7 @@
     position: relative;
     animation: aparecer both;
     animation-timeline: view();
-    animation-range: cover 5% cover 40%;
+    animation-range: cover 5% cover 20%;
 }
 
 .contenedorCentral_carta a {
@@ -256,7 +256,7 @@
         position: relative;
         animation: aparecer both;
         animation-timeline: view();
-        animation-range: cover 5% cover 40%;
+        animation-range: cover 5% cover 20%;
     }
 
     .contenedorCentral_carta a {
