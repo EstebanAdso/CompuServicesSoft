@@ -1,6 +1,6 @@
 const baseURL = window.location.hostname.includes('localhost')
-  ? 'http://localhost:8084'
-  : 'https://imaginative-charisma-production.up.railway.app';
+    ? 'http://localhost:8084'
+    : 'https://imaginative-charisma-production.up.railway.app';
 
 const ApiProductosPorCategoria = `${baseURL}/producto/categoria/`;
 const selectElements = {
@@ -77,7 +77,7 @@ function actualizarCarrito(selectId, selectedOption) {
     const index = carrito.findIndex(item => item.id === selectId);
 
     if (selectedOption.value) {
-        
+
         if (selectId === 'ram') {
             const cantidad = parseInt(cantidadRam.value, 10) || 1;
             precio *= cantidad;
@@ -110,7 +110,7 @@ function actualizarCarrito(selectId, selectedOption) {
         tr.appendChild(nombreProducto)
 
         const precioProducto = document.createElement('td');
-        precioProducto.textContent ='$' + formatNumber(item.precio);
+        precioProducto.textContent = '$' + formatNumber(item.precio);
         tr.appendChild(precioProducto)
 
         carritoTabla.appendChild(tr)

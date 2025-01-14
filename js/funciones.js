@@ -12,19 +12,25 @@ document.querySelector('.header__logo').addEventListener('click', () => {
 
 
 //Contacto Modal
-const modalContacto = document.querySelector('.modalContacto')
-const btnContacto = document.querySelector('#contactanos')
-const btnCerrar = document.querySelector('#btnCerrar')
+function setupContactoModal() {
+    const modalContacto = document.querySelector('.modalContacto');
+    const btnContacto = document.querySelectorAll('.contactanos');
+    const btnCerrar = document.querySelector('#btnCerrar');
 
-btnContacto.addEventListener('click', (e) => {
-    e.preventDefault();
-    modalContacto.style.display = 'flex';
-});
+    btnContacto.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalContacto.style.display = 'flex';
+        });
+    });
 
-btnCerrar.addEventListener('click', (e) => {
-    e.preventDefault()
-    modalContacto.style.display = 'none'
-})
+    btnCerrar.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalContacto.style.display = 'none';
+    });
+}
+
+setupContactoModal();
 
 function formatNumber(number) {
     return number.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 2 });

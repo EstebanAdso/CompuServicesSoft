@@ -1,7 +1,7 @@
 // Configuración de la URL base para manejar entornos local y producción
 const baseURL = window.location.hostname.includes('localhost')
-  ? 'http://localhost:8084'
-  : 'https://imaginative-charisma-production.up.railway.app';
+    ? 'http://localhost:8084'
+    : 'https://imaginative-charisma-production.up.railway.app';
 
 // Endpoints dinámicos
 const ApiProducto = `${baseURL}/producto`;
@@ -159,6 +159,9 @@ function listarProductosPorCategoria(categoriaId) {
 
                 contenedor.appendChild(button);
             });
+
+            // Desplazarse hasta arriba de la página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(error => {
             console.error(`Error al listar productos de la categoría ${categoriaId}:`, error);

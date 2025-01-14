@@ -21,7 +21,7 @@
                 <li class="header__li"><a href="#">Inicio</a></li>
                 <li class="header__li"><a href="html/catalogo.html">Catalogo de Productos</a></li>
                 <li class="header__li"><a href="html/armar.html" id="armar">Arma tu Equipo!</a></li>
-                <li class="header__li"><a href="#" id="contactanos">Contactanos</a></li>
+                <li class="header__li"><a href="#" class="contactanos">Contactanos</a></li>
             </ul>
         </nav>
     </header>
@@ -38,13 +38,20 @@
             <h4>Nuestros Contactos</h4>
             <hr>
             <ul>
-                <li><a href=""><i class='bx bxs-map'></i></a></li>
-                <p><a href="">Ubicación: CC la 16 local 138</a></p>
+                <li><a href="https://maps.app.goo.gl/NpB3STsdUhF58hrw9" target="_blank"><i class='bx bxs-map'></i></a>
+                </li>
+                <p><a href="https://maps.app.goo.gl/NpB3STsdUhF58hrw9" target="_blank"><b>Ubicación:</b> CC la 16 local
+                        138</a></p>
             </ul>
             <hr>
             <ul>
-                <li><a href=""><i class='bx bxl-whatsapp'></i></a></li>
-                <p><a href="">whatsapp: +(57) 3242264795</a></p>
+                <li><a href="https://wa.me/+573242264795" target="_blank"><i class='bx bxl-whatsapp'></i></a></li>
+                <p><a href="https://wa.me/+573242264795" target="_blank"><b>whatsapp:</b> +(57) 3242264795</a></p>
+            </ul>
+            <hr>
+            <ul>
+                <li><a href="tel:+573242264795" target="_blank"><i class='bx bxs-phone-call'></i></a></li>
+                <p><a href="tel:+573242264795" target="_blank"><b>Telefono:</b> +(57) 3242264795</a></p>
             </ul>
             <button id="btnCerrar">Cerrar</button>
         </div>
@@ -62,9 +69,10 @@
                 </div>
                 <div class="containerPrincipal__contactos">
                     <ul>
-                        <li><a href=""><i class='bx bxl-whatsapp'></i></a></li>
-                        <li><a href=""><i class='bx bxl-gmail'></i></a></li>
-                        <li><a href=""><i class='bx bxs-phone-call'></i></a></li>
+                        <li><a href="https://wa.me/+573242264795" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+                        </li>
+                        <li><a href="mailto:movilstar138@gmail.com"><i class='bx bxl-gmail'></i></a></li>
+                        <li><a href="tel:+573242264795"><i class='bx bxs-phone-call'></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -391,7 +399,7 @@
         </div>
     </div>
 
-    <div class="about">
+    <div class="about" id="about">
         <div class="about-seccion">
             <div class="about-seccion-content">
                 <h3>¿Quienes Somos?</h3>
@@ -467,9 +475,9 @@
     <footer>
         <ul>
             <li><a href="">Garantia</a></li>
-            <li><a href="">Contactanos</a></li>
-            <li><a href="">Quienes Somos</a></li>
-            <li><a href="">CompuServicesSoft</a></li>
+            <li><a href="#" class="contactanos" onclick="setupContactoModal()">Contactanos</a></li>
+            <li><a href="#about">Quienes Somos</a></li>
+            <li><a href="index.html">CompuServicesSoft</a></li>
             <li><a href="">Politicas de devolucion</a></li>
         </ul>
     </footer>
