@@ -351,12 +351,12 @@
     .contenedorCentral__catalogoImagen {
         display: flex;
         flex-direction: column;
-        height: 370px;
+        height: 380px;
         width: 100%;
     }
 
     .contenedorCentral_img {
-        height: 75%;
+        height: 70%;
     }
 
     .contenedorCentral_img img {
@@ -364,11 +364,10 @@
         height: 100%;
         object-fit: contain;
         border-radius: 5px;
-        padding: 4px;
     }
 
     .contenedorCentral_content {
-        height: 25%;
+        height: 30%;
         overflow: hidden;
         padding-bottom: 5px;
     }
