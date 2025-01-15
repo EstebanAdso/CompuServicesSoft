@@ -24,6 +24,7 @@ function excluirCategorias() {
     return [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
 }
 
+
 // Función para listar todos los productos excluyendo ciertas categorías
 function listarProductos() {
     const categoriasExcluidas = excluirCategorias(); // Obtener las categorías a excluir
@@ -55,19 +56,58 @@ function listarProductos() {
                         <div class="contenedorCentral_content">
                             <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
                             <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
+                            <button class="verDetalles">Ver Detalles</button>
                         </div>
                     </div>
                 `;
 
                 // Añadir el producto al contenedor
                 contenedor.appendChild(button);
+
+                // Evento click para mostrar la descripción del producto
+                const verDetallesBtn = button.querySelector('.verDetalles');
+                verDetallesBtn.addEventListener('click', () => {
+                    // Crear el modal
+                    const modal = document.createElement('div');
+                    modal.classList.add('modal');
+                    
+                    // Contenido del modal
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>${producto.nombre}</h2>
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="modal-image">
+                            <p>${producto.descripcion ? producto.descripcion : 'No hay descripción para este producto.'}</p>
+                        </div>
+                    `;
+
+                    // Añadir el modal al body
+                    document.body.appendChild(modal);
+
+                    // Mostrar el modal
+                    modal.style.display = 'block';
+
+                    // Cerrar el modal al hacer clic en el botón de cerrar
+                    const closeModal = modal.querySelector('.close');
+                    closeModal.addEventListener('click', () => {
+                        modal.style.display = 'none';
+                        modal.remove();
+                    });
+
+                    // Cerrar el modal al hacer clic fuera del contenido del modal
+                    window.addEventListener('click', (event) => {
+                        if (event.target === modal) {
+                            modal.style.display = 'none';
+                            modal.remove();
+                        }
+                    });
+                });
             });
         })
         .catch(error => {
             console.log('Error al traer los productos', error);
         });
 }
-
 
 // Función para listar categorías excluyendo ciertas categorías
 function listarCategorias() {
@@ -153,11 +193,51 @@ function listarProductosPorCategoria(categoriaId) {
                         <div class="contenedorCentral_content">
                             <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
                             <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
+                            <button class="verDetalles">Ver Detalles</button>
                         </div>
                     </div>
                 `;
 
                 contenedor.appendChild(button);
+
+                // Evento click para mostrar la descripción del producto
+                const verDetallesBtn = button.querySelector('.verDetalles');
+                verDetallesBtn.addEventListener('click', () => {
+                    // Crear el modal
+                    const modal = document.createElement('div');
+                    modal.classList.add('modal');
+                    
+                    // Contenido del modal
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>${producto.nombre}</h2>
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="modal-image">
+                            <p>${producto.descripcion ? producto.descripcion : 'No hay descripción para este producto.'}</p>
+                        </div>
+                    `;
+
+                    // Añadir el modal al body
+                    document.body.appendChild(modal);
+
+                    // Mostrar el modal
+                    modal.style.display = 'block';
+
+                    // Cerrar el modal al hacer clic en el botón de cerrar
+                    const closeModal = modal.querySelector('.close');
+                    closeModal.addEventListener('click', () => {
+                        modal.style.display = 'none';
+                        modal.remove();
+                    });
+
+                    // Cerrar el modal al hacer clic fuera del contenido del modal
+                    window.addEventListener('click', (event) => {
+                        if (event.target === modal) {
+                            modal.style.display = 'none';
+                            modal.remove();
+                        }
+                    });
+                });
             });
 
             // Desplazarse hasta arriba de la página

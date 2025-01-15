@@ -56,7 +56,7 @@ html {
     padding: 0;
     margin: 0;
     display: flex;
-    font-size: clamp(0.7em, 2.7vw, 0.9em);
+    font-size: clamp(0.8em, 2.7vw, 1em);
     font-weight: 600;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
