@@ -85,3 +85,4 @@ prev.addEventListener('click', function () {
     updateActiveItem(); // Actualiza la clase activa después de cambiar
 });
 
+

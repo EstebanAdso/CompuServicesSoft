@@ -263,3 +263,4 @@ function cerrarNotificacion() {
         setTimeout(() => notificacion.remove(), 500); // Eliminar del DOM después de la animación
     }
 }
+
