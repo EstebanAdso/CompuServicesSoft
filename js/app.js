@@ -86,3 +86,19 @@ prev.addEventListener('click', function () {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const botonesCategoria = document.querySelectorAll('.contenedorCentralButton');
+
+    botonesCategoria.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const categoriaId = boton.getAttribute('data-categoria');
+
+            // En lugar de pasar el id en la URL, lo almacenamos en localStorage
+            localStorage.setItem('categoriaSeleccionada', categoriaId);
+
+            // Redirigimos al catálogo
+            window.location.href = 'catalogo.html';
+        });
+    });
+});
+
