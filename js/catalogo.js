@@ -124,6 +124,34 @@ function listarCategorias() {
             const categorias = await response.json();
             const categoriasExcluidas = excluirCategorias(); // Obtener categorías a excluir
 
+            // Limpiar las categorías existentes en el contenedor
+            ulElement.innerHTML = "";
+
+            // Agregar el enlace "TODOS" manualmente
+            const liTodos = document.createElement('li');
+            const linkTodos = document.createElement('a');
+            linkTodos.textContent = "TODOS";
+            linkTodos.href = "#";
+            linkTodos.classList.add("selected"); // Marca "TODOS" como seleccionado inicialmente
+
+            // Evento click para listar todos los productos
+            linkTodos.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                // Remover 'selected' de todos los enlaces
+                const allLinks = ulElement.querySelectorAll("a");
+                allLinks.forEach(link => link.classList.remove("selected"));
+
+                // Agregar 'selected' al enlace "TODOS"
+                linkTodos.classList.add("selected");
+
+                // Llamar a la función para listar todos los productos
+                listarProductos();
+            });
+
+            liTodos.appendChild(linkTodos);
+            ulElement.appendChild(liTodos);
+
             // Filtrar las categorías excluyendo las especificadas
             const categoriasFiltradas = categorias.filter(categoria =>
                 !categoriasExcluidas.includes(categoria.id)
@@ -164,6 +192,7 @@ function listarCategorias() {
 
     loadCategorias();
 }
+
 
 
 // Función para listar productos por categoría excluyendo ciertas categorías

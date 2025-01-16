@@ -256,7 +256,8 @@
   .modal-content p{
     width: 80%;
     margin: auto;
-    font-size: clamp(0.9em, 4vw, 1.1em)
+    font-size: clamp(0.9em, 4vw, 1.1em);
+    margin-top: 10px;
   }
   
   /* Animación de aparición */
