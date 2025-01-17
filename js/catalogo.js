@@ -86,6 +86,7 @@ async function listarProductos() {
         if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
         const productos = await response.json();
         renderizarProductos(productos.filter(producto => !categoriasExcluidas.includes(producto.categoria?.id)));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
         console.error('Error al listar productos:');
     }
@@ -101,6 +102,7 @@ async function listarProductosPorCategoria(categoriaId) {
         const productos = await response.json();
         contenedor.dataset.categoriaId = categoriaId;
         renderizarProductos(productos);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
         console.error(`Error al listar productos de la categoría ${categoriaId}:`);
     }
