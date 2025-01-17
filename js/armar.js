@@ -1,7 +1,7 @@
-const baseURL = window.location.hostname.includes('localhost')
-    ? 'http://localhost:8084'
-    : 'https://imaginative-charisma-production.up.railway.app';
+// Importar baseURL desde config.js
+import { baseURL } from './config.js';
 
+// Endpoints dinámicos
 const ApiProductosPorCategoria = `${baseURL}/producto/categoria/`;
 const selectElements = {
     procesador: document.querySelector('#procesador'),
@@ -45,7 +45,7 @@ function llenarSelect(selectElement, categoriaId) {
             });
         });
 }
-function mostrarOpcionesDisco() {
+window.mostrarOpcionesDisco = function mostrarOpcionesDisco() {
     const tipoDisco = document.getElementById('tipoDisco').value;
     const discoSeleccionado = document.getElementById('discoSeleccionado');
     if (tipoDisco === 'ssd') {

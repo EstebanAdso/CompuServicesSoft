@@ -1,7 +1,5 @@
-// Configuración de la URL base para manejar entornos local y producción
-const baseURL = window.location.hostname.includes('localhost')
-    ? 'http://localhost:8084'
-    : 'https://imaginative-charisma-production.up.railway.app';
+// Importar baseURL desde config.js
+import { baseURL } from './config.js';
 
 // Endpoints dinámicos
 const ApiProducto = `${baseURL}/producto`;
@@ -10,20 +8,35 @@ const ApiCategoria = `${baseURL}/categoria`;
 // Exclusión de categorías
 const categoriasExcluidas = [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
 
-// Espera a que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const categoriaId = params.get('categoria') || localStorage.getItem('categoriaSeleccionada');
 
+    // Configurar el evento para cerrar la notificación
+    const cerrarBtn = document.querySelector('.btn-cerrar');
+    if (cerrarBtn) {
+        cerrarBtn.addEventListener('click', () => {
+            const notificacion = document.getElementById("notificacion");
+            if (notificacion) {
+                notificacion.style.transition = "opacity 0.5s ease";
+                notificacion.style.opacity = "0"; // Animación de desvanecimiento
+                setTimeout(() => notificacion.remove(), 500); // Eliminar del DOM después de la animación
+            }
+        });
+    }
+
     try {
+        // Inicializar categorías y productos
         await listarCategorias();
         categoriaId ? await listarProductosPorCategoria(categoriaId) : await listarProductos();
     } catch (error) {
         console.error('Error al inicializar:', error);
     } finally {
+        // Limpiar localStorage
         localStorage.removeItem('categoriaSeleccionada');
     }
 });
+
 
 // Función para listar categorías
 async function listarCategorias() {
@@ -149,13 +162,4 @@ function cerrarModal(modal) {
 // Utilidades
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function cerrarNotificacion() {
-    const notificacion = document.getElementById("notificacion");
-    if (notificacion) {
-        notificacion.style.transition = "opacity 0.5s ease";
-        notificacion.style.opacity = "0"; // Animación de desvanecimiento
-        setTimeout(() => notificacion.remove(), 500); // Eliminar del DOM después de la animación
-    }
 }
