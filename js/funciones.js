@@ -35,3 +35,4 @@ setupContactoModal();
 function formatNumber(number) {
     return number.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
+
