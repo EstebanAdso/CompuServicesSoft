@@ -113,7 +113,6 @@ function actualizarCarrito(selectId, selectedOption) {
 
         const nombreProducto = document.createElement('td');
         nombreProducto.textContent = item.nombre.split(' - ')[0];
-        console.log(item)
         tr.appendChild(nombreProducto)
 
         const precioProducto = document.createElement('td');

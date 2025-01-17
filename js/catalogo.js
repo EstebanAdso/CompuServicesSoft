@@ -7,249 +7,149 @@ const baseURL = window.location.hostname.includes('localhost')
 const ApiProducto = `${baseURL}/producto`;
 const ApiCategoria = `${baseURL}/categoria`;
 
-document.addEventListener('DOMContentLoaded', () => {
+// Exclusión de categorías
+const categoriasExcluidas = [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
+
+// Espera a que el DOM esté cargado
+document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const categoriaId = params.get('categoria') || localStorage.getItem('categoriaSeleccionada');
 
-    listarCategorias();
-
-    if (categoriaId) {
-        listarProductosPorCategoria(categoriaId);
+    try {
+        await listarCategorias();
+        categoriaId ? await listarProductosPorCategoria(categoriaId) : await listarProductos();
+    } catch (error) {
+        console.error('Error al inicializar:', error);
+    } finally {
         localStorage.removeItem('categoriaSeleccionada');
-    } else {
-        listarProductos();
     }
 });
 
-function excluirCategorias() {
-    return [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
-}
-
-
-// Función para listar todos los productos excluyendo ciertas categorías
-function listarProductos() {
-    const categoriasExcluidas = excluirCategorias(); // Obtener las categorías a excluir
-
-    fetch(ApiProducto)
-        .then(response => response.json())
-        .then(data => {
-            const contenedor = document.getElementById('contenedorCentral');
-
-            // Limpiar el contenedor antes de añadir los productos
-            contenedor.innerHTML = '';
-
-            // Filtrar productos excluyendo las categorías no deseadas
-            const productosFiltrados = data.filter(producto =>
-                producto.categoria && !categoriasExcluidas.includes(producto.categoria.id)
-            );
-
-            // Iterar sobre los productos filtrados y crear los elementos HTML
-            productosFiltrados.forEach(producto => {
-                const button = document.createElement('button');
-                button.classList.add('contenedorCentral_carta');
-
-                // Estructura del contenido del producto
-                button.innerHTML = `
-                    <div class="contenedorCentral__catalogoImagen">
-                        <div class="contenedorCentral_img">
-                            <img src="${producto.imagen}" alt="${producto.nombre}">
-                        </div>
-                        <div class="contenedorCentral_content">
-                            <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
-                            <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
-                            <button class="verDetalles">Ver Detalles</button>
-                        </div>
-                    </div>
-                `;
-
-                // Añadir el producto al contenedor
-                contenedor.appendChild(button);
-
-                // Evento click para mostrar la descripción del producto
-                const verDetallesBtn = button.querySelector('.verDetalles');
-                verDetallesBtn.addEventListener('click', () => {
-                    // Crear el modal
-                    const modal = document.createElement('div');
-                    modal.classList.add('modal');
-                    
-                    // Contenido del modal
-                    modal.innerHTML = `
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h2>${producto.nombre}</h2>
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="modal-image">
-                            <p>${producto.descripcion ? producto.descripcion : 'No hay descripción para este producto.'}</p>
-                        </div>
-                    `;
-
-                    // Añadir el modal al body
-                    document.body.appendChild(modal);
-
-                    // Mostrar el modal
-                    modal.style.display = 'block';
-
-                    // Cerrar el modal al hacer clic en el botón de cerrar
-                    const closeModal = modal.querySelector('.close');
-                    closeModal.addEventListener('click', () => {
-                        modal.style.display = 'none';
-                        modal.remove();
-                    });
-
-                    // Cerrar el modal al hacer clic fuera del contenido del modal
-                    window.addEventListener('click', (event) => {
-                        if (event.target === modal) {
-                            modal.style.display = 'none';
-                            modal.remove();
-                        }
-                    });
-                });
-            });
-        })
-        .catch(error => {
-            console.log('Error al traer los productos', error);
-        });
-}
-
-
-// Función para listar categorías excluyendo ciertas categorías
-function listarCategorias() {
+// Función para listar categorías
+async function listarCategorias() {
     const ulElement = document.querySelector(".content__products__sidebar ul");
+    try {
+        const response = await fetch(ApiCategoria);
+        if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
+        const categorias = await response.json();
 
-    // Función para cargar las categorías
-    const loadCategorias = async () => {
-        try {
-            const response = await fetch(ApiCategoria);
-            if (!response.ok) {
-                throw new Error(`Error en la solicitud: ${response.status}`);
-            }
+        ulElement.innerHTML = "";
 
-            const categorias = await response.json();
-            const categoriasExcluidas = excluirCategorias(); // Obtener categorías a excluir
+        // Agregar la opción "TODOS"
+        ulElement.appendChild(crearCategoriaEnlace("TODOS", null, listarProductos));
 
-            // Limpiar las categorías existentes en el contenedor
-            ulElement.innerHTML = "";
-
-            // Agregar el enlace "TODOS" manualmente
-            const liTodos = document.createElement('li');
-            const linkTodos = document.createElement('a');
-            linkTodos.textContent = "TODOS";
-            linkTodos.href = "#";
-            linkTodos.classList.add("selected"); // Marca "TODOS" como seleccionado inicialmente
-
-            // Evento click para listar todos los productos
-            linkTodos.addEventListener('click', (event) => {
-                event.preventDefault();
-            
-                // Limpiar selección previa
-                ulElement.querySelectorAll("a").forEach(link => link.classList.remove("selected"));
-            
-                // Marcar como seleccionado
-                linkTodos.classList.add("selected");
-            
-                // Llamar a la función para listar todos los productos
-                listarProductos();
-            
-                // Limpiar cualquier categoría seleccionada previamente
-                const contenedor = document.getElementById('contenedorCentral');
-                delete contenedor.dataset.categoriaId;
+        // Filtrar y listar categorías
+        categorias
+            .filter(categoria => !categoriasExcluidas.includes(categoria.id))
+            .forEach(categoria => {
+                ulElement.appendChild(crearCategoriaEnlace(categoria.nombre, categoria.id, () => listarProductosPorCategoria(categoria.id)));
             });
-            
-            
-
-            liTodos.appendChild(linkTodos);
-            ulElement.appendChild(liTodos);
-
-            // Filtrar las categorías excluyendo las especificadas
-            const categoriasFiltradas = categorias.filter(categoria =>
-                !categoriasExcluidas.includes(categoria.id)
-            );
-
-            // Iterar sobre las categorías filtradas y crear los elementos <li> con enlaces
-            categoriasFiltradas.forEach(categoria => {
-                const li = document.createElement('li');
-                const link = document.createElement('a');
-
-                // Configurar el enlace
-                link.textContent = categoria.nombre;
-                link.href = "#"; // Prevenir redirección
-                link.setAttribute('data-id', categoria.id);
-
-                // Evento click para listar productos de la categoría y manejar la clase 'selected'
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-
-                    // Remueve la clase 'selected' de todos los enlaces
-                    const allLinks = ulElement.querySelectorAll("a");
-                    allLinks.forEach(link => link.classList.remove("selected"));
-
-                    // Agrega la clase 'selected' al enlace clicado
-                    link.classList.add("selected");
-
-                    // Llama a la función para listar productos de la categoría seleccionada
-                    listarProductosPorCategoria(categoria.id);
-                });
-
-                li.appendChild(link);
-                ulElement.appendChild(li);
-            });
-        } catch (error) {
-            console.log('Error al cargar las categorías:', error);
-        }
-    };
-
-    loadCategorias();
+    } catch (error) {
+        console.error('Error al cargar categorías:', error);
+    }
 }
 
+// Crear enlace para cada categoría
+function crearCategoriaEnlace(nombre, id, onClick) {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.textContent = nombre;
+    link.href = "#";
+    link.setAttribute('aria-label', `Filtrar por ${nombre}`);
+    link.addEventListener('click', event => {
+        event.preventDefault();
+        document.querySelectorAll(".content__products__sidebar ul a").forEach(a => a.classList.remove('selected'));
+        link.classList.add('selected');
+        onClick();
+    });
+    li.appendChild(link);
+    return li;
+}
 
+// Función para listar productos
+async function listarProductos() {
+    try {
+        const response = await fetch(ApiProducto);
+        if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
+        const productos = await response.json();
+        renderizarProductos(productos.filter(producto => !categoriasExcluidas.includes(producto.categoria?.id)));
+    } catch (error) {
+        console.error('Error al listar productos:');
+    }
+}
 
-// Función para listar productos por categoría excluyendo ciertas categorías
-function listarProductosPorCategoria(categoriaId) {
+// Función para listar productos por categoría
+async function listarProductosPorCategoria(categoriaId) {
     const contenedor = document.getElementById('contenedorCentral');
-    const endpoint = `${ApiProducto}/categoria/${categoriaId}`;
-
-    // Si ya está mostrando productos de esta categoría, no realizar otra llamada
-    if (contenedor.dataset.categoriaId === categoriaId) return;
-
-    fetch(endpoint)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error en la solicitud: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            contenedor.innerHTML = '';
-            contenedor.dataset.categoriaId = categoriaId; // Guardar estado actual
-
-            data.forEach(producto => {
-                const button = document.createElement('button');
-                button.classList.add('contenedorCentral_carta');
-
-                button.innerHTML = `
-                    <div class="contenedorCentral__catalogoImagen">
-                        <div class="contenedorCentral_img">
-                            <img src="${producto.imagen}" alt="${producto.nombre}">
-                        </div>
-                        <div class="contenedorCentral_content">
-                            <h3>${producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1)}</h3>
-                            <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
-                            <button class="verDetalles">Ver Detalles</button>
-                        </div>
-                    </div>
-                `;
-                contenedor.appendChild(button);
-            });
-        })
-        .catch(error => console.error(`Error al listar productos de la categoría ${categoriaId}:`, error));
+    try {
+        if (contenedor.dataset.categoriaId === categoriaId) return;
+        const response = await fetch(`${ApiProducto}/categoria/${categoriaId}`);
+        if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
+        const productos = await response.json();
+        contenedor.dataset.categoriaId = categoriaId;
+        renderizarProductos(productos);
+    } catch (error) {
+        console.error(`Error al listar productos de la categoría ${categoriaId}:`);
+    }
 }
 
+// Renderizar productos en el DOM
+function renderizarProductos(productos) {
+    const contenedor = document.getElementById('contenedorCentral');
+    contenedor.innerHTML = "";
 
-
-function formatNumber(number) {
-    return number.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    productos.forEach(producto => {
+        const button = document.createElement('button');
+        button.classList.add('contenedorCentral_carta');
+        button.innerHTML = `
+            <div class="contenedorCentral__catalogoImagen">
+                <div class="contenedorCentral_img">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                </div>
+                <div class="contenedorCentral_content">
+                    <h3>${capitalize(producto.nombre)}</h3>
+                    <span class="spanPrecio">$ ${formatNumber(producto.precioVendido)}</span>
+                    <button class="verDetalles" aria-label="Ver detalles de ${producto.nombre}">Ver Detalles</button>
+                </div>
+            </div>
+        `;
+        button.querySelector('.verDetalles').addEventListener('click', () => mostrarModal(producto));
+        contenedor.appendChild(button);
+    });
 }
 
+// Mostrar modal con detalles del producto
+function mostrarModal(producto) {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close" aria-label="Cerrar">&times;</span>
+            <h2>${producto.nombre}</h2>
+            <img src="${producto.imagen}" alt="${producto.nombre}" class="modal-image">
+            <p>${producto.descripcion || 'No hay descripción para este producto.'}</p>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    modal.style.display = 'block';
 
+    const closeModal = modal.querySelector('.close');
+    closeModal.addEventListener('click', () => cerrarModal(modal));
+    window.addEventListener('click', event => {
+        if (event.target === modal) cerrarModal(modal);
+    });
+}
+
+// Cerrar el modal
+function cerrarModal(modal) {
+    modal.style.display = 'none';
+    modal.remove();
+}
+
+// Utilidades
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 function cerrarNotificacion() {
     const notificacion = document.getElementById("notificacion");
@@ -259,4 +159,3 @@ function cerrarNotificacion() {
         setTimeout(() => notificacion.remove(), 500); // Eliminar del DOM después de la animación
     }
 }
-
