@@ -68,16 +68,23 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActiveItem();
     }
 
-    // --- Gestión de categorías ---
-    const botonesCategoria = document.querySelectorAll('.contenedorCentralButton');
+    // Función para manejar la lógica común
+    function manejarRedireccion(botonSelector) {
+        const botones = document.querySelectorAll(botonSelector);
 
-    botonesCategoria.forEach(boton => {
-        boton.addEventListener('click', () => {
-            const categoriaId = boton.dataset.categoria; // Mejor uso de `dataset`
-            localStorage.setItem('categoriaSeleccionada', categoriaId);
-            window.location.href = 'catalogo.html';
+        botones.forEach(boton => {
+            boton.addEventListener('click', () => {
+                const categoriaId = boton.dataset.categoria; // Mejor uso de `dataset`
+                localStorage.setItem('categoriaSeleccionada', categoriaId);
+                window.location.href = 'catalogo.html';
+            });
         });
-    });
+    }
+
+    // Llamar a la función para los botones de categoría y carrusel
+    manejarRedireccion('.contenedorCentralButton');
+    manejarRedireccion('.productosPopulares .container a');
+
 });
 
 
