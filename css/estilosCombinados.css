@@ -40,7 +40,7 @@ html {
     color: #ffffff;
     font-weight: 900;
     text-align: center;
-    text-shadow: 0 0 20px black;
+    text-shadow: 0 0 3px black;
 }
 
 .header__menu {
