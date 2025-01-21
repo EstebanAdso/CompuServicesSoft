@@ -56,7 +56,7 @@ html {
     padding: 0;
     margin: 0;
     display: flex;
-    font-size: clamp(0.8em, 2.7vw, 0.9em);
+    font-size: clamp(0.8em, 2.7vw, 0.8em);
     font-weight: 600;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
@@ -130,42 +130,90 @@ html {
     }
 }
 
-footer {
-    width: 100%;
-    background-color: #444;
-    color: #eee;
-    padding: 100px 0;
-    text-align: center;
-    font-size: 18px;
-    margin: 0;
-    box-sizing: border-box;
+
+.footer-container {
+    background: #333;
+    color: white;
+    padding: 2rem 4rem;
+    font-family: 'Arial', sans-serif;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8rem;
 }
 
-footer p {
-    padding: 0;
-    margin: 0;
+.footer-section {
+    max-width: 400px;
 }
 
-footer li {
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-links {
     list-style: none;
-}
-
-footer ul {
     padding: 0;
     margin: 0;
 }
 
-footer li a {
-    color: #eee;
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: white;
     text-decoration: none;
-    transition: color 0.2s;
-
+    transition: opacity 0.3s;
 }
 
-footer li a:hover {
-    color: #aaa;
+.footer-links a:hover {
+    opacity: 0.8;
 }
 
+.contact-info {
+    margin-top: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.contact-item i {
+    font-size: 1.2rem;
+}
+.footer-section div a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-section div a:hover{
+    color: #ccc;
+}
+
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2rem;
+        align-items: center;
+    }
+
+    .footer-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-item {
+        justify-content: center;
+    }
+}
 
 /*MODAL CONTACTO*/
 .modalContacto {
@@ -255,6 +303,8 @@ footer li a:hover {
 .contactos button:hover {
     background-color: #e63939;
 }
+
+
 
 h2 {
     text-align: center;
