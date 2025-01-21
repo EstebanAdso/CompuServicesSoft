@@ -6,7 +6,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: Montserrat;
     box-sizing: border-box;
     user-select: none;
 }
@@ -32,14 +32,15 @@ html {
     justify-content: space-around;
     align-items: center;
     height: 100%;
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
 .header__logo {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #ffffff;
     font-weight: 900;
     text-align: center;
+    text-shadow: 0 0 20px black;
 }
 
 .header__menu {
@@ -47,7 +48,7 @@ html {
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1.4em;
     cursor: pointer;
 }
 
@@ -56,7 +57,7 @@ html {
     padding: 0;
     margin: 0;
     display: flex;
-    font-size: clamp(0.8em, 2.7vw, 0.8em);
+    font-size: clamp(0.7em, 2.7vw, 0.8em);
     font-weight: 600;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
