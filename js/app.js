@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    //Año actual
+    const currentYearSpan = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    currentYearSpan.textContent = currentYear;
+
     // --- Ciclo de imágenes de fondo ---
     const imagenes = [
         'imagenes/fondos/IASETUP2.webp',
@@ -67,30 +72,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // Inicializa la clase activa
         updateActiveItem();
     }
-
-    // Función para manejar la lógica común
-    function manejarRedireccion(botonSelector) {
-        const botones = document.querySelectorAll(botonSelector);
-
-        botones.forEach(boton => {
-            boton.addEventListener('click', () => {
-                const categoriaId = boton.dataset.categoria; // Mejor uso de `dataset`
-                localStorage.setItem('categoriaSeleccionada', categoriaId);
-                window.location.href = 'catalogo.html';
-            });
-        });
-    }
-
-    // Llamar a la función para los botones de categoría y carrusel
-    manejarRedireccion('.contenedorCentralButton');
-    manejarRedireccion('.productosPopulares .container a');
-
 });
 
-
-//Año actual al footer
-document.addEventListener('DOMContentLoaded', () => {
-    const currentYearSpan = document.getElementById('currentYear');
-    const currentYear = new Date().getFullYear();
-    currentYearSpan.textContent = currentYear;
-});
