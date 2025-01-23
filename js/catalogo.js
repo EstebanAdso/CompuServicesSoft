@@ -9,34 +9,23 @@ const ApiCategoria = `${baseURL}/categoria`;
 const categoriasExcluidas = [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const params = new URLSearchParams(window.location.search);
-    const categoriaId = params.get('categoria') || localStorage.getItem('categoriaSeleccionada');
-
-    // Configurar el evento para cerrar la notificación
-    const cerrarBtn = document.querySelector('.btn-cerrar');
-    if (cerrarBtn) {
-        cerrarBtn.addEventListener('click', () => {
-            const notificacion = document.getElementById("notificacion");
-            if (notificacion) {
-                notificacion.style.transition = "opacity 0.5s ease";
-                notificacion.style.opacity = "0"; // Animación de desvanecimiento
-                setTimeout(() => notificacion.remove(), 500); // Eliminar del DOM después de la animación
-            }
-        });
-    }
+    // Leer la categoría desde la ruta (ej. dominio/catalogo.html/{categoria})
+    const pathParts = window.location.pathname.split('/');
+    const categoriaPath = pathParts[pathParts.length - 1];
 
     try {
         // Inicializar categorías y productos
         await listarCategorias();
-        categoriaId ? await listarProductosPorCategoria(categoriaId) : await listarProductos();
+
+        if (categoriaPath && categoriaPath !== 'catalogo.html') {
+            await listarProductosPorCategoriaPorNombre(categoriaPath);
+        } else {
+            await listarProductos();
+        }
     } catch (error) {
         console.error('Error al inicializar:', error);
-    } finally {
-        // Limpiar localStorage
-        localStorage.removeItem('categoriaSeleccionada');
     }
 });
-
 
 // Función para listar categorías
 async function listarCategorias() {
@@ -55,7 +44,10 @@ async function listarCategorias() {
         categorias
             .filter(categoria => !categoriasExcluidas.includes(categoria.id))
             .forEach(categoria => {
-                ulElement.appendChild(crearCategoriaEnlace(categoria.nombre, categoria.id, () => listarProductosPorCategoria(categoria.id)));
+                ulElement.appendChild(crearCategoriaEnlace(categoria.nombre, categoria.nombre, () => {
+                    window.history.pushState({}, '', `/catalogo.html/${categoria.nombre}`);
+                    listarProductosPorCategoriaPorNombre(categoria.nombre);
+                }));
             });
     } catch (error) {
         console.error('Error al cargar categorías:', error);
@@ -63,11 +55,11 @@ async function listarCategorias() {
 }
 
 // Crear enlace para cada categoría
-function crearCategoriaEnlace(nombre, id, onClick) {
+function crearCategoriaEnlace(nombre, path, onClick) {
     const li = document.createElement('li');
     const link = document.createElement('a');
     link.textContent = nombre;
-    link.href = "#";
+    link.href = path ? `/catalogo.html/${path}` : '/catalogo.html';
     link.setAttribute('aria-label', `Filtrar por ${nombre}`);
     link.addEventListener('click', event => {
         event.preventDefault();
@@ -88,23 +80,23 @@ async function listarProductos() {
         renderizarProductos(productos.filter(producto => !categoriasExcluidas.includes(producto.categoria?.id)));
         window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
-        console.error('Error al listar productos:');
+        console.error('Error al listar productos:', error);
     }
 }
 
-// Función para listar productos por categoría
-async function listarProductosPorCategoria(categoriaId) {
+// Función para listar productos por nombre de categoría
+async function listarProductosPorCategoriaPorNombre(categoriaNombre) {
     const contenedor = document.getElementById('contenedorCentral');
     try {
-        if (contenedor.dataset.categoriaId === categoriaId) return;
-        const response = await fetch(`${ApiProducto}/categoria/${categoriaId}`);
+        if (contenedor.dataset.categoriaNombre === categoriaNombre) return;
+        const response = await fetch(`${ApiProducto}/categoria/${categoriaNombre}`);
         if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
         const productos = await response.json();
-        contenedor.dataset.categoriaId = categoriaId;
+        contenedor.dataset.categoriaNombre = categoriaNombre;
         renderizarProductos(productos);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
-        console.error(`Error al listar productos de la categoría ${categoriaId}:`);
+        console.error(`Error al listar productos de la categoría ${categoriaNombre}:`, error);
     }
 }
 
@@ -164,4 +156,8 @@ function cerrarModal(modal) {
 // Utilidades
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function formatNumber(number) {
+    return new Intl.NumberFormat().format(number);
 }
