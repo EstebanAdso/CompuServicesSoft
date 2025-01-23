@@ -80,6 +80,14 @@ function crearCategoriaEnlace(nombre, id, onClick) {
     link.textContent = nombre;
     link.href = id ? `?categoria=${slugify(nombre)}` : "#";
     link.setAttribute('aria-label', `Filtrar por ${nombre}`);
+    
+    // Verificar si la categoría está seleccionada
+    const params = new URLSearchParams(window.location.search);
+    const categoriaSlug = params.get('categoria');
+    if ((categoriaSlug && slugify(nombre) === categoriaSlug) || (!categoriaSlug && nombre === 'TODOS')) {
+        link.classList.add('selected');
+    }
+
     link.addEventListener('click', event => {
         event.preventDefault();
         const tituloCategoria = document.getElementById('categoria-titulo');
