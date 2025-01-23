@@ -269,9 +269,9 @@
   }
 
   #categoria-titulo{
-    font-size: clamp(1em, 2.5vw, 1.9em);
+    font-size: clamp(1em, 2.5vw, 1.7em);
     padding: 0;
-    margin: 0 0 10px 20px
+    margin: 0 0 0px 20px
   }
   
 /*ANIMACIONES*/
