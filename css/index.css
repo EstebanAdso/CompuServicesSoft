@@ -835,7 +835,7 @@ dialog {
 
 .servicios-card {
     width: 480px;
-    height: 500px;
+    height: 510px;
     display: flex;
     flex-direction: column;
     background-color: #eee;
@@ -846,6 +846,16 @@ dialog {
     transition: transform 0.6s ease-in-out;
 }
 
+#card-contenido-title{
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+.card-contenido p{
+    margin-top: 5px;
+    text-align: left;
+    padding: 0 15px;
+}
 .card-img {
     height: 60%;
     position: relative;
@@ -974,7 +984,7 @@ dialog {
     .servicios-card {
         max-width: 450px;
         width: 80%;
-        height: 580px;
+        height: 500px
     }
 }
 

@@ -142,6 +142,9 @@ html {
     justify-content: center;
     align-items: flex-start;
     gap: 8rem;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 20%;
 }
 
 .footer-section {
