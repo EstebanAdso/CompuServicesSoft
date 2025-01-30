@@ -145,7 +145,10 @@ function validar() {
 
     if (tieneProcesador && tieneRam && tieneBoard && tieneFuentePoder && tieneDisco && tieneGabinete) {
         let total = carrito.reduce((sum, item) => sum + item.precio, 0);
-        const descuento = total * 0.05;
+        let totalTorre = carrito
+            .filter(item => ['procesador', 'ram', 'board', 'fuentePoder', 'disco', 'gabinete'].includes(item.id))
+            .reduce((sum, item) => sum + item.precio, 0);
+        const descuento = totalTorre * 0.05;
         const totalConDescuento = total - descuento;
 
         totalElement.innerHTML = `Total: <s>$${formatNumber(total)}</s>`;
