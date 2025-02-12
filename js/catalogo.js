@@ -132,6 +132,7 @@ async function listarProductosPorCategoria(categoriaId) {
         console.error(`Error al listar productos de la categoría ${categoriaId}:`, error);
     }
 }
+
 function renderizarProductos() {
     const contenedor = document.getElementById('contenedorCentral');
     contenedor.innerHTML = "";
@@ -146,7 +147,7 @@ function renderizarProductos() {
         button.innerHTML = `
             <div class="contenedorCentral__catalogoImagen">
                 <div class="contenedorCentral_img">
-                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <img data-src="${producto.imagen}" alt="${producto.nombre}" class="lazy-image">
                 </div>
                 <div class="contenedorCentral_content">
                     <h3>${capitalize(producto.nombre)}</h3>
@@ -159,8 +160,26 @@ function renderizarProductos() {
         contenedor.appendChild(button);
     });
 
+    aplicarLazyLoading();
     renderizarPaginacion();
 }
+
+function aplicarLazyLoading() {
+    const images = document.querySelectorAll('.lazy-image');
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute('data-src');
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    images.forEach(img => observer.observe(img));
+}
+
 
 function renderizarPaginacion() {
     const contenedor = document.getElementById('contenedorCentral');
