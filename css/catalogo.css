@@ -449,3 +449,42 @@
       }
     
 }
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .paginacion button:first-child {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+
+  .paginacion button:last-child {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #7733c5;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .paginacion span{
+    margin: auto 0;
+  }
+  .paginacion button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }

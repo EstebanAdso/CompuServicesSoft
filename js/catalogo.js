@@ -8,6 +8,11 @@ const ApiCategoria = `${baseURL}/categoria`;
 // Exclusión de categorías
 const categoriasExcluidas = [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
 
+// Variables de paginación
+let productosPaginados = [];
+let paginaActual = 1;
+const productosPorPagina = 32; 
+
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const categoriaSlug = params.get('categoria') || localStorage.getItem('categoriaSeleccionada');
@@ -105,33 +110,37 @@ async function listarProductos() {
         const response = await fetch(ApiProducto);
         if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
         const productos = await response.json();
-        renderizarProductos(productos.filter(producto => !categoriasExcluidas.includes(producto.categoria?.id)));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        productosPaginados = productos.filter(producto => !categoriasExcluidas.includes(producto.categoria?.id));
+        paginaActual = 1;
+        renderizarProductos();
     } catch (error) {
         console.error('Error al listar productos:', error);
     }
 }
 
 async function listarProductosPorCategoria(categoriaId) {
-    const contenedor = document.getElementById('contenedorCentral');
     try {
-        if (contenedor.dataset.categoriaId === categoriaId) return;
         const response = await fetch(`${ApiProducto}/categoria/${categoriaId}`);
         if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
         const productos = await response.json();
-        contenedor.dataset.categoriaId = categoriaId;
-        renderizarProductos(productos);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        productosPaginados = productos;
+        paginaActual = 1;
+        renderizarProductos();
     } catch (error) {
         console.error(`Error al listar productos de la categoría ${categoriaId}:`, error);
     }
 }
-
-function renderizarProductos(productos) {
+function renderizarProductos() {
     const contenedor = document.getElementById('contenedorCentral');
     contenedor.innerHTML = "";
 
-    productos.forEach(producto => {
+    const inicio = (paginaActual - 1) * productosPorPagina;
+    const fin = inicio + productosPorPagina;
+    const productosPagina = productosPaginados.slice(inicio, fin);
+
+    productosPagina.forEach(producto => {
         const button = document.createElement('button');
         button.classList.add('contenedorCentral_carta');
         button.innerHTML = `
@@ -149,6 +158,48 @@ function renderizarProductos(productos) {
         button.querySelector('.verDetalles').addEventListener('click', () => mostrarModal(producto));
         contenedor.appendChild(button);
     });
+
+    renderizarPaginacion();
+}
+
+function renderizarPaginacion() {
+    const contenedor = document.getElementById('contenedorCentral');
+    let paginacion = document.getElementById('paginacion');
+
+    if (!paginacion) {
+        paginacion = document.createElement('div');
+        paginacion.id = 'paginacion';
+        paginacion.classList.add('paginacion');
+        contenedor.parentNode.appendChild(paginacion);
+    }
+
+    const totalPaginas = Math.ceil(productosPaginados.length / productosPorPagina);
+    if (totalPaginas <= 1) {
+        paginacion.innerHTML = "";
+        return;
+    }
+
+    paginacion.innerHTML = `
+        ${paginaActual > 1 ? '<button id="btnAnterior">Anterior</button>' : ''}
+        <span>Página ${paginaActual} de ${totalPaginas}</span>
+        ${paginaActual < totalPaginas ? '<button id="btnSiguiente">Siguiente</button>' : ''}
+    `;
+
+    if (paginaActual > 1) {
+        document.getElementById('btnAnterior').addEventListener('click', () => {
+            paginaActual--;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderizarProductos();
+        });
+    }
+
+    if (paginaActual < totalPaginas) {
+        document.getElementById('btnSiguiente').addEventListener('click', () => {
+            paginaActual++;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderizarProductos();
+        });
+    }
 }
 
 function mostrarModal(producto) {
@@ -171,6 +222,7 @@ function mostrarModal(producto) {
         if (event.target === modal) cerrarModal(modal);
     });
 }
+
 
 function cerrarModal(modal) {
     modal.style.display = 'none';
