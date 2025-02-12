@@ -453,38 +453,33 @@
 .paginacion {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-top: 20px;
-    margin-bottom: 20px;
-  }
+    margin-bottom: 30px;
+}
 
-  .paginacion button:first-child {
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    background-color: #000000;
+.paginacion-btn {
+    background-color: #007bff;
     color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-
-
-  .paginacion button:last-child {
-    padding: 10px 15px;
-    font-size: 16px;
     border: none;
-    background-color: #7733c5;
-    color: #fff;
+    padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
+    transition: background 0.3s;
     font-weight: bold;
-  }
+    letter-spacing: 1px;
+}
 
-  .paginacion span{
-    margin: auto 0;
-  }
-  .paginacion button:disabled {
+.paginacion-btn:first-child {
+    background-color: #000000;
+}
+
+.paginacion-btn:last-child {
+    background-color: #5c0bb9;
+}
+
+.paginacion-btn:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-  }
+}

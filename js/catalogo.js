@@ -169,27 +169,25 @@ function aplicarLazyLoading() {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.getAttribute('data-src');
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
+                entry.target.src = entry.target.dataset.src;
+                entry.target.removeAttribute('data-src');
+                observer.unobserve(entry.target);
             }
         });
-    });
+    }, { threshold: 0.1 }); // Se activará antes de que la imagen sea visible
 
     images.forEach(img => observer.observe(img));
 }
 
 
 function renderizarPaginacion() {
-    const contenedor = document.getElementById('contenedorCentral');
     let paginacion = document.getElementById('paginacion');
 
     if (!paginacion) {
         paginacion = document.createElement('div');
         paginacion.id = 'paginacion';
         paginacion.classList.add('paginacion');
-        contenedor.parentNode.appendChild(paginacion);
+        document.getElementById('contenedorCentral').after(paginacion);
     }
 
     const totalPaginas = Math.ceil(productosPaginados.length / productosPorPagina);
@@ -199,27 +197,28 @@ function renderizarPaginacion() {
     }
 
     paginacion.innerHTML = `
-        ${paginaActual > 1 ? '<button id="btnAnterior">Anterior</button>' : ''}
-        <span>Página ${paginaActual} de ${totalPaginas}</span>
-        ${paginaActual < totalPaginas ? '<button id="btnSiguiente">Siguiente</button>' : ''}
+        <button id="btnAnterior" class="paginacion-btn" ${paginaActual === 1 ? 'disabled' : ''}>Anterior</button>
+        <span class="paginacion-info">Página ${paginaActual} de ${totalPaginas}</span>
+        <button id="btnSiguiente" class="paginacion-btn" ${paginaActual === totalPaginas ? 'disabled' : ''}>Siguiente</button>
     `;
 
-    if (paginaActual > 1) {
-        document.getElementById('btnAnterior').addEventListener('click', () => {
+    document.getElementById('btnAnterior').addEventListener('click', () => {
+        if (paginaActual > 1) {
             paginaActual--;
             window.scrollTo({ top: 0, behavior: 'smooth' });
             renderizarProductos();
-        });
-    }
+        }
+    });
 
-    if (paginaActual < totalPaginas) {
-        document.getElementById('btnSiguiente').addEventListener('click', () => {
+    document.getElementById('btnSiguiente').addEventListener('click', () => {
+        if (paginaActual < totalPaginas) {
             paginaActual++;
             window.scrollTo({ top: 0, behavior: 'smooth' });
             renderizarProductos();
-        });
-    }
+        }
+    });
 }
+
 
 function mostrarModal(producto) {
     const modal = document.createElement('div');
