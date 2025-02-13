@@ -1,197 +1,226 @@
 // Importar baseURL desde config.js
-import { baseURL } from './config.js';
+import { baseURL } from "./config.js";
+const ApiProductosPorCategoriaTodos = `${baseURL}/producto/categoria/`;
 
-// Endpoints dinámicos
-const ApiProductosPorCategoria = `${baseURL}/producto/categoria/`;
 const selectElements = {
-    procesador: document.querySelector('#procesador'),
-    ram: document.querySelector('#ram'),
-    board: document.querySelector('#board'),
-    fuentePoder: document.querySelector('#fuentePoder'),
-    grafica: document.querySelector('#grafica'),
-    disco: document.querySelector('#disco'),
-    monitor: document.querySelector('#monitor')
+  procesador: document.querySelector("#procesador"),
+  ram: document.querySelector("#ram"),
+  board: document.querySelector("#board"),
+  fuentePoder: document.querySelector("#fuentePoder"),
+  grafica: document.querySelector("#grafica"),
+  disco: document.querySelector("#disco"),
+  monitor: document.querySelector("#monitor"),
 };
-const cantidadRam = document.querySelector('#cantidadRam');
+
+const cantidadRam = document.querySelector("#cantidadRam");
 const carrito = [];
-
 function fetchProductosPorCategoria(id) {
-    return fetch(`${ApiProductosPorCategoria}${id}`)
-        .then(response => response.json())
-        .catch(error => {
-            console.error('Error fetching productos por categoria:', error);
-        });
+  return fetch(`${ApiProductosPorCategoriaTodos}${id}/todos`) // Usa el nuevo endpoint
+    .then((response) => response.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        return data; // Devuelve todos los productos
+      } else {
+        console.error("La respuesta no es un array:", data);
+        return [];
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching productos por categoria:", error);
+      return [];
+    });
 }
-
 function llenarSelect(selectElement, categoriaId) {
-    fetchProductosPorCategoria(categoriaId)
-        .then(data => {
-            let productosFiltrados = data;
+  fetchProductosPorCategoria(categoriaId).then((productosFiltrados) => {
+    if (!Array.isArray(productosFiltrados)) {
+      console.error("La respuesta no es un array:", productosFiltrados);
+      return;
+    }
 
-            if (selectElement === selectElements.ram) {
-                // Filtrar productos que contengan "ddr4" o "ddr5" en el nombre y no contengan "laptop"
-                productosFiltrados = data.filter(producto => 
-                    (producto.nombre.toLowerCase().includes('ddr4') || producto.nombre.toLowerCase().includes('ddr5')) && 
-                    !producto.nombre.toLowerCase().includes('laptop')
-                );
-            }
+    if (selectElement === selectElements.ram) {
+      // Filtrar productos que contengan "ddr4" o "ddr5" en el nombre y no contengan "laptop"
+      productosFiltrados = productosFiltrados.filter(
+        (producto) =>
+          (producto.nombre.toLowerCase().includes("ddr4") ||
+            producto.nombre.toLowerCase().includes("ddr5")) &&
+          !producto.nombre.toLowerCase().includes("laptop")
+      );
+    }
 
-            productosFiltrados.forEach(producto => {
-                const option = document.createElement('option');
-                option.value = producto.id;
-                option.dataset.precio = producto.precioVendido;
-                option.textContent = `${producto.nombre} - $${formatNumber(producto.precioVendido)}`;
-                selectElement.appendChild(option);
-            });
-        });
+    productosFiltrados.forEach((producto) => {
+      const option = document.createElement("option");
+      option.value = producto.id;
+      option.dataset.precio = producto.precioVendido;
+      option.textContent = `${producto.nombre} - $${formatNumber(
+        producto.precioVendido
+      )}`;
+      selectElement.appendChild(option);
+    });
+  });
 }
 window.mostrarOpcionesDisco = function mostrarOpcionesDisco() {
-    const tipoDisco = document.getElementById('tipoDisco').value;
-    const discoSeleccionado = document.getElementById('discoSeleccionado');
-    if (tipoDisco === 'ssd') {
-        limpiarOpcionesDisco();
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = 'Selecciona el disco SSD';
-        selectElements.disco.appendChild(defaultOption);
-        discoSeleccionado.style.display = 'block';
-        llenarSelect(selectElements.disco, 1);
-    } else if (tipoDisco === 'nvme') {
-        limpiarOpcionesDisco();
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = 'Selecciona el disco NVME';
-        selectElements.disco.appendChild(defaultOption);
-        discoSeleccionado.style.display = 'block';
-        llenarSelect(selectElements.disco, 2);
-    } else {
-        limpiarOpcionesDisco();
-        discoSeleccionado.style.display = 'none';
-    }
-}
+  const tipoDisco = document.getElementById("tipoDisco").value;
+  const discoSeleccionado = document.getElementById("discoSeleccionado");
+  if (tipoDisco === "ssd") {
+    limpiarOpcionesDisco();
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Selecciona el disco SSD";
+    selectElements.disco.appendChild(defaultOption);
+    discoSeleccionado.style.display = "block";
+    llenarSelect(selectElements.disco, 1);
+  } else if (tipoDisco === "nvme") {
+    limpiarOpcionesDisco();
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Selecciona el disco NVME";
+    selectElements.disco.appendChild(defaultOption);
+    discoSeleccionado.style.display = "block";
+    llenarSelect(selectElements.disco, 2);
+  } else {
+    limpiarOpcionesDisco();
+    discoSeleccionado.style.display = "none";
+  }
+};
 
 function limpiarOpcionesDisco() {
-    while (selectElements.disco.firstChild) {
-        selectElements.disco.removeChild(selectElements.disco.firstChild);
-    }
+  while (selectElements.disco.firstChild) {
+    selectElements.disco.removeChild(selectElements.disco.firstChild);
+  }
 }
 
 function actualizarCarrito(selectId, selectedOption) {
-    const carritoTabla = document.querySelector('#carritoTabla');
-    const totalElement = document.querySelector('#total');
-    let precio = parseFloat(selectedOption.dataset.precio);
-    let nombre = selectedOption.textContent.split(' - ')[0];
-    const index = carrito.findIndex(item => item.id === selectId);
+  const carritoTabla = document.querySelector("#carritoTabla");
+  const totalElement = document.querySelector("#total");
+  let precio = parseFloat(selectedOption.dataset.precio);
+  let nombre = selectedOption.textContent.split(" - ")[0];
+  const index = carrito.findIndex((item) => item.id === selectId);
 
-    if (selectedOption.value) {
-
-        if (selectId === 'ram') {
-            const cantidad = parseInt(cantidadRam.value, 10) || 1;
-            precio *= cantidad;
-            nombre = `${nombre} (x${cantidad})`;
-        }
-        const producto = {
-            id: selectId,
-            nombre: `${nombre} - $${formatNumber(precio)}`,
-            precio
-        };
-
-        if (index > -1) {
-            carrito[index] = producto;
-        } else {
-            carrito.push(producto);
-        }
-    } else if (index > -1) {
-        carrito.splice(index, 1);
+  if (selectedOption.value) {
+    if (selectId === "ram") {
+      const cantidad = parseInt(cantidadRam.value, 10) || 1;
+      precio *= cantidad;
+      nombre = `${nombre} (x${cantidad})`;
     }
+    const producto = {
+      id: selectId,
+      nombre: `${nombre} - $${formatNumber(precio)}`,
+      precio,
+    };
 
-    carritoTabla.innerHTML = '';
-    let total = 0;
+    if (index > -1) {
+      carrito[index] = producto;
+    } else {
+      carrito.push(producto);
+    }
+  } else if (index > -1) {
+    carrito.splice(index, 1);
+  }
 
-    carrito.forEach(item => {
-        const tr = document.createElement('tr');
+  carritoTabla.innerHTML = "";
+  let total = 0;
 
-        const nombreProducto = document.createElement('td');
-        nombreProducto.textContent = item.nombre.split(' - ')[0];
-        tr.appendChild(nombreProducto)
+  carrito.forEach((item) => {
+    const tr = document.createElement("tr");
 
-        const precioProducto = document.createElement('td');
-        precioProducto.textContent = '$' + formatNumber(item.precio);
-        tr.appendChild(precioProducto)
+    const nombreProducto = document.createElement("td");
+    nombreProducto.textContent = item.nombre.split(" - ")[0];
+    tr.appendChild(nombreProducto);
 
-        carritoTabla.appendChild(tr)
+    const precioProducto = document.createElement("td");
+    precioProducto.textContent = "$" + formatNumber(item.precio);
+    tr.appendChild(precioProducto);
 
-        total += item.precio
+    carritoTabla.appendChild(tr);
 
-    });
-    totalElement.textContent = `Total: $${formatNumber(total)}`;
+    total += item.precio;
+  });
+  totalElement.textContent = `Total: $${formatNumber(total)}`;
 
-    validar()
+  validar();
 }
 
 function validar() {
-    const totalElement = document.querySelector('#total');
-    const descuentoElement = document.querySelector('#descuento');
-    const tecladoMouseElement = document.querySelector('#tecladoMouse');
+  const totalElement = document.querySelector("#total");
+  const descuentoElement = document.querySelector("#descuento");
+  const tecladoMouseElement = document.querySelector("#tecladoMouse");
 
-    const tieneProcesador = carrito.some(item => item.id === 'procesador');
-    const tieneRam = carrito.some(item => item.id === 'ram');
-    const tieneBoard = carrito.some(item => item.id === 'board');
-    const tieneFuentePoder = carrito.some(item => item.id === 'fuentePoder');
-    const tieneDisco = carrito.some(item => item.id === 'disco');
-    const tieneGabinete = carrito.some(item => item.id === 'gabinete');
-    const tieneMonitor = carrito.some(item => item.id === 'monitor');
-    const carritoProducto = document.querySelector('#carrito')
+  const tieneProcesador = carrito.some((item) => item.id === "procesador");
+  const tieneRam = carrito.some((item) => item.id === "ram");
+  const tieneBoard = carrito.some((item) => item.id === "board");
+  const tieneFuentePoder = carrito.some((item) => item.id === "fuentePoder");
+  const tieneDisco = carrito.some((item) => item.id === "disco");
+  const tieneGabinete = carrito.some((item) => item.id === "gabinete");
+  const tieneMonitor = carrito.some((item) => item.id === "monitor");
+  const carritoProducto = document.querySelector("#carrito");
 
-    if (tieneProcesador && tieneRam && tieneBoard && tieneFuentePoder && tieneDisco && tieneGabinete) {
-        let total = carrito.reduce((sum, item) => sum + item.precio, 0);
-        let totalTorre = carrito
-            .filter(item => ['procesador', 'ram', 'board', 'fuentePoder', 'disco', 'gabinete'].includes(item.id))
-            .reduce((sum, item) => sum + item.precio, 0);
-        const descuento = totalTorre * 0.05;
-        const totalConDescuento = total - descuento;
+  if (
+    tieneProcesador &&
+    tieneRam &&
+    tieneBoard &&
+    tieneFuentePoder &&
+    tieneDisco &&
+    tieneGabinete
+  ) {
+    let total = carrito.reduce((sum, item) => sum + item.precio, 0);
+    let totalTorre = carrito
+      .filter((item) =>
+        [
+          "procesador",
+          "ram",
+          "board",
+          "fuentePoder",
+          "disco",
+          "gabinete",
+        ].includes(item.id)
+      )
+      .reduce((sum, item) => sum + item.precio, 0);
+    const descuento = totalTorre * 0.05;
+    const totalConDescuento = total - descuento;
 
-        totalElement.innerHTML = `Total: <s>$${formatNumber(total)}</s>`;
-        totalElement.classList.remove('green');
-        totalElement.classList.add('tachado')
-        descuentoElement.textContent = `Total con descuento: $${formatNumber(totalConDescuento)}`;
+    totalElement.innerHTML = `Total: <s>$${formatNumber(total)}</s>`;
+    totalElement.classList.remove("green");
+    totalElement.classList.add("tachado");
+    descuentoElement.textContent = `Total con descuento: $${formatNumber(
+      totalConDescuento
+    )}`;
 
-        if (tieneMonitor) {
-            tecladoMouseElement.textContent = 'Obsequio: Teclado y Mouse: Gratis 🎁';
-        } else {
-            tecladoMouseElement.textContent = '';
-        }
+    if (tieneMonitor) {
+      tecladoMouseElement.textContent = "Obsequio: Teclado y Mouse: Gratis 🎁";
     } else {
-        descuentoElement.textContent = '';
-        tecladoMouseElement.textContent = '';
-        totalElement.classList.add('green');
-        totalElement.classList.remove('tachado')
+      tecladoMouseElement.textContent = "";
     }
+  } else {
+    descuentoElement.textContent = "";
+    tecladoMouseElement.textContent = "";
+    totalElement.classList.add("green");
+    totalElement.classList.remove("tachado");
+  }
 }
 
-Object.keys(selectElements).forEach(selectId => {
-    const selectElement = selectElements[selectId];
+Object.keys(selectElements).forEach((selectId) => {
+  const selectElement = selectElements[selectId];
 
-    selectElement.addEventListener('change', (event) => {
-        actualizarCarrito(selectId, event.target.selectedOptions[0]);
-    });
+  selectElement.addEventListener("change", (event) => {
+    actualizarCarrito(selectId, event.target.selectedOptions[0]);
+  });
 });
 
-cantidadRam.addEventListener('change', () => {
-    const selectedOption = selectElements.ram.selectedOptions[0];
-    if (selectedOption) {
-        actualizarCarrito('ram', selectedOption);
-    }
+cantidadRam.addEventListener("change", () => {
+  const selectedOption = selectElements.ram.selectedOptions[0];
+  if (selectedOption) {
+    actualizarCarrito("ram", selectedOption);
+  }
 });
 
-const gabineteOption = document.createElement('option');
-gabineteOption.value = 'gabinete-basico-rgb';
+const gabineteOption = document.createElement("option");
+gabineteOption.value = "gabinete-basico-rgb";
 gabineteOption.dataset.precio = 300000;
-gabineteOption.textContent = 'GABINETE 4 FANS RGB - $300,000';
-document.querySelector('#gabinete').appendChild(gabineteOption);
+gabineteOption.textContent = "GABINETE 4 FANS RGB - $300,000";
+document.querySelector("#gabinete").appendChild(gabineteOption);
 
-document.querySelector('#gabinete').addEventListener('change', (event) => {
-    actualizarCarrito('gabinete', event.target.selectedOptions[0]);
+document.querySelector("#gabinete").addEventListener("change", (event) => {
+  actualizarCarrito("gabinete", event.target.selectedOptions[0]);
 });
 
 llenarSelect(selectElements.procesador, 20);

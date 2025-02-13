@@ -5,9 +5,6 @@ import { baseURL } from './config.js';
 const ApiProducto = `${baseURL}/producto`;
 const ApiCategoria = `${baseURL}/categoria`;
 
-// Exclusión de categorías
-const categoriasExcluidas = [7, 9, 13, 24, 25, 26, 29, 30, 32, 33];
-
 // Variables de paginación
 let paginaActual = 1;
 
@@ -63,14 +60,13 @@ async function listarCategorias() {
             listarProductos();
         }));
 
-        categorias.filter(categoria => !categoriasExcluidas.includes(categoria.id))
-            .forEach(categoria => {
-                ulElement.appendChild(crearCategoriaEnlace(categoria.nombre, categoria.id, () => {
-                    const slug = slugify(categoria.nombre);
-                    history.pushState(null, '', `?categoria=${slug}`);
-                    listarProductosPorCategoria(categoria.id);
-                }));
-            });
+        categorias.forEach(categoria => {
+            ulElement.appendChild(crearCategoriaEnlace(categoria.nombre, categoria.id, () => {
+                const slug = slugify(categoria.nombre);
+                history.pushState(null, '', `?categoria=${slug}`);
+                listarProductosPorCategoria(categoria.id);
+            }));
+        });
 
         return categorias;
     } catch (error) {
@@ -112,7 +108,8 @@ async function listarProductos() {
         const response = await fetch(`${ApiProducto}?page=${paginaActual - 1}`);
         if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
         const paginacion = await response.json();
-        
+
+        // Renderizar todos los productos sin filtrar
         renderizarProductos(paginacion.content);
         renderizarPaginacion(paginacion.totalPages);
     } catch (error) {
