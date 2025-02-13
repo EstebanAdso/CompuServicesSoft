@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (categoriaSlug) {
             const categoria = categorias.find(cat => slugify(cat.nombre) === categoriaSlug);
             if (categoria) {
+                // Actualizar metaetiquetas dinámicamente
+                document.title = `CompuServicesSoft | Catálogo de ${categoria.nombre}`;
+                document.querySelector('meta[name="description"]').setAttribute('content', `Explora nuestro catálogo de ${categoria.nombre} en CompuServicesSoft. Encuentra los mejores productos y ofertas.`);
+                document.querySelector('link[rel="canonical"]').setAttribute('href', `https://compuservicessoft.com/catalogo/${categoriaSlug}`);
+
                 tituloCategoria.textContent = `Catálogo de ${categoria.nombre.charAt(0).toUpperCase() + categoria.nombre.slice(1).toLowerCase()}`;
                 await listarProductosPorCategoria(categoria.id);
             } else {
