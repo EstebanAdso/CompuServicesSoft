@@ -20,11 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (categoriaSlug) {
             const categoria = categorias.find(cat => slugify(cat.nombre) === categoriaSlug);
             if (categoria) {
-                // Actualizar metaetiquetas dinámicamente
-                document.title = `CompuServicesSoft | Catálogo de ${categoria.nombre}`;
-                document.querySelector('meta[name="description"]').setAttribute('content', `Explora nuestro catálogo de ${categoria.nombre} en CompuServicesSoft. Encuentra los mejores productos y ofertas.`);
-                document.querySelector('link[rel="canonical"]').setAttribute('href', `https://compuservicessoft.com/catalogo/${categoriaSlug}`);
-
+                // Actualizar metaetiquetas y título
+                actualizarMetaEtiquetas(categoria);
                 tituloCategoria.textContent = `Catálogo de ${categoria.nombre.charAt(0).toUpperCase() + categoria.nombre.slice(1).toLowerCase()}`;
                 await listarProductosPorCategoria(categoria.id);
             } else {
@@ -45,6 +42,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+// Función para actualizar metaetiquetas dinámicamente
+function actualizarMetaEtiquetas(categoria) {
+    const titulo = `CompuServicesSoft | Catálogo de ${categoria.nombre}`;
+    const descripcion = `Explora nuestro catálogo de ${categoria.nombre} en CompuServicesSoft. Encuentra los mejores productos y ofertas.`;
+    const canonicalUrl = `https://compuservicessoft.com/catalogo.html?categoria=${slugify(categoria.nombre)}`;
+
+    // Actualizar título y metaetiquetas
+    document.title = titulo;
+    document.querySelector('meta[name="description"]').setAttribute('content', descripcion);
+    document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
+
+    // Actualizar Open Graph tags (opcional, si es necesario)
+    document.querySelector('meta[property="og:title"]').setAttribute('content', titulo);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', descripcion);
+    document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
+}
+
+// Función para convertir texto en slug
 function slugify(text) {
     return text.toLowerCase().trim()
         .replace(/[^\w\s-]/g, '')
@@ -52,6 +67,7 @@ function slugify(text) {
         .replace(/^-+|-+$/g, '');
 }
 
+// Función para listar categorías
 async function listarCategorias() {
     const ulElement = document.querySelector(".content__products__sidebar ul");
     try {
@@ -69,6 +85,7 @@ async function listarCategorias() {
             ulElement.appendChild(crearCategoriaEnlace(categoria.nombre, categoria.id, () => {
                 const slug = slugify(categoria.nombre);
                 history.pushState(null, '', `?categoria=${slug}`);
+                actualizarMetaEtiquetas(categoria); // Actualizar metaetiquetas
                 listarProductosPorCategoria(categoria.id);
             }));
         });
@@ -80,6 +97,7 @@ async function listarCategorias() {
     }
 }
 
+// Función para crear enlaces de categoría
 function crearCategoriaEnlace(nombre, id, onClick) {
     const li = document.createElement('li');
     const link = document.createElement('a');
@@ -108,6 +126,7 @@ function crearCategoriaEnlace(nombre, id, onClick) {
     return li;
 }
 
+// Función para listar todos los productos
 async function listarProductos() {
     try {
         const response = await fetch(`${ApiProducto}?page=${paginaActual - 1}`);
@@ -122,6 +141,7 @@ async function listarProductos() {
     }
 }
 
+// Función para listar productos por categoría
 async function listarProductosPorCategoria(categoriaId) {
     try {
         const response = await fetch(`${ApiProducto}/categoria/${categoriaId}?page=${paginaActual - 1}`);
@@ -143,6 +163,7 @@ async function listarProductosPorCategoria(categoriaId) {
     }
 }
 
+// Función para renderizar productos
 function renderizarProductos(productos) {
     const contenedor = document.getElementById('contenedorCentral');
     contenedor.innerHTML = "";
@@ -169,6 +190,7 @@ function renderizarProductos(productos) {
     aplicarLazyLoading();
 }
 
+// Función para renderizar la paginación
 function renderizarPaginacion(totalPaginas) {
     let paginacion = document.getElementById('paginacion');
 
@@ -225,6 +247,7 @@ function renderizarPaginacion(totalPaginas) {
     });
 }
 
+// Función para aplicar lazy loading a las imágenes
 function aplicarLazyLoading() {
     const images = document.querySelectorAll('.lazy-image');
     const observer = new IntersectionObserver((entries, observer) => {
@@ -240,6 +263,7 @@ function aplicarLazyLoading() {
     images.forEach(img => observer.observe(img));
 }
 
+// Función para mostrar el modal de detalles del producto
 function mostrarModal(producto) {
     const modal = document.createElement('div');
     modal.classList.add('modal');
@@ -261,15 +285,18 @@ function mostrarModal(producto) {
     });
 }
 
+// Función para cerrar el modal
 function cerrarModal(modal) {
     modal.style.display = 'none';
     modal.remove();
 }
 
+// Función para capitalizar texto
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Función para formatear números
 function formatNumber(number) {
     return number.toLocaleString('es-ES');
 }
