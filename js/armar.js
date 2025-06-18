@@ -10,6 +10,7 @@ const selectElements = {
   grafica: document.querySelector("#grafica"),
   disco: document.querySelector("#disco"),
   monitor: document.querySelector("#monitor"),
+  gabinete: document.querySelector("#gabinete"),
 };
 
 const cantidadRam = document.querySelector("#cantidadRam");
@@ -175,7 +176,7 @@ function validar() {
         ].includes(item.id)
       )
       .reduce((sum, item) => sum + item.precio, 0);
-    const descuento = totalTorre * 0.05;
+    const descuento = totalTorre * 0.04;
     const totalConDescuento = total - descuento;
 
     totalElement.innerHTML = `Total: <s>$${formatNumber(total)}</s>`;
@@ -213,15 +214,6 @@ cantidadRam.addEventListener("change", () => {
   }
 });
 
-const gabineteOption = document.createElement("option");
-gabineteOption.value = "gabinete-basico-rgb";
-gabineteOption.dataset.precio = 300000;
-gabineteOption.textContent = "GABINETE 4 FANS RGB - $300,000";
-document.querySelector("#gabinete").appendChild(gabineteOption);
-
-document.querySelector("#gabinete").addEventListener("change", (event) => {
-  actualizarCarrito("gabinete", event.target.selectedOptions[0]);
-});
 
 llenarSelect(selectElements.procesador, 20);
 llenarSelect(selectElements.ram, 4);
@@ -229,3 +221,5 @@ llenarSelect(selectElements.board, 19);
 llenarSelect(selectElements.fuentePoder, 5);
 llenarSelect(selectElements.grafica, 8);
 llenarSelect(selectElements.monitor, 3);
+llenarSelect(selectElements.gabinete, 35);
+
