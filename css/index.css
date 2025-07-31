@@ -695,6 +695,8 @@ dialog {
     animation: aparecer both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .about-seccion {
@@ -739,7 +741,7 @@ dialog {
 
 .about-imagen {
     width: 50%;
-    height: 70%;
+    height: 100%;
     animation: aparecer, slideOut both;
     animation-timeline: view();
     animation-range: cover 10% cover 40%;
@@ -748,8 +750,9 @@ dialog {
 .about-imagen img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
+    object-position: top;
 }
 
 @media (max-width: 1920px) {
@@ -796,7 +799,7 @@ dialog {
     .about {
         width: 100%;
         background-color: #000;
-        background-image: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.6) 100%), url(../imagenes/local/local1.jpeg);
+        background-image: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.6) 100%), url(../imgLocal/local.jpeg);
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
