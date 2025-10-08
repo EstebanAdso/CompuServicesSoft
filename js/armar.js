@@ -11,11 +11,12 @@ const selectElements = {
   disco: document.querySelector("#disco"),
   monitor: document.querySelector("#monitor"),
   gabinete: document.querySelector("#gabinete"),
+  disipador: document.querySelector("#disipador"),
 };
 
 const cantidadRam = document.querySelector("#cantidadRam");
 const carrito = [];
-function fetchProductosPorCategoria(id) {
+async function fetchProductosPorCategoria(id) {
   return fetch(`${ApiProductosPorCategoriaTodos}${id}/todos`) // Usa el nuevo endpoint
     .then((response) => response.json())
     .then((data) => {
@@ -45,6 +46,14 @@ function llenarSelect(selectElement, categoriaId) {
           (producto.nombre.toLowerCase().includes("ddr4") ||
             producto.nombre.toLowerCase().includes("ddr5")) &&
           !producto.nombre.toLowerCase().includes("laptop")
+      );
+    }
+
+    if (selectElement === selectElements.disipador) {
+      // Filtrar productos que contengan "disipador" en el nombre pero no "pasta"
+      productosFiltrados = productosFiltrados.filter(
+        (producto) =>
+          !producto.nombre.toLowerCase().includes("pasta")
       );
     }
 
@@ -172,11 +181,11 @@ function validar() {
           "board",
           "fuentePoder",
           "disco",
-          "gabinete",
+          "gabinete"
         ].includes(item.id)
       )
       .reduce((sum, item) => sum + item.precio, 0);
-    const descuento = totalTorre * 0.04;
+    const descuento = totalTorre * 0.05;
     const totalConDescuento = total - descuento;
 
     totalElement.innerHTML = `Total: <s>$${formatNumber(total)}</s>`;
@@ -222,4 +231,5 @@ llenarSelect(selectElements.fuentePoder, 5);
 llenarSelect(selectElements.grafica, 8);
 llenarSelect(selectElements.monitor, 3);
 llenarSelect(selectElements.gabinete, 35);
+llenarSelect(selectElements.disipador, 21);
 
